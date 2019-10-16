@@ -16,7 +16,7 @@ import com.example.thin.base.mvp.IBaseView;
  * @Desc:
  */
 public class FollowPositionActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView {
-    private Button next;
+    private Button nextBtn;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, FollowPositionActivity.class));
@@ -30,8 +30,8 @@ public class FollowPositionActivity extends BaseScrollTitleBarActivity<BasePrese
     @Override
     protected void initContentView() {
         mTitleBar.setTitle("哪一部分最关注的？");
-        next = getView(R.id.btn_next);
-        next.setOnClickListener(new View.OnClickListener() {
+        nextBtn = getView(R.id.btn_next);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
