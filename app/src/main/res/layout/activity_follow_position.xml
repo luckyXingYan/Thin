@@ -26,7 +26,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="@dimen/y190"
             android:button="@null"
-            android:text="胸部" />
+            android:text="@string/chest" />
 
         <View
             android:id="@+id/line_chest"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y210"
             android:button="@null"
-            android:text="手臂" />
+            android:text="@string/arm" />
 
         <View
             android:id="@+id/line_arm"
@@ -59,7 +59,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="@dimen/y260"
             android:button="@null"
-            android:text="腹部" />
+            android:text="@string/abdomen" />
 
         <View
             android:id="@+id/line_abdomen"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y290"
             android:button="@null"
-            android:text="臀部" />
+            android:text="@string/hips" />
 
         <View
             android:id="@+id/line_hips"
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y380"
             android:button="@null"
-            android:text="腿部" />
+            android:text="@string/leg" />
 
         <View
             android:id="@+id/line_leg"
@@ -104,11 +104,11 @@
         <TextView
             android:layout_width="@dimen/x150"
             android:layout_height="@dimen/y60"
-            android:gravity="center"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/shape_rectangle_50_corners_white"
-            android:text="全选"
+            android:gravity="center"
+            android:text="@string/select_all"
             android:textSize="@dimen/x36" />
     </RelativeLayout>
 
@@ -126,12 +126,8 @@
             android:layout_width="@dimen/x300"
             android:layout_height="@dimen/y100"
             android:background="@drawable/shape_rectangle_50_corners_green"
-            android:text="下一步"
+            android:text="@string/next"
             android:textColor="@color/white" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y100"
-        android:background="#00000000" />
 </RelativeLayout>

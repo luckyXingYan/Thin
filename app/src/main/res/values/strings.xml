@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Thin</string>
+
+    <string name="home">首页</string>
+    <string name="mall">商城</string>
+    <string name="product_test">产品检测</string>
+    <string name="mine">我的</string>
+
+    <string name="next">下一步</string>
+    <string name="arm">手臂</string>
+    <string name="chest">胸部</string>
+    <string name="hips">臀部</string>
+    <string name="abdomen">腹部</string>
+    <string name="leg">腿部</string>
+    <string name="select_all">全选</string>
 </resources>
