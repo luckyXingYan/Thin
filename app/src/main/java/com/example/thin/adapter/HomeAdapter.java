@@ -5,12 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.thin.bean.HomeDataBean;
 import com.example.thin.view.BannerView;
 import com.example.thin.view.BaseHomeLayout;
 import com.example.thin.view.TopTypeView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author: xingyan
@@ -21,7 +19,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
     private static final int TYPE = 0;
     private static final int BANNER = 1;
 
-    private List<String> data = new ArrayList<>();
+    private HomeDataBean data = new HomeDataBean();
 
     private Context context;
 
@@ -29,7 +27,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
         this.context = context;
     }
 
-    public void setData(List<String> data) {
+    public void setData(HomeDataBean data) {
         this.data = data;
         notifyDataSetChanged();
     }
@@ -53,9 +51,9 @@ public class HomeAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (data == null) return;
         if (i == TYPE) {
-            ((MyViewHolder) viewHolder).setData(data);
+            ((MyViewHolder) viewHolder).setData(data.url);
         } else if (i == BANNER) {
-            ((MyViewHolder) viewHolder).setData(data);
+            ((MyViewHolder) viewHolder).setData(data.url);
         }
     }
 

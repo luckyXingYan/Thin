@@ -49,17 +49,18 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
 //            presenter.getHomePageData("0", "1", getActivity());
 //            presenter.getBannerData("0", "1", getActivity());
 //        }
-        List<String> data = new ArrayList<>();
-        data.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
-        data.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
-        data.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
-        data.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
-        data.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
-        data.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
-        data.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
-        data.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
+        HomeDataBean bean = new HomeDataBean();
+        bean.title = "eee";
+        bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
+        bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
+        bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
+        bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
+        bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
+        bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
+        bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
+        bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
 
-        adapter.setData(data);
+        adapter.setData(bean);
     }
 
     @Override
