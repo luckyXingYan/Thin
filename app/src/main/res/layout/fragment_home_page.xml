@@ -4,13 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SecondActivity"
     tools:ignore="MissingConstraints">
 
-    <Button
-        android:id="@+id/btn_request"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="首页" />
+
+    <EditText
+        android:id="@+id/et_input_search"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y60"
+        android:layout_marginLeft="@dimen/y40"
+        android:layout_marginTop="@dimen/y20"
+        android:layout_marginRight="@dimen/y30"
+        android:background="@drawable/shape_rectangle_50_corners_white"
+        android:hint="请输入..."
+        android:padding="@dimen/y10"
+        android:textSize="13sp"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_pos_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_pos_name"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y90"
+        android:layout_marginRight="@dimen/y40"
+        android:drawableLeft="@mipmap/ic_title_back"
+        android:gravity="center"
+        android:text="北京"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/et_input_search"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20"
+        app:layout_constraintTop_toBottomOf="@id/et_input_search">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

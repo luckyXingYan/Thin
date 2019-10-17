@@ -2,6 +2,8 @@ package com.example.thin.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import com.example.thin.R;
 import com.example.thin.base.mvp.BaseActivity;
@@ -21,6 +23,13 @@ public class MainActivity extends BaseActivity<BasePresenter<IBaseView>> {
     private static final String TAG = "MainActivity";
     private List<Fragment> mFrags = new ArrayList<>();
     private MainBottomTabView mainBottomTabView;
+    private Fragment currentFragment;
+    private FragmentManager manager;
+    private HomePageFragment homePageFragment;
+    private ProductPageFragment productPageFragment;
+    private MinePageFragment minePageFragment;
+    private MinePageFragment2 minePageFragment2;
+
 
     @Override
     protected int layoutId() {
@@ -29,28 +38,50 @@ public class MainActivity extends BaseActivity<BasePresenter<IBaseView>> {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        currentFragment = new Fragment();
+        manager = getSupportFragmentManager();
+
+        homePageFragment = HomePageFragment.newInstance();
+        productPageFragment = ProductPageFragment.newInstance();
+        minePageFragment = MinePageFragment.newInstance();
+        minePageFragment2 = MinePageFragment2.newInstance();
 
         mainBottomTabView = getView(R.id.mainBottomTabView);
 
-        mFrags.add(HomePageFragment.newInstance());
-        mFrags.add(ProductPageFragment.newInstance());
-        mFrags.add(MinePageFragment.newInstance());
-        mFrags.add(MinePageFragment2.newInstance());
+        mFrags.add(homePageFragment);
+        mFrags.add(productPageFragment);
+        mFrags.add(minePageFragment);
+        mFrags.add(minePageFragment2);
 
-//        默认显示第一个
-        getSupportFragmentManager().beginTransaction().add(R.id.frameLayout,
-                mFrags.get(0)).commit();
+        //默认显示第一个
+        showFragment(mFrags.get(0));
 
         mainBottomTabView.setSelectFragmentInterface(new MainBottomTabView.SelectFragmentLinstener() {
             @Override
             public void selectFragment(int index) {
                 //切换tab
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        mFrags.get(index)).commit();
+                showFragment(mFrags.get(index));
+
             }
         });
+    }
 
-
+    /**
+     * 展示当前 Fragment  Fragment的隐藏和展示，也就是完成Fragment的切换功能
+     *
+     * @param fragment
+     */
+    private void showFragment(Fragment fragment) {
+        if (currentFragment != fragment) {
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.hide(currentFragment);
+            currentFragment = fragment;
+            if (!fragment.isAdded()) {
+                transaction.add(R.id.frameLayout, fragment).show(fragment).commit();
+            } else {
+                transaction.show(fragment).commit();
+            }
+        }
     }
 
     @Override
