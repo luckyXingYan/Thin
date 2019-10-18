@@ -3,4 +3,5 @@
     <declare-styleable name="NoScrollViewPager">
         <attr name="isHorizontalScroll" format="boolean" />
     </declare-styleable>
+
 </resources>
