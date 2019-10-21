@@ -10,9 +10,9 @@ import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.fragment.HomePageFragment;
-import com.example.thin.fragment.MinePageFragment;
-import com.example.thin.fragment.MinePageFragment2;
 import com.example.thin.fragment.ProductPageFragment;
+import com.example.thin.fragment.MinePageFragment;
+import com.example.thin.fragment.MallPageFragment;
 import com.example.thin.view.MainBottomTabView;
 
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ public class MainActivity extends BaseActivity<BasePresenter<IBaseView>> {
     private Fragment currentFragment;
     private FragmentManager manager;
     private HomePageFragment homePageFragment;
-    private ProductPageFragment productPageFragment;
-    private MinePageFragment minePageFragment;
-    private MinePageFragment2 minePageFragment2;
+    private MallPageFragment productPageFragment;
+    private ProductPageFragment minePageFragment;
+    private MinePageFragment minePageFragment2;
 
 
     @Override
@@ -38,13 +38,14 @@ public class MainActivity extends BaseActivity<BasePresenter<IBaseView>> {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+
         currentFragment = new Fragment();
         manager = getSupportFragmentManager();
 
         homePageFragment = HomePageFragment.newInstance();
-        productPageFragment = ProductPageFragment.newInstance();
-        minePageFragment = MinePageFragment.newInstance();
-        minePageFragment2 = MinePageFragment2.newInstance();
+        productPageFragment = MallPageFragment.newInstance();
+        minePageFragment = ProductPageFragment.newInstance();
+        minePageFragment2 = MinePageFragment.newInstance();
 
         mainBottomTabView = getView(R.id.mainBottomTabView);
 

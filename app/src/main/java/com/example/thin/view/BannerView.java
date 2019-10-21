@@ -38,12 +38,9 @@ public class BannerView extends BaseHomeLayout<List<String>> {
     @Override
     public void setData(List<String> data) {
         this.data = data;
-
         convenientBanner.getViewPager().setOffscreenPageLimit(data.size());
-        convenientBanner.getViewPager().setPageTransformer(true, new ScaleTransformer());
-        convenientBanner.getViewPager().setPageMargin(ScreenUtil.dip2px(getContext(), 10));//间距
-//        convenientBanner.setPadding(ScreenUtil.dip2px(getContext(), 20), 0, ScreenUtil.dip2px1
-// (getContext(), 20), 0);//间距
+        convenientBanner.getViewPager().setPageTransformer(true, new PosterScaleTransformer());
+        convenientBanner.getViewPager().setPageMargin(ScreenUtil.dip2px(getContext(), 20));//间距
         convenientBanner.setPages(new BannerImgAdapter(), data);
     }
 

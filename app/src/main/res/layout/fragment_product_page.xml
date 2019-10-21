@@ -4,13 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SecondActivity">
+    tools:context=".activity.SecondActivity"
+    tools:ignore="MissingConstraints">
 
-    <Button
+    <TextView
         android:id="@+id/btn_request"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="产品"
-        tools:ignore="MissingConstraints" />
+        android:text="产品检测"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="敬请期待"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

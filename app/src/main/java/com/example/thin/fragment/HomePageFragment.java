@@ -1,8 +1,8 @@
 package com.example.thin.fragment;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.example.thin.R;
@@ -11,8 +11,10 @@ import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.bean.HomeDataBean;
 import com.example.thin.iview.IHomePageView;
 import com.example.thin.presenter.HomePagePresenter;
+import com.example.thin.refresh.TwinklingRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +26,7 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     private static final String TAG = "HomePageFragment";
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
+    private TwinklingRefreshLayout refreshLayout;
 
     public static HomePageFragment newInstance() {
         return new HomePageFragment();
@@ -37,10 +40,19 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     @Override
     protected void initView(final View view) {
         recyclerView = getView(view, R.id.rv_home);
+        refreshLayout = getView(view, R.id.rl_home);
+        refreshLayout.setEnableLoadMore(false);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new HomeAdapter(getActivity());
         recyclerView.setAdapter(adapter);
+
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                initData();
+            }
+        });
     }
 
     @Override
@@ -61,6 +73,7 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
 
         adapter.setData(bean);
+        refreshLayout.finishRefresh();
     }
 
     @Override

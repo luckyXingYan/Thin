@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import com.example.thin.bean.HomeDataBean;
 import com.example.thin.view.BannerView;
 import com.example.thin.view.BaseHomeLayout;
+import com.example.thin.view.FootView;
+import com.example.thin.view.HotView;
 import com.example.thin.view.TopTypeView;
 
 /**
@@ -18,6 +20,8 @@ import com.example.thin.view.TopTypeView;
 public class HomeAdapter extends RecyclerView.Adapter {
     private static final int TYPE = 0;
     private static final int BANNER = 1;
+    private static final int HOT = 2;
+    private static final int FOOT = 3;
 
     private HomeDataBean data = new HomeDataBean();
 
@@ -43,6 +47,12 @@ public class HomeAdapter extends RecyclerView.Adapter {
             case BANNER:
                 myViewHolder = new MyViewHolder(new BannerView(context));
                 break;
+            case HOT:
+                myViewHolder = new MyViewHolder(new HotView(context));
+                break;
+            case FOOT:
+                myViewHolder = new MyViewHolder(new FootView(context));
+                break;
         }
         return myViewHolder;
     }
@@ -54,12 +64,16 @@ public class HomeAdapter extends RecyclerView.Adapter {
             ((MyViewHolder) viewHolder).setData(data.url);
         } else if (i == BANNER) {
             ((MyViewHolder) viewHolder).setData(data.url);
+        } else if (i == HOT) {
+            ((MyViewHolder) viewHolder).setData(data.url);
+        } else if (i == FOOT) {
+            ((MyViewHolder) viewHolder).setData(data.url);
         }
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 4;
     }
 
     @Override

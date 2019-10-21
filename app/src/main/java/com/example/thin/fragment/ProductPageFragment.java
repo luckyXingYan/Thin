@@ -1,23 +1,19 @@
 package com.example.thin.fragment;
 
-import android.util.Log;
 import android.view.View;
 
 import com.example.thin.R;
 import com.example.thin.base.mvp.BaseFragment;
-import com.example.thin.bean.ProductDataBean;
-import com.example.thin.iview.IProductPageView;
-import com.example.thin.presenter.ProductPagePresenter;
-
-import java.util.List;
+import com.example.thin.base.mvp.BasePresenter;
+import com.example.thin.base.mvp.IBaseView;
+import com.example.thin.presenter.MinePagePresenter;
 
 /**
  * @Author: xingyan
  * @Date: 2019/8/2
  * @Desc:
  */
-public class ProductPageFragment extends BaseFragment<ProductPagePresenter> implements IProductPageView {
-    private static final String TAG = "ProductPageFragment";
+public class ProductPageFragment extends BaseFragment<BasePresenter> implements IBaseView {
 
     public static ProductPageFragment newInstance() {
         return new ProductPageFragment();
@@ -36,19 +32,10 @@ public class ProductPageFragment extends BaseFragment<ProductPagePresenter> impl
     @Override
     protected void initData() {
 
-        if (presenter != null) {
-            presenter.getProductPageData("0", "1", getActivity());
-        }
-
     }
 
     @Override
-    public void updateProductData(List<ProductDataBean> data) {
-        Log.e(TAG, "updateProductData：" + data.toString());
-    }
-
-    @Override
-    public ProductPagePresenter createPresenter() {
-        return new ProductPagePresenter();
+    public MinePagePresenter createPresenter() {
+        return null;
     }
 }

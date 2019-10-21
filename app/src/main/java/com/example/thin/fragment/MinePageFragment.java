@@ -3,16 +3,11 @@ package com.example.thin.fragment;
 import android.view.View;
 
 import com.example.thin.R;
+import com.example.thin.activity.FollowPositionActivity;
 import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.HomeDataBean;
-import com.example.thin.iview.IHomePageView;
-import com.example.thin.iview.IMinePageView;
-import com.example.thin.presenter.HomePagePresenter;
 import com.example.thin.presenter.MinePagePresenter;
-
-import java.util.List;
 
 /**
  * @Author: xingyan
@@ -32,6 +27,13 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
 
     @Override
     protected void initView(View view) {
+
+//        getView(view, R.id.btn_follow).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FollowPositionActivity.open(getActivity());
+//            }
+//        });
 
     }
 

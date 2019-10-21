@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity.SecondActivity">
+
 
     <LinearLayout
         android:id="@+id/ll_search"
@@ -22,27 +25,25 @@
             android:padding="@dimen/y10"
             android:textSize="13sp" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tv_pos_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/y20"
-            android:drawableLeft="@mipmap/ic_title_back"
-            android:drawablePadding="@dimen/y10"
-            android:text="北京" />
+            android:src="@mipmap/ic_title_back" />
     </LinearLayout>
 
-    <com.example.thin.refresh.TwinklingRefreshLayout
-        android:id="@+id/rl_home"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tb_mall"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_below="@id/ll_search"
+        android:overScrollMode="never"
+        app:tabMode="scrollable" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_mall"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ll_search">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_home"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never" />
-    </com.example.thin.refresh.TwinklingRefreshLayout>
-
+        android:layout_below="@id/tb_mall" />
 </RelativeLayout>
