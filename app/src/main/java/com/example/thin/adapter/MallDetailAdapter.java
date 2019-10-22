@@ -6,15 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.example.thin.bean.HomeDataBean;
-import com.example.thin.view.BannerView;
 import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.FootView;
-import com.example.thin.view.HotView;
 import com.example.thin.view.MallDetailBanner;
 import com.example.thin.view.MallDetailImg;
 import com.example.thin.view.MallDetailInfo;
 import com.example.thin.view.MallDetailName;
-import com.example.thin.view.TopTypeView;
 
 /**
  * @Author: xingyan
