@@ -12,6 +12,8 @@
             android:id="@+id/rv_mall_common"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/y20"
+            android:layout_marginRight="@dimen/y20"
             android:overScrollMode="never" />
     </com.example.thin.refresh.TwinklingRefreshLayout>
 

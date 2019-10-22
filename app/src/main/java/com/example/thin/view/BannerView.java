@@ -19,7 +19,6 @@ import java.util.List;
  */
 public class BannerView extends BaseHomeLayout<List<String>> {
     private ConvenientBanner convenientBanner;
-    private List<String> data = new ArrayList<>();
 
     public BannerView(Context context) {
         this(context, null);
@@ -37,7 +36,6 @@ public class BannerView extends BaseHomeLayout<List<String>> {
 
     @Override
     public void setData(List<String> data) {
-        this.data = data;
         convenientBanner.getViewPager().setOffscreenPageLimit(data.size());
         convenientBanner.getViewPager().setPageTransformer(true, new PosterScaleTransformer());
         convenientBanner.getViewPager().setPageMargin(ScreenUtil.dip2px(getContext(), 20));//间距

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_shop_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/y10"
+        android:layout_marginTop="@dimen/y20"
+        android:text="店铺名称XXX" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_shop_name"
+        android:layout_marginLeft="@dimen/y10"
+        android:layout_marginTop="@dimen/y10"
+        android:text="￥3333" />
+
+    <TextView
+        android:id="@+id/tv_sale_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_price"
+        android:layout_marginLeft="@dimen/y10"
+        android:layout_marginTop="@dimen/y10"
+        android:text="销量 999" />
+
+    <TextView
+        android:id="@+id/tv_freight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_price"
+        android:layout_marginLeft="@dimen/y10"
+        android:layout_marginTop="@dimen/y10"
+        android:layout_marginBottom="@dimen/y20"
+        android:layout_toRightOf="@id/tv_sale_num"
+        android:text="运费  10" />
+
+</RelativeLayout>

@@ -4,9 +4,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.thin.R;
+import com.example.thin.activity.MallDetailActivity;
 import com.example.thin.adapter.MallAdapter;
+import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
@@ -68,6 +71,13 @@ public class MallCommonFragment extends BaseFragment<BasePresenter> implements I
                 initData();
             }
         });
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+            @Override
+            public void onItemClick(ViewGroup parent, View view, String s, int position) {
+                MallDetailActivity.open(getActivity());
+            }
+        });
+
     }
 
     @Override

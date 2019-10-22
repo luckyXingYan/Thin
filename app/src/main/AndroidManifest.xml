@@ -17,8 +17,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +30,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.FollowPositionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MallDetailActivity"
             android:screenOrientation="portrait" />
     </application>
 
