@@ -7,4 +7,25 @@
         android:id="@+id/convenientBanner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y350" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/y30"
+        android:layout_marginTop="@dimen/y50"
+        android:src="@mipmap/ic_title_back" />
+
+    <EditText
+        android:id="@+id/et_input_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y60"
+        android:layout_marginLeft="@dimen/y30"
+        android:layout_marginTop="@dimen/y30"
+        android:layout_marginRight="@dimen/y30"
+        android:layout_toRightOf="@id/iv_back"
+        android:background="@drawable/shape_rectangle_50_corners_white"
+        android:hint="请输入..."
+        android:padding="@dimen/y10"
+        android:textSize="13sp" />
 </RelativeLayout>

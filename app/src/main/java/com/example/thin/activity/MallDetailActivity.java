@@ -2,9 +2,12 @@ package com.example.thin.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.thin.R;
 import com.example.thin.adapter.MallDetailAdapter;
@@ -22,6 +25,8 @@ public class MallDetailActivity extends BaseTitleBarActivity<BasePresenter> impl
     private RecyclerView recyclerView;
     private MallDetailAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
+    private EditText search;
+    private ImageView back;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, MallDetailActivity.class));
@@ -36,11 +41,22 @@ public class MallDetailActivity extends BaseTitleBarActivity<BasePresenter> impl
     protected void initContentView() {
         titleBar.setVisibility(View.GONE);
         recyclerView = getView(R.id.rv_mall_detail);
+//        search = getView(R.id.et_input_search);
+//        back = getView(R.id.iv_back);
         recyclerView.setHasFixedSize(false);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new MallDetailAdapter(this);
         recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                search.setAlpha(1 - dy);
+//                back.setAlpha(1 - dy);
+            }
+        });
     }
 
     @Override

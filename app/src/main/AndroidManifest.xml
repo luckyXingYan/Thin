@@ -34,6 +34,27 @@
         <activity
             android:name=".activity.MallDetailActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SexSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TargetWeightActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CreateAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CashierActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MyOrderActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
