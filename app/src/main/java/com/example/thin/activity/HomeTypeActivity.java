@@ -8,9 +8,9 @@ import com.example.thin.base.mvp.IBaseView;
 
 /**
  * @Author: xingyan
- * @Date: 2019/10/22
- * @Desc:
- */
+        * @Date: 2019/10/22
+        * @Desc:
+        */
 public class HomeTypeActivity extends BaseActivity<BasePresenter> implements IBaseView {
     @Override
     protected int layoutId() {
