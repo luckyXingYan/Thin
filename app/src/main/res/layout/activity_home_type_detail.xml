@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -62,6 +63,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_home_type"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/y20"
+            android:layout_marginRight="@dimen/y20" />
     </com.example.thin.refresh.TwinklingRefreshLayout>
 </LinearLayout>

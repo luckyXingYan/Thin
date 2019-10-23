@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.thin.R;
+import com.example.thin.activity.HomeTypeDetailActivity;
 import com.example.thin.adapter.TypeAdapter;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 
@@ -42,7 +43,7 @@ public class TopTypeView extends BaseHomeLayout<List<String>> {
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, String s, int position) {
-
+                HomeTypeDetailActivity.open(getContext());
             }
         });
     }
