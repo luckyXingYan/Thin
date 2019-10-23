@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.thin.R;
-import com.example.thin.adapter.MallDetailAdapter;
+import com.example.thin.adapter.GoodsDetailAdapter;
 import com.example.thin.base.BaseTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
@@ -21,42 +21,32 @@ import com.example.thin.bean.HomeDataBean;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class MallDetailActivity extends BaseTitleBarActivity<BasePresenter> implements IBaseView {
+public class GoodsDetailActivity extends BaseTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
     private RecyclerView recyclerView;
-    private MallDetailAdapter adapter;
+    private GoodsDetailAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
-    private EditText search;
-    private ImageView back;
+    private ImageView shopCart;
 
     public static void open(Context context) {
-        context.startActivity(new Intent(context, MallDetailActivity.class));
+        context.startActivity(new Intent(context, GoodsDetailActivity.class));
     }
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.activity_mall_detail;
+        return R.layout.activity_goods_detail;
     }
 
     @Override
     protected void initContentView() {
         titleBar.setVisibility(View.GONE);
         recyclerView = getView(R.id.rv_mall_detail);
-//        search = getView(R.id.et_input_search);
-//        back = getView(R.id.iv_back);
+        shopCart = getView(R.id.iv_shop_cart);
         recyclerView.setHasFixedSize(false);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new MallDetailAdapter(this);
+        adapter = new GoodsDetailAdapter(this, 1);
         recyclerView.setAdapter(adapter);
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                search.setAlpha(1 - dy);
-//                back.setAlpha(1 - dy);
-            }
-        });
+        shopCart.setOnClickListener(this);
     }
 
     @Override
@@ -78,5 +68,15 @@ public class MallDetailActivity extends BaseTitleBarActivity<BasePresenter> impl
     @Override
     protected BasePresenter createPresenter() {
         return null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_shop_cart://购物车
+                break;
+            default:
+                break;
+        }
     }
 }

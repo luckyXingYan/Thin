@@ -4,9 +4,13 @@ import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.thin.R;
+import com.example.thin.activity.GoodsDetailActivity;
 import com.example.thin.adapter.HotAdapter;
+import com.example.thin.base.adapter.BaseRecyclerAdapter;
 
 import java.util.List;
 
@@ -36,6 +40,13 @@ public class HotView extends BaseHomeLayout<List<String>> {
 
         adapter = new HotAdapter(getContext());
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+            @Override
+            public void onItemClick(ViewGroup parent, View view, String s, int position) {
+                GoodsDetailActivity.open(getContext());
+            }
+        });
     }
 
     @Override

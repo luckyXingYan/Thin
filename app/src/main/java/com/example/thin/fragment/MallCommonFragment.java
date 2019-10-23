@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.thin.R;
-import com.example.thin.activity.MallDetailActivity;
+import com.example.thin.activity.GoodsDetailActivity;
 import com.example.thin.adapter.MallAdapter;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.mvp.BaseFragment;
@@ -74,7 +74,7 @@ public class MallCommonFragment extends BaseFragment<BasePresenter> implements I
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, String s, int position) {
-                MallDetailActivity.open(getActivity());
+                GoodsDetailActivity.open(getActivity());
             }
         });
 

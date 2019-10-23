@@ -4,8 +4,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.thin.R;
+import com.example.thin.activity.SearchActivity;
 import com.example.thin.adapter.HomeAdapter;
 import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.bean.HomeDataBean;
@@ -27,6 +29,7 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
     private TwinklingRefreshLayout refreshLayout;
+    private TextView search;
 
     public static HomePageFragment newInstance() {
         return new HomePageFragment();
@@ -41,6 +44,7 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     protected void initView(final View view) {
         recyclerView = getView(view, R.id.rv_home);
         refreshLayout = getView(view, R.id.rl_home);
+        search = getView(view, R.id.tv_input_search);
         refreshLayout.setEnableLoadMore(false);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -53,6 +57,8 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
                 initData();
             }
         });
+
+        search.setOnClickListener(this);
     }
 
     @Override
@@ -94,9 +100,9 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.btn_request://CoordinatorLayout
-//                SecondActivity.open(getActivity());
-//                break;
+            case R.id.tv_input_search://搜索
+                SearchActivity.open(getActivity());
+                break;
             default:
                 break;
         }

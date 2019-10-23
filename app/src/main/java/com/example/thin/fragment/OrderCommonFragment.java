@@ -1,15 +1,12 @@
 package com.example.thin.fragment;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.thin.R;
-import com.example.thin.activity.MallDetailActivity;
-import com.example.thin.adapter.MallAdapter;
 import com.example.thin.adapter.OrderAdapter;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.mvp.BaseFragment;

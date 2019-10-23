@@ -34,7 +34,6 @@ public class MallDetailBanner extends BaseHomeLayout<List<String>> {
     @Override
     public void setData(List<String> data) {
         convenientBanner.getViewPager().setOffscreenPageLimit(data.size());
-//        convenientBanner.getViewPager().setPageTransformer(false, new DefaultTransformer());
         convenientBanner.setPages(new MallBannerAdapter(), data);
     }
 }

@@ -17,18 +17,20 @@ import com.example.thin.view.MallDetailName;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class MallDetailAdapter extends RecyclerView.Adapter {
+public class GoodsDetailAdapter extends RecyclerView.Adapter {
     private static final int BANNER = 0;
     private static final int NAME = 1;
     private static final int INFO = 2;
     private static final int IMG = 3;
+    private int type;
 
     private HomeDataBean data = new HomeDataBean();
 
     private Context context;
 
-    public MallDetailAdapter(Context context) {
+    public GoodsDetailAdapter(Context context, int type) {
         this.context = context;
+        this.type = type;
     }
 
     public void setData(HomeDataBean data) {
@@ -45,7 +47,7 @@ public class MallDetailAdapter extends RecyclerView.Adapter {
                 myViewHolder = new MyViewHolder(new MallDetailBanner(context));
                 break;
             case NAME:
-                myViewHolder = new MyViewHolder(new MallDetailName(context));
+                myViewHolder = new MyViewHolder(new MallDetailName(context, type));
                 break;
             case INFO:
                 myViewHolder = new MyViewHolder(new MallDetailInfo(context));

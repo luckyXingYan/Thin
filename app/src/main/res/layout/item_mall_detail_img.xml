@@ -9,6 +9,6 @@
         android:layout_height="@dimen/y260"
         android:layout_marginTop="@dimen/y20"
         android:scaleType="centerCrop"
-        android:background="@color/color_3f3f3f"/>
+       android:background="@color/color_3f3f3f"/>
 
 </RelativeLayout>
