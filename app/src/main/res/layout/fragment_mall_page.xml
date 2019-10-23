@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/y60"
             android:layout_weight="1"
-            android:background="@drawable/shape_rectangle_50_corners_white"
+            android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray"
             android:hint="请输入..."
             android:padding="@dimen/y10"
             android:textSize="13sp" />

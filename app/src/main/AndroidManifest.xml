@@ -61,6 +61,9 @@
             android:name=".activity.MyOrderActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.ShopCartActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.HomeTypeDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />

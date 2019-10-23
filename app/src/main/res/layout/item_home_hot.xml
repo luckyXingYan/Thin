@@ -4,16 +4,16 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/y20"
     android:layout_marginVertical="@dimen/y20"
-    android:background="@drawable/shape_rectangle_5_corners_white"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/shape_rectangle_5_corners_white_stroke_gray"
     android:padding="@dimen/y20">
 
     <ImageView
         android:id="@+id/iv_hot_img"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y260"
-        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/y270"
+        android:layout_height="@dimen/y200"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/home_icon_shangpinxiangqing" />
 
     <TextView
         android:id="@+id/tv_hot_title"

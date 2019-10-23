@@ -74,6 +74,7 @@ public class GoodsDetailActivity extends BaseTitleBarActivity<BasePresenter> imp
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_shop_cart://购物车
+                ShopCartActivity.open(this);
                 break;
             default:
                 break;

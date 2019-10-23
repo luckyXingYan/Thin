@@ -106,7 +106,7 @@
             android:layout_height="@dimen/y60"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/shape_rectangle_50_corners_white"
+            android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray"
             android:gravity="center"
             android:text="@string/select_all"
             android:textSize="@dimen/x36" />
