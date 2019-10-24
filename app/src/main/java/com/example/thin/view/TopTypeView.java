@@ -54,6 +54,7 @@ public class TopTypeView extends BaseHomeLayout<List<String>> {
 
     @Override
     public void setData(List<String> data) {
+        types.clear();
         HomTopTypeBean bean1 = new HomTopTypeBean();
         bean1.id = 1;
         bean1.title = "吸脂";

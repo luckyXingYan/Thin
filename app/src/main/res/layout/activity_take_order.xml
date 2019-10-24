@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_new_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_marginLeft="@dimen/y40"
+        android:layout_marginTop="@dimen/y40"
+        android:layout_marginRight="@dimen/y40"
+        android:drawableRight="@mipmap/mine_item_icon"
+        android:gravity="center_vertical"
+        android:text="添加地址"
+        android:textColor="@color/color_38"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <include layout="@layout/layout_line_20dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_take_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

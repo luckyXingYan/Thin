@@ -71,18 +71,6 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
                 TargetWeightActivity.open(getActivity());
             }
         });
-        getView(view, R.id.tv05).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CreateAddressActivity.open(getActivity());
-            }
-        });
-        getView(view, R.id.tv06).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CashierActivity.open(getActivity());
-            }
-        });
 
     }
 

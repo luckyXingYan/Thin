@@ -1,37 +1,27 @@
 package com.example.thin.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.thin.R;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
-import com.example.thin.bean.HomTopTypeBean;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author: xingyan
- * @Date: 2019/10/17
+ * @Date: 2019/10/24
  * @Desc:
  */
-public class TypeAdapter extends BaseRecyclerAdapter<HomTopTypeBean, TypeAdapter.MyViewHolder> {
-    private Context context;
+public class SearchRvAdapter extends BaseRecyclerAdapter<String, SearchRvAdapter.MyViewHolder> {
 
-    public TypeAdapter(Context context) {
+    public SearchRvAdapter(Context context) {
         super(context);
-        this.context = context;
     }
 
     @Override
     public int getItemLayout(int viewType) {
-        return R.layout.item_home_type;
+        return R.layout.item_search_gv;
     }
 
     @Override
@@ -46,19 +36,13 @@ public class TypeAdapter extends BaseRecyclerAdapter<HomTopTypeBean, TypeAdapter
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.type.setText(getItemData(i).title);
-        Glide.with(context).load(getItemData(i).img).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivType);
+
     }
 
     protected class MyViewHolder extends BaseViewHolder {
 
-        private TextView type;
-        private ImageView ivType;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            type = itemView.findViewById(R.id.tv_type);
-            ivType = itemView.findViewById(R.id.iv_type);
         }
     }
 }

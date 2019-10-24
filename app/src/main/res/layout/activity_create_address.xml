@@ -7,7 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
-        android:layout_marginLeft="@dimen/y20"
+        android:layout_marginLeft="@dimen/y40"
+        android:layout_marginTop="@dimen/y40"
         android:layout_marginRight="@dimen/y20"
         android:orientation="horizontal">
 
@@ -16,7 +17,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="收货人" />
+            android:text="收货人"
+            android:textColor="@color/color_38"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/et_consignee"
@@ -24,15 +27,19 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/y10"
             android:background="@null"
-            android:gravity="center_vertical" />
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/color_38"
+            android:textSize="12sp" />
     </LinearLayout>
 
-    <include layout="@layout/layout_line" />
+    <include layout="@layout/layout_line_margin_left40" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
-        android:layout_marginLeft="@dimen/y20"
+        android:layout_marginLeft="@dimen/y40"
         android:layout_marginRight="@dimen/y20"
         android:orientation="horizontal">
 
@@ -40,7 +47,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="手机号码" />
+            android:text="手机号码"
+            android:textColor="@color/color_38"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/et_phone"
@@ -48,49 +57,64 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/y10"
             android:background="@null"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColor="@color/color_38"
+            android:textSize="12sp" />
     </LinearLayout>
 
-    <include layout="@layout/layout_line" />
+    <include layout="@layout/layout_line_margin_left40" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
-        android:layout_marginLeft="@dimen/y20"
+        android:layout_marginLeft="@dimen/y40"
         android:layout_marginRight="@dimen/y20"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:ellipsize="end"
             android:gravity="center_vertical"
-            android:text="所在地区" />
+            android:maxLines="1"
+            android:text="所在地区"
+            android:textColor="@color/color_38"
+            android:textSize="14sp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/y10"
             android:background="@null"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:textColor="@color/color_38"
+            android:textSize="12sp" />
     </LinearLayout>
 
-    <include layout="@layout/layout_line" />
+    <include layout="@layout/layout_line_margin_left40" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="@dimen/y100"
-        android:layout_marginLeft="@dimen/y20"
+        android:layout_marginLeft="@dimen/y40"
         android:gravity="center_vertical"
-        android:text="详细地址" />
+        android:text="详细地址"
+        android:textColor="@color/color_38"
+        android:textSize="14sp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/y20"
+        android:layout_marginLeft="@dimen/y40"
         android:layout_marginRight="@dimen/y20"
         android:background="@null"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        android:padding="@dimen/y10"
+        android:textColor="@color/color_38"
+        android:textSize="12sp" />
 
     <include layout="@layout/layout_line" />
 </LinearLayout>

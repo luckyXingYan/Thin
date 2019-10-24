@@ -2,17 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
-        android:layout_marginLeft="@dimen/y20"
+        android:layout_marginLeft="@dimen/y40"
         android:layout_marginTop="@dimen/y50"
-        android:layout_marginRight="@dimen/y20"
+        android:layout_marginRight="@dimen/y40"
         android:drawableRight="@mipmap/pay_type"
         android:gravity="center_vertical"
-        android:text="微信支付" />
+        android:text="微信支付"
+        android:textColor="@color/color_38"
+        android:textSize="14sp" />
 
     <include layout="@layout/layout_line" />
+
+    <Button
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y100"
+        android:layout_marginTop="@dimen/y300"
+        android:background="@drawable/shape_rectangle_50_corners_green"
+        android:text="支付  9999"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 </LinearLayout>

@@ -7,28 +7,25 @@ import android.view.ViewGroup;
 
 import com.example.thin.bean.CartGoodsBean;
 import com.example.thin.bean.CartShopBean;
-import com.example.thin.bean.FootBean;
 import com.example.thin.view.BaseHomeLayout;
 import com.example.thin.view.CartGoodsView;
 import com.example.thin.view.CartShopView;
-import com.example.thin.view.OrderFootView;
-import com.example.thin.view.OrderGoodsView;
+import com.example.thin.view.TakeOederGoodsView;
 
 import java.util.List;
 
 /**
  * @Author: xingyan
- * @Date: 2019/10/17
+ * @Date: 2019/10/23
  * @Desc:
  */
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder> {
+public class TakeOrderAdapter extends RecyclerView.Adapter<TakeOrderAdapter.MyViewHolder> {
     private Context context;
     private static final int SHOP = 0;
     private static final int GOODS = 1;
-    private static final int FOOT = 2;
     private List<Object> data;
 
-    public OrderAdapter(Context context) {
+    public TakeOrderAdapter(Context context) {
         this.context = context;
     }
 
@@ -43,25 +40,20 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             return SHOP;
         } else if (data.get(position) instanceof CartGoodsBean) {
             return GOODS;
-        } else if (data.get(position) instanceof FootBean) {
-            return FOOT;
         }
         return SHOP;
     }
 
     @NonNull
     @Override
-    public OrderAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
-                myViewHolder = new MyViewHolder(new CartShopView(context, 1));
+                myViewHolder = new MyViewHolder(new CartShopView(context, 0));
                 break;
             case GOODS:
-                myViewHolder = new MyViewHolder(new OrderGoodsView(context));
-                break;
-            case FOOT:
-                myViewHolder = new MyViewHolder(new OrderFootView(context));
+                myViewHolder = new MyViewHolder(new TakeOederGoodsView(context));
                 break;
         }
         return myViewHolder;
@@ -73,8 +65,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         if (getItemViewType(i) == SHOP) {
             myViewHolder.setData(data.get(i));
         } else if (i == GOODS) {
-            myViewHolder.setData(data.get(i));
-        } else if (i == FOOT) {
             myViewHolder.setData(data.get(i));
         }
     }
@@ -96,4 +86,5 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             itemView.setData(data);
         }
     }
+
 }

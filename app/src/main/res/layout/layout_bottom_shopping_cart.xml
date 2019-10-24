@@ -6,13 +6,20 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/iv_shop_cart"
-        android:layout_width="@dimen/y48"
-        android:layout_height="@dimen/y42"
-        android:layout_marginLeft="@dimen/y20"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/liposuction" />
+    <RelativeLayout
+        android:id="@+id/rl_shop_cart"
+        android:layout_width="@dimen/y100"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:id="@+id/iv_shop_cart"
+            android:layout_width="@dimen/y48"
+            android:layout_height="@dimen/y42"
+            android:layout_marginLeft="@dimen/y20"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/liposuction" />
+    </RelativeLayout>
 
     <include layout="@layout/layout_weight" />
 

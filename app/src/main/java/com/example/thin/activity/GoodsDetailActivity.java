@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.thin.R;
 import com.example.thin.adapter.GoodsDetailAdapter;
@@ -26,6 +27,7 @@ public class GoodsDetailActivity extends BaseTitleBarActivity<BasePresenter> imp
     private GoodsDetailAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
     private ImageView shopCart;
+    private RelativeLayout rlShopCart;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, GoodsDetailActivity.class));
@@ -41,12 +43,13 @@ public class GoodsDetailActivity extends BaseTitleBarActivity<BasePresenter> imp
         titleBar.setVisibility(View.GONE);
         recyclerView = getView(R.id.rv_mall_detail);
         shopCart = getView(R.id.iv_shop_cart);
+        rlShopCart = getView(R.id.rl_shop_cart);
         recyclerView.setHasFixedSize(false);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new GoodsDetailAdapter(this, 1);
         recyclerView.setAdapter(adapter);
-        shopCart.setOnClickListener(this);
+        rlShopCart.setOnClickListener(this);
     }
 
     @Override
@@ -73,7 +76,7 @@ public class GoodsDetailActivity extends BaseTitleBarActivity<BasePresenter> imp
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_shop_cart://购物车
+            case R.id.rl_shop_cart://购物车
                 ShopCartActivity.open(this);
                 break;
             default:
