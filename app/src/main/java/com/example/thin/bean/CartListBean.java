@@ -11,5 +11,6 @@ import java.util.List;
 public class CartListBean {
     public String title;
     public List<CartGoodsBean> goods = new ArrayList<>();
+    public FootBean footBean;
 
 }

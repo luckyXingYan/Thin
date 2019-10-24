@@ -1,6 +1,7 @@
 package com.example.thin.view;
 
 import android.content.Context;
+import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.bean.CartShopBean;
@@ -11,14 +12,22 @@ import com.example.thin.bean.CartShopBean;
  * @Desc:
  */
 public class CartShopView extends BaseHomeLayout<CartShopBean> {
-    public CartShopView(Context context) {
+    private int type;
+    private TextView sendType;
+
+    public CartShopView(Context context, int type) {
         super(context);
+        this.type = type;
     }
 
     @Override
     protected void init() {
 
-        inflate(getContext(), R.layout.layout_cart_shop,this);
+        inflate(getContext(), R.layout.layout_cart_shop, this);
+        sendType = findViewById(R.id.tv_send_type);
+        if (type == 1) {
+            sendType.setVisibility(VISIBLE);
+        }
 
     }
 

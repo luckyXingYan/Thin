@@ -2,53 +2,97 @@ package com.example.thin.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
 
-import com.example.thin.R;
-import com.example.thin.base.adapter.BaseRecyclerAdapter;
-import com.example.thin.base.adapter.BaseViewHolder;
+import com.example.thin.bean.CartGoodsBean;
+import com.example.thin.bean.CartShopBean;
+import com.example.thin.bean.FootBean;
+import com.example.thin.view.BaseHomeLayout;
+import com.example.thin.view.CartGoodsView;
+import com.example.thin.view.CartShopView;
+import com.example.thin.view.OrderFootView;
+
+import java.util.List;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/17
  * @Desc:
  */
-public class OrderAdapter extends BaseRecyclerAdapter<String, OrderAdapter.MyViewHolder> {
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder> {
+    private Context context;
+    private static final int SHOP = 0;
+    private static final int GOODS = 1;
+    private static final int FOOT = 2;
+    private List<Object> data;
 
     public OrderAdapter(Context context) {
-        super(context);
+        this.context = context;
+    }
+
+    public void setData(List<Object> data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     @Override
-    public int getItemLayout(int viewType) {
-        return R.layout.item_order;
+    public int getItemViewType(int position) {
+        if (data.get(position) instanceof CartShopBean) {
+            return SHOP;
+        } else if (data.get(position) instanceof CartGoodsBean) {
+            return GOODS;
+        } else if (data.get(position) instanceof FootBean) {
+            return FOOT;
+        }
+        return SHOP;
     }
 
+    @NonNull
     @Override
-    public int getViewType(int position) {
-        return 0;
-    }
-
-    @Override
-    public MyViewHolder getViewHolder(View view, int viewType) {
-        return new MyViewHolder(view);
+    public OrderAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        MyViewHolder myViewHolder = null;
+        switch (i) {
+            case SHOP:
+                myViewHolder = new MyViewHolder(new CartShopView(context, 1));
+                break;
+            case GOODS:
+                myViewHolder = new MyViewHolder(new CartGoodsView(context));
+                break;
+            case FOOT:
+                myViewHolder = new MyViewHolder(new OrderFootView(context));
+                break;
+        }
+        return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-//        myViewHolder.name.setText(getItemData(i));
-
+        if (data == null) return;
+        if (getItemViewType(i) == SHOP) {
+            myViewHolder.setData(data.get(i));
+        } else if (i == GOODS) {
+            myViewHolder.setData(data.get(i));
+        } else if (i == FOOT) {
+            myViewHolder.setData(data.get(i));
+        }
     }
 
-    protected class MyViewHolder extends BaseViewHolder {
+    @Override
+    public int getItemCount() {
+        return data == null ? 0 : data.size();
+    }
 
-        private TextView name;
+    protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
+        private BaseHomeLayout itemView;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull BaseHomeLayout itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.shop_name);
+            this.itemView = itemView;
+        }
+
+        public void setData(T data) {
+            itemView.setData(data);
         }
     }
 }

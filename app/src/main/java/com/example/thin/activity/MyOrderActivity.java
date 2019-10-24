@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.example.thin.R;
-import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.BaseTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;

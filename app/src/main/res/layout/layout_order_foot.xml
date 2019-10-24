@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/y28"
+    android:orientation="horizontal"
+    tools:ignore="MissingConstraints">
+
+    <Button
+        android:id="@+id/btn_one"
+        android:layout_width="@dimen/x160"
+        android:layout_height="@dimen/y68"
+        android:layout_toLeftOf="@+id/btn_two"
+        android:background="@drawable/shape_rectangle_50_corners_white_stroke_black"
+        android:text="查看物流"
+        android:textColor="@color/color_66"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_two"
+        android:layout_width="@dimen/x160"
+        android:layout_height="@dimen/y68"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/x70"
+        android:layout_marginRight="@dimen/y28"
+        android:background="@drawable/shape_rectangle_50_corners_green"
+        android:text="确认收货"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y20"
+        android:layout_below="@id/btn_one"
+        android:layout_marginTop="@dimen/y28"
+        android:background="@color/color_f6" />
+</RelativeLayout>

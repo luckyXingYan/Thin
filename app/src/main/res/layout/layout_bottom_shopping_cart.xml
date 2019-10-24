@@ -12,7 +12,7 @@
         android:layout_height="@dimen/y42"
         android:layout_marginLeft="@dimen/y20"
         android:scaleType="centerCrop"
-        android:src="@mipmap/home_pic_xizhi" />
+        android:src="@mipmap/liposuction" />
 
     <include layout="@layout/layout_weight" />
 

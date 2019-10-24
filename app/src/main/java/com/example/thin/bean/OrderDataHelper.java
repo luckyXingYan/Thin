@@ -40,4 +40,31 @@ public class OrderDataHelper {
         }
         return dataList;
     }
+
+    public static List<Object> getDataAfterHandle2(List<CartListBean> resultList) {
+
+        List<Object> dataList = new ArrayList<>();
+        //遍历每一张大订单
+        for (CartListBean orderListBean : resultList) {
+            //订单编号 订单状态
+            CartShopBean orderHeadInfo = new CartShopBean();
+            orderHeadInfo.titile = orderListBean.title;
+
+            List<CartGoodsBean> orderProductList;
+            //订单商品
+            orderProductList = orderListBean.goods;
+
+            FootBean footBean;
+            footBean = orderListBean.footBean;
+
+            dataList.add(orderHeadInfo);
+            if (orderProductList != null) {
+                for (int i = 0; i < orderProductList.size(); i++) {
+                    dataList.add(orderProductList.get(i));
+                }
+            }
+            dataList.add(footBean);
+        }
+        return dataList;
+    }
 }

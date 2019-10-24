@@ -50,7 +50,7 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.MyView
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
-                myViewHolder = new MyViewHolder(new CartShopView(context));
+                myViewHolder = new MyViewHolder(new CartShopView(context, 0));
                 break;
             case GOODS:
                 myViewHolder = new MyViewHolder(new CartGoodsView(context));

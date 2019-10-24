@@ -8,12 +8,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/y20">
+        android:layout_marginLeft="@dimen/y40"
+        android:layout_marginTop="@dimen/y40"
+        android:layout_marginRight="@dimen/y40"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y28"
             android:orientation="horizontal">
 
             <CheckBox
@@ -21,19 +24,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/y10" />
+                android:layout_marginRight="@dimen/y10"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/iv_cart"
-                android:layout_width="@dimen/y120"
-                android:layout_height="@dimen/y120"
+                android:layout_width="@dimen/y140"
+                android:layout_height="@dimen/y140"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/y20"
                 android:layout_toRightOf="@id/cb_cart_shop"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/home_icon_shangpinxiangqing" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/iv_cart"
                 android:orientation="vertical">
@@ -43,24 +47,52 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/y10"
-                    android:text="商品名称" />
+                    android:text="商品名称"
+                    android:textColor="@color/color_38"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/iv_cart_goods_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/y10"
-                    android:text="商品名称" />
-            </LinearLayout>
+                    android:text="详情详情详情详情"
+                    android:textColor="@color/color_99"
+                    android:textSize="13sp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥"
+                        android:textColor="@color/color_E4382B"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9999"
+                        android:textColor="@color/color_E4382B"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="运费  10"
+                        android:textColor="@color/color_99"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1px"
-            android:layout_below="@id/iv_cart"
-            android:layout_marginTop="@dimen/y20"
-            android:background="@color/black" />
+        <include layout="@layout/layout_line" />
     </LinearLayout>
 </LinearLayout>

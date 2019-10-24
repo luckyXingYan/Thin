@@ -17,6 +17,7 @@ import com.example.thin.refresh.TwinklingRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**

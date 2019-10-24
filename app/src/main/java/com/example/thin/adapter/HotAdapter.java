@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.thin.R;
@@ -41,16 +42,16 @@ public class HotAdapter extends BaseRecyclerAdapter<String, HotAdapter.MyViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+
 //        Glide.with(context).load(getItemData(i)).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.img);
     }
 
     protected class MyViewHolder extends BaseViewHolder {
 
-        private ImageView img;
+        private TextView title;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.iv_hot_img);
         }
     }
 }
