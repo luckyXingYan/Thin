@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.thin.R;
 import com.example.thin.adapter.HomeTypeDetailAdapter;
@@ -24,10 +26,11 @@ import java.util.List;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implements IBaseView {
+public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implements IBaseView, View.OnClickListener {
     private TwinklingRefreshLayout refreshLayout;
     private RecyclerView recyclerView;
     private HomeTypeDetailAdapter adapter;
+    private ImageView back;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, HomeTypeDetailActivity.class));
@@ -42,6 +45,9 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
     protected void initView(Bundle savedInstanceState) {
         refreshLayout = getView(R.id.refresh_layout);
         recyclerView = getView(R.id.rv_home_type);
+        back = getView(R.id.iv_back);
+        back.setOnClickListener(this);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(false);
         adapter = new HomeTypeDetailAdapter(this);
@@ -80,5 +86,16 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
     @Override
     protected BasePresenter createPresenter() {
         return null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+            default:
+                break;
+        }
     }
 }

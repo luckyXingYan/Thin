@@ -9,6 +9,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.adapter.HotAdapter;
@@ -26,11 +28,12 @@ import java.util.List;
  * @Date: 2019/8/2
  * @Desc:
  */
-public class MallPageFragment extends BaseFragment<ProductPagePresenter> implements IProductPageView {
+public class MallPageFragment extends BaseFragment<ProductPagePresenter> implements IProductPageView, View.OnClickListener {
     private static final String TAG = "MallPageFragment";
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private List<Fragment> fragments = new ArrayList<>();
+    private ImageView type;
 
     public static MallPageFragment newInstance() {
         return new MallPageFragment();
@@ -45,6 +48,8 @@ public class MallPageFragment extends BaseFragment<ProductPagePresenter> impleme
     protected void initView(View view) {
         tabLayout = getView(view, R.id.tb_mall);
         viewPager = getView(view, R.id.vp_mall);
+        type = getView(view, R.id.iv_type);
+        type.setOnClickListener(this);
 
 
         final List<String> titles = new ArrayList<>();
@@ -100,5 +105,15 @@ public class MallPageFragment extends BaseFragment<ProductPagePresenter> impleme
     @Override
     public ProductPagePresenter createPresenter() {
         return new ProductPagePresenter();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_type://分类
+                break;
+            default:
+                break;
+        }
     }
 }

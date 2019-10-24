@@ -2,22 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/y10"
-    android:layout_marginRight="@dimen/y10"
+    android:layout_marginLeft="@dimen/y20"
+    android:layout_marginRight="@dimen/y20"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/y20"
+        android:layout_marginTop="@dimen/y28"
         android:text="详情"
+        android:textColor="@color/color_38"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/y10"
-        android:layout_marginBottom="@dimen/y20"
-        android:text="详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情" />
+        android:layout_marginTop="@dimen/y14"
+        android:layout_marginBottom="@dimen/y32"
+        android:text="详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情"
+        android:textColor="@color/color_38"
+        android:textSize="12sp" />
 
 </LinearLayout>

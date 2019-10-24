@@ -1,38 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_marginTop="@dimen/y20"
+    android:background="@drawable/shape_rectangle_5_corners_white_stroke_gray"
+    android:padding="@dimen/y20">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/iv_type_img"
+        android:layout_width="@dimen/x219"
+        android:layout_height="@dimen/y197"
+        android:layout_marginRight="@dimen/y10"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/home_icon_shangpinxiangqing" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/y20"
-        android:background="@drawable/shape_rectangle_5_corners_white_stroke_gray"
-        android:padding="@dimen/y20">
+        android:layout_toRightOf="@id/iv_type_img"
+        android:text="标题"
+        android:textColor="@color/color_38"
+        android:textSize="14sp" />
 
-        <ImageView
-            android:id="@+id/iv_type_img"
-            android:layout_width="@dimen/y120"
-            android:layout_height="@dimen/y120"
-            android:layout_marginRight="@dimen/y10"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+    <TextView
+        android:id="@+id/tv_average_consume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="@dimen/y5"
+        android:layout_toRightOf="@id/iv_type_img"
+        android:text="内容内容内容"
+        android:textColor="@color/color_99"
+        android:textSize="10sp" />
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/iv_type_img"
-            android:text="标题" />
+    <TextView
+        android:id="@+id/tv_price_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_average_consume"
+        android:layout_marginTop="@dimen/y12"
+        android:layout_toRightOf="@id/iv_type_img"
+        android:text="9999"
+        android:textColor="@color/color_E4382B"
+        android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_title"
-            android:layout_marginTop="@dimen/y10"
-            android:layout_toRightOf="@id/iv_type_img"
-            android:text="内容内容内容" />
-    </RelativeLayout>
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_detail_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_average_consume"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginTop="@dimen/y12"
+        android:layout_toRightOf="@id/tv_price_one"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述"
+        android:textColor="@color/color_99"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/tv_price_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_price_one"
+        android:layout_marginTop="@dimen/y12"
+        android:layout_toRightOf="@id/iv_type_img"
+        android:text="9999"
+        android:textColor="@color/color_E4382B"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_detail_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_detail_one"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginTop="@dimen/y12"
+        android:layout_toRightOf="@id/tv_price_one"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述"
+        android:textColor="@color/color_99"
+        android:textSize="11sp" />
+
+</RelativeLayout>
