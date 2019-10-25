@@ -5,37 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/ll_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/y40">
-
-        <EditText
-            android:id="@+id/tv_input_search"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/y60"
-            android:layout_weight="1"
-            android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray"
-            android:hint="大家都在搜索“减肥药"
-            android:padding="@dimen/y10"
-            android:textColor="@color/color_38"
-            android:textColorHint="@color/color_e7"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tv_pos_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/y20"
-            android:drawableLeft="@mipmap/position_icon"
-            android:drawablePadding="@dimen/y10"
-            android:text="北京"
-            android:textColor="@color/color_38"
-            android:textSize="14sp" />
-    </LinearLayout>
+    <include layout="@layout/layout_search_position_include" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_search"

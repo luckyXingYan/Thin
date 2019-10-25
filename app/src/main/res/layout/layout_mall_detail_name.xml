@@ -3,7 +3,7 @@
     android:id="@+id/rl_shop_detail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/y20">
+    android:layout_marginLeft="@dimen/x30">
 
     <TextView
         android:id="@+id/tv_shop_name"
@@ -12,7 +12,8 @@
         android:layout_marginTop="@dimen/y30"
         android:text="xx名称XXX"
         android:textColor="@color/color_38"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/ll_price"

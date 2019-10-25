@@ -30,8 +30,9 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
     private RecyclerView recyclerView;
     private GoodsDetailAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
-    private ImageView shopCart;
+    private ImageView back, shopCart;
     private RelativeLayout rlShopCart;
+    private EditText content;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, GoodsDetailActivity.class));
@@ -45,6 +46,8 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
     @Override
     protected void initView(Bundle savedInstanceState) {
         recyclerView = getView(R.id.rv_mall_detail);
+        back = getView(R.id.iv_back);
+        content = getView(R.id.et_input_search);
         shopCart = getView(R.id.iv_shop_cart);
         rlShopCart = getView(R.id.rl_shop_cart);
         recyclerView.setHasFixedSize(false);
@@ -52,6 +55,7 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new GoodsDetailAdapter(this, 1);
         recyclerView.setAdapter(adapter);
+        back.setOnClickListener(this);
         rlShopCart.setOnClickListener(this);
     }
 
@@ -79,6 +83,9 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.iv_back://返回
+                finish();
+                break;
             case R.id.rl_shop_cart://购物车
                 ShopCartActivity.open(this);
                 break;

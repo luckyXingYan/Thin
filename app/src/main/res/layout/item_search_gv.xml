@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y60"
         android:layout_centerHorizontal="true"
-        android:layout_marginHorizontal="@dimen/y40"
+        android:layout_marginHorizontal="@dimen/x30"
         android:layout_marginVertical="@dimen/y20"
         android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray_ed"
         android:gravity="center"

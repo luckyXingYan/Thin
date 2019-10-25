@@ -22,12 +22,11 @@
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:fitsSystemWindows="true"
                 app:collapsedTitleTextAppearance="@style/Title_TextAppearance_collapsed"
                 app:contentScrim="@color/white"
                 app:expandedTitleMarginEnd="48dp"
                 app:expandedTitleMarginStart="48dp"
-                android:fitsSystemWindows="true"
-                android:minHeight="?actionBarSize"
                 app:expandedTitleTextAppearance="@style/Title_TextAppearance_Expend"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -35,7 +34,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/color_f6"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="pin"
+                    app:layout_collapseParallaxMultiplier="0.7" />
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -45,37 +46,13 @@
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-                    <LinearLayout
-                        android:id="@+id/ll_search"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        app:layout_collapseMode="pin">
-
-                        <ImageView
-                            android:id="@+id/iv_back"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/y40"
-                            android:src="@mipmap/ic_title_back" />
-
-                        <EditText
-                            android:id="@+id/et_input_search"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/y60"
-                            android:layout_marginRight="@dimen/y60"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray"
-                            android:hint="请输入..."
-                            android:padding="@dimen/y10"
-                            android:textColorHint="@color/color_99"
-                            android:textSize="13sp" />
-                    </LinearLayout>
+                    <include
+                        layout="@layout/layout_search_include"
+                        app:layout_collapseMode="pin" />
                 </android.support.v7.widget.Toolbar>
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>
-
+        <!--            -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_mall_detail"
             android:layout_width="match_parent"
@@ -84,35 +61,8 @@
             android:fillViewport="true"
             android:overScrollMode="never"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
     </android.support.design.widget.CoordinatorLayout>
 
-    <!--    <android.support.v4.widget.NestedScrollView
-            android:id="@+id/nsv"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:scrollbars="none"></android.support.v4.widget.NestedScrollView>-->
-
-    <!--
-         <ImageView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="@dimen/y40"
-             android:layout_marginTop="@dimen/y20"
-             android:scaleType="centerCrop"
-             android:src="@mipmap/ic_title_back" />
-
-         <ImageView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentRight="true"
-             android:layout_marginTop="@dimen/y20"
-             android:layout_marginRight="@dimen/y40"
-             android:scaleType="centerCrop"
-             android:src="@mipmap/ic_title_back" />
-     -->
     <include
         layout="@layout/layout_bottom_shopping_cart"
         android:layout_width="match_parent"

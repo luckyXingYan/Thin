@@ -7,16 +7,18 @@ import android.view.ViewGroup;
 
 import com.example.thin.bean.HomeDataBean;
 import com.example.thin.view.BaseHomeLayout;
+import com.example.thin.view.HotView;
 import com.example.thin.view.MallDetailImg;
-import com.example.thin.view.MallDetailInfo;
-import com.example.thin.view.MallDetailName;
+import com.example.thin.view.ShopDetailItem;
+import com.example.thin.view.ShopDetailName;
+import com.example.thin.view.ShopDetailSpecial;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/17
  * @Desc:
  */
-public class GoodsDetailAdapter extends RecyclerView.Adapter {
+public class ShopDetailAdapter extends RecyclerView.Adapter {
     private static final int NAME = 0;
     private static final int INFO = 1;
     private static final int IMG = 2;
@@ -26,7 +28,7 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
 
     private Context context;
 
-    public GoodsDetailAdapter(Context context, int type) {
+    public ShopDetailAdapter(Context context, int type) {
         this.context = context;
         this.type = type;
     }
@@ -42,13 +44,13 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
         MyViewHolder myViewHolder = null;
         switch (i) {
             case NAME:
-                myViewHolder = new MyViewHolder(new MallDetailName(context));
+                myViewHolder = new MyViewHolder(new ShopDetailName(context));
                 break;
             case INFO:
-                myViewHolder = new MyViewHolder(new MallDetailInfo(context));
+                myViewHolder = new MyViewHolder(new ShopDetailSpecial(context));
                 break;
             case IMG:
-                myViewHolder = new MyViewHolder(new MallDetailImg(context));
+                myViewHolder = new MyViewHolder(new HotView(context));
                 break;
         }
         return myViewHolder;

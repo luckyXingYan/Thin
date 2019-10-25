@@ -11,7 +11,7 @@
         android:id="@+id/btn_request"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="@dimen/y40"
+        android:layout_marginLeft="@dimen/x30"
         android:layout_marginTop="@dimen/y44"
         android:text="产品检测"
         android:textColor="@color/color_38"

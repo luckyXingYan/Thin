@@ -14,23 +14,20 @@ import com.example.thin.bean.HomeDataBean;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class MallDetailName extends BaseHomeLayout<HomeDataBean> implements View.OnClickListener {
-    private RelativeLayout shopDetail;
+public class ShopDetailName extends BaseHomeLayout<HomeDataBean> implements View.OnClickListener {
 
-    public MallDetailName(Context context) {
+    public ShopDetailName(Context context) {
         this(context, null);
     }
 
-    public MallDetailName(Context context, AttributeSet attrs) {
+    public ShopDetailName(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     protected void init() {
 
-        inflate(getContext(), R.layout.layout_mall_detail_name, this);
-        shopDetail = findViewById(R.id.rl_shop_detail);
-        shopDetail.setOnClickListener(this);
+        inflate(getContext(), R.layout.layout_shop_detail_name, this);
 
     }
 
@@ -42,9 +39,9 @@ public class MallDetailName extends BaseHomeLayout<HomeDataBean> implements View
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.rl_shop_detail://店铺详情
-                ShopDetailActivity.open(getContext());
-                break;
+//            case R.id.rl_shop_detail://店铺详情
+//                ShopDetailActivity.open(getContext());
+//                break;
             default:
                 break;
         }
