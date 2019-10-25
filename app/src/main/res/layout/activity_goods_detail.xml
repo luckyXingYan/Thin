@@ -23,11 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:fitsSystemWindows="true"
-                app:collapsedTitleTextAppearance="@style/Title_TextAppearance_collapsed"
                 app:contentScrim="@color/white"
-                app:expandedTitleMarginEnd="48dp"
-                app:expandedTitleMarginStart="48dp"
-                app:expandedTitleTextAppearance="@style/Title_TextAppearance_Expend"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <ImageView

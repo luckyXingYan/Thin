@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_search_position_include" />
+    <include layout="@layout/layout_search_position_home_include" />
 
     <com.example.thin.refresh.TwinklingRefreshLayout
         android:id="@+id/rl_home"
