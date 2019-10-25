@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import com.example.thin.bean.HomeDataBean;
 import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.MallDetailBanner;
 import com.example.thin.view.MallDetailImg;
 import com.example.thin.view.MallDetailInfo;
 import com.example.thin.view.MallDetailName;
@@ -18,10 +17,9 @@ import com.example.thin.view.MallDetailName;
  * @Desc:
  */
 public class GoodsDetailAdapter extends RecyclerView.Adapter {
-    private static final int BANNER = 0;
-    private static final int NAME = 1;
-    private static final int INFO = 2;
-    private static final int IMG = 3;
+    private static final int NAME = 0;
+    private static final int INFO = 1;
+    private static final int IMG = 2;
     private int type;
 
     private HomeDataBean data = new HomeDataBean();
@@ -43,9 +41,6 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         MyViewHolder myViewHolder = null;
         switch (i) {
-            case BANNER:
-                myViewHolder = new MyViewHolder(new MallDetailBanner(context));
-                break;
             case NAME:
                 myViewHolder = new MyViewHolder(new MallDetailName(context, type));
                 break;
@@ -62,9 +57,7 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (data == null) return;
-        if (i == BANNER) {
-            ((MyViewHolder) viewHolder).setData(data.url);
-        } else if (i == NAME) {
+        if (i == NAME) {
             ((MyViewHolder) viewHolder).setData(data);
         } else if (i == INFO) {
             ((MyViewHolder) viewHolder).setData(data);
@@ -75,7 +68,7 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 3;
     }
 
     @Override

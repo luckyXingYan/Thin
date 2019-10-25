@@ -1,5 +1,6 @@
 package com.example.thin.fragment;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.example.thin.bean.CartListBean;
 import com.example.thin.bean.FootBean;
 import com.example.thin.bean.OrderDataHelper;
 import com.example.thin.refresh.TwinklingRefreshLayout;
+import com.example.thin.util.Constants;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 

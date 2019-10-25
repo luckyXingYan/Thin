@@ -16,7 +16,8 @@
         android:background="@drawable/shape_rectangle_50_corners_white_stroke_black"
         android:text="查看物流"
         android:textColor="@color/color_66"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btn_two"
@@ -33,7 +34,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/y20"
-        android:layout_below="@id/btn_one"
+        android:layout_below="@id/btn_two"
         android:layout_marginTop="@dimen/y28"
         android:background="@color/color_f6" />
 </RelativeLayout>

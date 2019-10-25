@@ -74,6 +74,12 @@
         <activity
             android:name=".activity.TakeOrderActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PublishActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SeeCouponCodeActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

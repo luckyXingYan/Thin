@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center_horizontal"
     android:layout_height="wrap_content">
 
     <TextView
-        android:layout_centerHorizontal="true"
         android:id="@+id/tv_type"
-        android:layout_width="@dimen/x176"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/y60"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="@dimen/y40"
         android:layout_marginVertical="@dimen/y20"
         android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray_ed"
         android:gravity="center"

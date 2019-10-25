@@ -2,17 +2,21 @@ package com.example.thin.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.thin.R;
 import com.example.thin.adapter.GoodsDetailAdapter;
 import com.example.thin.base.BaseTitleBarActivity;
+import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.bean.HomeDataBean;
@@ -22,7 +26,7 @@ import com.example.thin.bean.HomeDataBean;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class GoodsDetailActivity extends BaseTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements IBaseView, View.OnClickListener {
     private RecyclerView recyclerView;
     private GoodsDetailAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
@@ -34,13 +38,12 @@ public class GoodsDetailActivity extends BaseTitleBarActivity<BasePresenter> imp
     }
 
     @Override
-    protected int getContentLayoutId() {
+    protected int layoutId() {
         return R.layout.activity_goods_detail;
     }
 
     @Override
-    protected void initContentView() {
-        titleBar.setVisibility(View.GONE);
+    protected void initView(Bundle savedInstanceState) {
         recyclerView = getView(R.id.rv_mall_detail);
         shopCart = getView(R.id.iv_shop_cart);
         rlShopCart = getView(R.id.rl_shop_cart);

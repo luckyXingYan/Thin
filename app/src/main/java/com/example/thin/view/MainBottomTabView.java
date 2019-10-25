@@ -2,20 +2,26 @@ package com.example.thin.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import com.example.thin.R;
+import com.example.thin.activity.CashierActivity;
+import com.example.thin.activity.CreateAddressActivity;
+import com.example.thin.activity.PublishActivity;
 
 /**
  * @Author: xingyan
  * @Date: 2019/8/2
  * @Desc:
  */
-public class MainBottomTabView extends RelativeLayout {
+public class MainBottomTabView extends RelativeLayout implements View.OnClickListener {
 
     private RadioGroup mTabRadioGroup;
     private int index;
+    private ImageView publish;
 
     public MainBottomTabView(Context context) {
         this(context, null);
@@ -29,10 +35,12 @@ public class MainBottomTabView extends RelativeLayout {
     private void init() {
         inflate(getContext(), R.layout.widget_main_bottom_tabview, this);
         mTabRadioGroup = findViewById(R.id.tabs_rg);
+        publish = findViewById(R.id.sign_iv);
+        publish.setOnClickListener(this);
 
         mTabRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            public void onCheckedChanged(RadioGroup group, int checkedIdsign_iv) {
 
             }
         });
@@ -59,6 +67,17 @@ public class MainBottomTabView extends RelativeLayout {
 
     //定义接口名字
     private SelectFragmentLinstener selectFragmentLinstener;
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.sign_iv://发布
+                PublishActivity.open(getContext());
+                break;
+            default:
+                break;
+        }
+    }
 
     //回调接口
     public interface SelectFragmentLinstener {

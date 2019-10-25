@@ -9,5 +9,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_home_hot"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/y20"
+        android:layout_marginRight="@dimen/y20" />
 </LinearLayout>
