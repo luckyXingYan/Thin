@@ -34,7 +34,7 @@ public class MyOrderActivity extends BaseTitleBarActivity<BasePresenter> impleme
         Intent intent = new Intent();
         intent.setClass(context, MyOrderActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(Constants.MY_ORDER_TABLAYOUT_TYPE, position);
+        bundle.putInt(Constants.MY_ORDER_TAB_LAYOUT_TYPE, position);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
@@ -53,7 +53,7 @@ public class MyOrderActivity extends BaseTitleBarActivity<BasePresenter> impleme
             this.finish();
             return;
         }
-        position = getIntent().getIntExtra(Constants.MY_ORDER_TABLAYOUT_TYPE, 0);
+        position = getIntent().getIntExtra(Constants.MY_ORDER_TAB_LAYOUT_TYPE, 0);
 
         tabLayout = getView(R.id.tb_order);
         viewPager = getView(R.id.vp_order);

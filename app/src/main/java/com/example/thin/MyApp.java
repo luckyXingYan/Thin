@@ -1,6 +1,7 @@
 package com.example.thin;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.thin.base.http.netcore.core.NetConfig;
 import com.example.thin.base.http.netcore.core.NetEngine;
@@ -14,9 +15,12 @@ import com.squareup.leakcanary.LeakCanary;
  * @Desc:
  */
 public class MyApp extends Application {
+    private static Context context;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        context = this;
         // 初始化网络框架
         NetEngine.init(NetConfig.create(this));
         //初始化内存泄露检测器
@@ -31,5 +35,9 @@ public class MyApp extends Application {
             return;
         }
         LeakCanary.install(this);
+    }
+
+    public static Context getContextObject() {
+        return context;
     }
 }

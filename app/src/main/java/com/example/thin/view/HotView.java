@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.example.thin.R;
 import com.example.thin.activity.GoodsDetailActivity;
+import com.example.thin.activity.ShopDetailActivity;
 import com.example.thin.adapter.HotAdapter;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 
@@ -44,7 +45,7 @@ public class HotView extends BaseHomeLayout<List<String>> {
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, String s, int position) {
-                GoodsDetailActivity.open(getContext());
+                ShopDetailActivity.open(getContext());
             }
         });
     }

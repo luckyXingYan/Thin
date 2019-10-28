@@ -7,10 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.thin.R;
 import com.example.thin.adapter.HomeTypeDetailAdapter;
+import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
@@ -64,6 +66,12 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 initData();
+            }
+        });
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+            @Override
+            public void onItemClick(ViewGroup parent, View view, String s, int position) {
+                ShopDetailActivity.open(HomeTypeDetailActivity.this);
             }
         });
     }
