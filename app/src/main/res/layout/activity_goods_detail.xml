@@ -21,16 +21,15 @@
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="@dimen/y350"
                 android:fitsSystemWindows="true"
                 app:contentScrim="@color/white"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <ImageView
+                <com.ms.banner.Banner
+                    android:id="@+id/banner_goods_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/color_f6"
-                    android:scaleType="centerCrop"
                     app:layout_collapseMode="pin"
                     app:layout_collapseParallaxMultiplier="0.7" />
 

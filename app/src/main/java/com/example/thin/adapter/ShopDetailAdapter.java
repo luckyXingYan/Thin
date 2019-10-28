@@ -7,11 +7,9 @@ import android.view.ViewGroup;
 
 import com.example.thin.bean.HomeDataBean;
 import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.HotView;
-import com.example.thin.view.MallDetailImg;
-import com.example.thin.view.ShopDetailItem;
 import com.example.thin.view.ShopDetailName;
 import com.example.thin.view.ShopDetailSpecial;
+import com.example.thin.view.ShopDetailView;
 
 /**
  * @Author: xingyan
@@ -50,7 +48,7 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
                 myViewHolder = new MyViewHolder(new ShopDetailSpecial(context));
                 break;
             case IMG:
-                myViewHolder = new MyViewHolder(new HotView(context));
+                myViewHolder = new MyViewHolder(new ShopDetailView(context));
                 break;
         }
         return myViewHolder;

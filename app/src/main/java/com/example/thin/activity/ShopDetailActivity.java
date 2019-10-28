@@ -10,11 +10,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.thin.R;
+import com.example.thin.adapter.BannerHolder;
+import com.example.thin.adapter.BannerRadiusHolder;
 import com.example.thin.adapter.ShopDetailAdapter;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.bean.HomeDataBean;
+import com.ms.banner.Banner;
+import com.ms.banner.BannerConfig;
+import com.ms.banner.Transformer;
 
 /**
  * @Author: xingyan
@@ -27,6 +32,7 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
     private LinearLayoutManager linearLayoutManager;
     private EditText content;
     private ImageView back;
+    private Banner banner;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, ShopDetailActivity.class));
@@ -40,6 +46,7 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        banner = getView(R.id.banner_shop_detail);
         back = getView(R.id.iv_back);
         content = getView(R.id.et_input_search);
         recyclerView = getView(R.id.rv_mall_detail);
@@ -68,6 +75,13 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
 
         adapter.setData(bean);
+
+        banner.setAutoPlay(true)
+                .setOffscreenPageLimit(bean.url.size())
+                .setPages(bean.url, new BannerHolder())
+                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
+                .setBannerAnimation(Transformer.Default)
+                .start();
     }
 
     @Override
@@ -84,5 +98,17 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        banner.startAutoPlay();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        banner.stopAutoPlay();
     }
 }

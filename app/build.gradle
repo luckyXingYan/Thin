@@ -53,7 +53,9 @@ dependencies {
     //下拉刷新
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0"
 
-    implementation 'com.bigkoo:convenientbanner:2.0.5'
+    //banner
+    implementation 'com.ms:Banner:2.3.17'
+//    implementation 'com.bigkoo:convenientbanner:2.0.5'
 
 //    implementation 'com.ms:Banner:2.3.17'
 //    implementation 'com.ms:Banner-androidx:2.3.17'

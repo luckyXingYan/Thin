@@ -9,9 +9,6 @@ import com.example.thin.R;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Author: xingyan
  * @Date: 2019/10/17
@@ -34,7 +31,7 @@ public class MallAdapter extends BaseRecyclerAdapter<String, MallAdapter.MyViewH
             return R.layout.layout_home_foot;
         } else {
             /*这里返回的是普通的View*/
-            return R.layout.item_home_hot;
+            return R.layout.item_mall_goods;
         }
     }
 

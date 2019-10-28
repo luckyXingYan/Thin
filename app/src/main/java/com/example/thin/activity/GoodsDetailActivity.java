@@ -3,23 +3,24 @@ package com.example.thin.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.thin.R;
+import com.example.thin.adapter.BannerHolder;
+import com.example.thin.adapter.BannerRadiusHolder;
 import com.example.thin.adapter.GoodsDetailAdapter;
-import com.example.thin.base.BaseTitleBarActivity;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.bean.HomeDataBean;
+import com.ms.banner.Banner;
+import com.ms.banner.BannerConfig;
+import com.ms.banner.Transformer;
 
 /**
  * @Author: xingyan
@@ -33,6 +34,7 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
     private ImageView back, shopCart;
     private RelativeLayout rlShopCart;
     private EditText content;
+    private Banner banner;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, GoodsDetailActivity.class));
@@ -46,6 +48,7 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
     @Override
     protected void initView(Bundle savedInstanceState) {
         recyclerView = getView(R.id.rv_mall_detail);
+        banner = getView(R.id.banner_goods_detail);
         back = getView(R.id.iv_back);
         content = getView(R.id.et_input_search);
         shopCart = getView(R.id.iv_shop_cart);
@@ -73,6 +76,14 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
 
         adapter.setData(bean);
+
+
+        banner.setAutoPlay(true)
+                .setOffscreenPageLimit(bean.url.size())
+                .setPages(bean.url, new BannerHolder())
+                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
+                .setBannerAnimation(Transformer.Default)
+                .start();
     }
 
     @Override
@@ -92,5 +103,17 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        banner.startAutoPlay();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        banner.stopAutoPlay();
     }
 }

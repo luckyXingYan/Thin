@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
-import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.example.thin.R;
-import com.example.thin.adapter.BannerImgAdapter;
-import com.example.thin.util.ScreenUtil;
+import com.example.thin.adapter.BannerRadiusHolder;
+import com.ms.banner.Banner;
+import com.ms.banner.BannerConfig;
+import com.ms.banner.Transformer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ import java.util.List;
  * @Desc:
  */
 public class BannerView extends BaseHomeLayout<List<String>> {
-    private ConvenientBanner convenientBanner;
+    private Banner banner;
 
     public BannerView(Context context) {
         this(context, null);
@@ -31,15 +31,27 @@ public class BannerView extends BaseHomeLayout<List<String>> {
     @Override
     protected void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.layout_home_banner, this);
-        convenientBanner = findViewById(R.id.convenientBanner);
+        banner = findViewById(R.id.banner);
+
     }
 
     @Override
     public void setData(List<String> data) {
-        convenientBanner.getViewPager().setOffscreenPageLimit(data.size());
-        convenientBanner.getViewPager().setPageTransformer(true, new PosterScaleTransformer());
-        convenientBanner.getViewPager().setPageMargin(ScreenUtil.dip2px(getContext(), 20));//间距
-        convenientBanner.setPages(new BannerImgAdapter(), data);
+        banner.setAutoPlay(true)
+                .setOffscreenPageLimit(data.size())
+                .setPages(data, new BannerRadiusHolder())
+                .setBannerStyle(BannerConfig.NOT_INDICATOR)
+                .setBannerAnimation(Transformer.Scale)
+                .start();
     }
 
+    public void setBannerStopAutoPlay(boolean autoPlay) {
+        if (banner != null) {
+            if (autoPlay) {
+                banner.startAutoPlay();
+            } else {
+                banner.stopAutoPlay();
+            }
+        }
+    }
 }

@@ -22,6 +22,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
     private static final int BANNER = 1;
     private static final int HOT = 2;
     private static final int FOOT = 3;
+    private BannerView bannerView;
 
     private HomeDataBean data = new HomeDataBean();
 
@@ -36,6 +37,12 @@ public class HomeAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public void setBannerStopAutoPlay(boolean autoPlay) {
+        if (bannerView != null) {
+            bannerView.setBannerStopAutoPlay(autoPlay);
+        }
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -45,7 +52,8 @@ public class HomeAdapter extends RecyclerView.Adapter {
                 myViewHolder = new MyViewHolder(new TopTypeView(context));
                 break;
             case BANNER:
-                myViewHolder = new MyViewHolder(new BannerView(context));
+                bannerView = new BannerView(context);
+                myViewHolder = new MyViewHolder(bannerView);
                 break;
             case HOT:
                 myViewHolder = new MyViewHolder(new HotView(context));

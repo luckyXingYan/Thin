@@ -5,10 +5,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.bigkoo.convenientbanner.ConvenientBanner
-        android:id="@+id/convenientBanner"
+    <com.ms.banner.Banner
+        android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y260" />
+        android:layout_height="@dimen/y260"
+        android:layout_marginTop="@dimen/y20"
+        app:page_left_margin="@dimen/x30"
+        app:page_right_margin="@dimen/x30" />
 
     <TextView
         android:id="@+id/tv_hot_title"

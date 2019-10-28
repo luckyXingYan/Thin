@@ -55,6 +55,9 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                if (recyclerView != null) {
+                    recyclerView.scrollToPosition(0);
+                }
                 initData();
             }
         });
@@ -106,6 +109,22 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
                 break;
             default:
                 break;
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (adapter != null) {
+            adapter.setBannerStopAutoPlay(true);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (adapter != null) {
+            adapter.setBannerStopAutoPlay(false);
         }
     }
 }
