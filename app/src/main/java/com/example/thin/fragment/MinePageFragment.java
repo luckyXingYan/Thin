@@ -12,6 +12,7 @@ import com.example.thin.activity.MyOrderActivity;
 import com.example.thin.activity.RegisterActivity;
 import com.example.thin.activity.SexSettingActivity;
 import com.example.thin.activity.TargetWeightActivity;
+import com.example.thin.activity.WelcomeJoinActivity;
 import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
@@ -73,7 +74,7 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
         getView(view, R.id.tv02).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FollowPositionActivity.open(getActivity());
+                WelcomeJoinActivity.open(getActivity());
             }
         });
         getView(view, R.id.tv03).setOnClickListener(new View.OnClickListener() {

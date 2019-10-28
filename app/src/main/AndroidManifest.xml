@@ -80,6 +80,9 @@
         <activity
             android:name=".activity.SeeCouponCodeActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WelcomeJoinActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y160"
+        android:text="欢迎加入瘦吧！"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:layout_width="@dimen/x250"
+        android:layout_height="@dimen/y300"
+        android:layout_marginTop="@dimen/y100"
+        android:background="@mipmap/welcome_shouba" />
+
+    <Button
+        android:id="@+id/btn_start_evaluating"
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y100"
+        android:layout_marginTop="@dimen/y120"
+        android:background="@drawable/shape_rectangle_50_corners_green"
+        android:text="开始评测"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+</LinearLayout>

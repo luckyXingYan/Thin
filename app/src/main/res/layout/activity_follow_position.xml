@@ -14,9 +14,10 @@
 
         <ImageView
             android:id="@+id/iv_men"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x220"
+            android:layout_height="@dimen/y500"
             android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
             android:src="@mipmap/bg_men" />
 
         <CheckBox
@@ -24,15 +25,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/y190"
+            android:layout_marginTop="@dimen/y165"
+            android:background="@drawable/test_body_bg_selector"
             android:button="@null"
-            android:text="@string/chest" />
+            android:paddingLeft="@dimen/x10"
+            android:paddingTop="@dimen/y5"
+            android:paddingRight="@dimen/x10"
+            android:paddingBottom="@dimen/y5"
+            android:text="@string/chest"
+            android:textColor="@color/test_body_text_color_selector"
+            android:textSize="14sp" />
 
         <View
             android:id="@+id/line_chest"
-            android:layout_width="@dimen/x250"
+            android:layout_width="@dimen/x210"
             android:layout_height="@dimen/y2"
-            android:layout_marginTop="@dimen/y210"
+            android:layout_marginTop="@dimen/y190"
             android:layout_toLeftOf="@id/cb_chest"
             android:background="@color/black" />
 
@@ -40,15 +48,22 @@
             android:id="@+id/cb_arm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/y210"
+            android:layout_marginTop="@dimen/y185"
+            android:background="@drawable/test_body_bg_selector"
             android:button="@null"
-            android:text="@string/arm" />
+            android:paddingLeft="@dimen/x10"
+            android:paddingTop="@dimen/y5"
+            android:paddingRight="@dimen/x10"
+            android:paddingBottom="@dimen/y5"
+            android:text="@string/arm"
+            android:textColor="@color/test_body_text_color_selector"
+            android:textSize="14sp" />
 
         <View
             android:id="@+id/line_arm"
-            android:layout_width="@dimen/x180"
+            android:layout_width="@dimen/x130"
             android:layout_height="@dimen/y2"
-            android:layout_marginTop="@dimen/y230"
+            android:layout_marginTop="@dimen/y210"
             android:layout_toRightOf="@id/cb_arm"
             android:background="@color/black" />
 
@@ -57,15 +72,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/y260"
+            android:layout_marginTop="@dimen/y245"
+            android:background="@drawable/test_body_bg_selector"
             android:button="@null"
-            android:text="@string/abdomen" />
+            android:paddingLeft="@dimen/x10"
+            android:paddingTop="@dimen/y5"
+            android:paddingRight="@dimen/x10"
+            android:paddingBottom="@dimen/y5"
+            android:text="@string/abdomen"
+            android:textColor="@color/test_body_text_color_selector"
+            android:textSize="14sp" />
 
         <View
             android:id="@+id/line_abdomen"
-            android:layout_width="@dimen/x250"
+            android:layout_width="@dimen/x230"
             android:layout_height="@dimen/y2"
-            android:layout_marginTop="@dimen/y280"
+            android:layout_marginTop="@dimen/y270"
             android:layout_toLeftOf="@id/cb_abdomen"
             android:background="@color/black" />
 
@@ -73,13 +95,20 @@
             android:id="@+id/cb_hips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/y290"
+            android:layout_marginTop="@dimen/y285"
+            android:background="@drawable/test_body_bg_selector"
             android:button="@null"
-            android:text="@string/hips" />
+            android:paddingLeft="@dimen/x10"
+            android:paddingTop="@dimen/y5"
+            android:paddingRight="@dimen/x10"
+            android:paddingBottom="@dimen/y5"
+            android:text="@string/hips"
+            android:textColor="@color/test_body_text_color_selector"
+            android:textSize="14sp" />
 
         <View
             android:id="@+id/line_hips"
-            android:layout_width="@dimen/x210"
+            android:layout_width="@dimen/x170"
             android:layout_height="@dimen/y2"
             android:layout_marginTop="@dimen/y310"
             android:layout_toRightOf="@id/cb_hips"
@@ -89,45 +118,51 @@
             android:id="@+id/cb_leg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/y380"
+            android:layout_marginTop="@dimen/y375"
+            android:background="@drawable/test_body_bg_selector"
             android:button="@null"
-            android:text="@string/leg" />
+            android:paddingLeft="@dimen/x10"
+            android:paddingTop="@dimen/y5"
+            android:paddingRight="@dimen/x10"
+            android:paddingBottom="@dimen/y5"
+            android:text="@string/leg"
+            android:textColor="@color/test_body_text_color_selector"
+            android:textSize="14sp" />
 
         <View
             android:id="@+id/line_leg"
-            android:layout_width="@dimen/x210"
+            android:layout_width="@dimen/x180"
             android:layout_height="@dimen/y2"
             android:layout_marginTop="@dimen/y400"
             android:layout_toRightOf="@id/cb_leg"
             android:background="@color/black" />
 
-        <TextView
-            android:layout_width="@dimen/x150"
-            android:layout_height="@dimen/y60"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray"
-            android:gravity="center"
-            android:text="@string/select_all"
-            android:textSize="@dimen/x36" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y120"
+    <TextView
+        android:id="@+id/tv_all_select"
+        android:layout_width="@dimen/x100"
+        android:layout_height="@dimen/y50"
         android:layout_below="@id/rl_follow_pos"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/y200"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray"
+        android:gravity="center"
+        android:text="@string/select_all"
+        android:textColor="@color/color_38"
+        android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/btn_next"
-            android:layout_width="@dimen/x300"
-            android:layout_height="@dimen/y100"
-            android:background="@drawable/shape_rectangle_50_corners_green"
-            android:text="@string/next"
-            android:textColor="@color/white" />
-    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y100"
+        android:layout_below="@id/tv_all_select"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y120"
+        android:background="@drawable/shape_rectangle_50_corners_green"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
 
 </RelativeLayout>
