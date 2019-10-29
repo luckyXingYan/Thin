@@ -97,7 +97,7 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.MyView
         if (data == null) return;
         if (getItemViewType(i) == SHOP) {//店铺
             myViewHolder.setData(data.get(i));
-        } else if (i == GOODS) {//商品
+        } else if (getItemViewType(i) == GOODS) {//商品
             myViewHolder.setData(data.get(i));
         }
 
