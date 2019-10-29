@@ -159,6 +159,7 @@
         android:layout_below="@id/tv_all_select"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/y120"
+        android:layout_marginBottom="@dimen/y20"
         android:background="@drawable/shape_rectangle_50_corners_green"
         android:text="@string/next"
         android:textColor="@color/white"

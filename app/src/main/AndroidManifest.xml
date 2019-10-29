@@ -85,6 +85,15 @@
         <activity
             android:name=".activity.WelcomeJoinActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BodyHeightActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NickNameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ForgetPwdActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

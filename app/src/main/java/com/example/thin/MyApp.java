@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.example.thin.base.http.netcore.core.NetConfig;
 import com.example.thin.base.http.netcore.core.NetEngine;
+import com.example.thin.util.PreferenceUtil;
 import com.example.thin.util.SwitchFrontBackgroundCallbacks;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -25,6 +26,8 @@ public class MyApp extends Application {
         NetEngine.init(NetConfig.create(this));
         //初始化内存泄露检测器
         initLeakCanary();
+        // 初始化 SharedPreferences
+        PreferenceUtil.getInstance().init(this);
         //此处作用是监听前后台切换的变化
         registerActivityLifecycleCallbacks(new SwitchFrontBackgroundCallbacks());
     }

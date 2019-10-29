@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/y60"
+                android:layout_marginTop="@dimen/y15"
+                android:text="滑动标尺调整身高"
+                android:textColor="@color/color_99"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_body_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/y60"
+                android:layout_marginTop="@dimen/y20"
+                android:text="170cm"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="@dimen/x230"
+                android:layout_height="@dimen/y500"
+                android:layout_marginLeft="@dimen/x150"
+                android:layout_marginTop="@dimen/y60"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/bg_men" />
+        </LinearLayout>
+
+
+        <com.example.thin.view.RulerView
+            android:id="@+id/simple_ruler"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y750"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@color/white"
+            app:rulerColor="@color/color_85"
+            app:rulerDivideByFiveHeight="20dp"
+            app:rulerDivideByFiveWidth="2dp"
+            app:rulerDivideByTenHeight="55dp"
+            app:rulerDivideByTenWidth="2dp"
+            app:rulerHighlightColor="@color/color_28C17D"
+            app:rulerIntervalDistance="10dp"
+            app:rulerIntervalValue="1"
+            app:rulerIsDivideByFive="true"
+            app:rulerIsDivideByTen="true"
+            app:rulerLineHeight="15dp"
+            app:rulerLineWidth="1dp"
+            app:rulerMaxValue="190"
+            app:rulerMinValue="150"
+            app:rulerOrientation="vertical"
+            app:rulerRetainLength="1"
+            app:rulerTextBaseLineDistance="3dp"
+            app:rulerTextColor="@color/color_85"
+            app:rulerTextSize="12sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_body_height_next"
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y100"
+        android:layout_marginTop="@dimen/y100"
+        android:layout_marginBottom="@dimen/y20"
+        android:background="@drawable/shape_rectangle_50_corners_green"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+
+</LinearLayout>

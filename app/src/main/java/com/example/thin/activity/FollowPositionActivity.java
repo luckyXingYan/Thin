@@ -83,13 +83,14 @@ public class FollowPositionActivity extends BaseScrollTitleBarActivity<BasePrese
             case R.id.btn_next://下一步
                 if (!cbChest.isChecked() && !cbArm.isChecked() && !cbAbdomen.isChecked() && !cbHips.isChecked() && !cbLeg.isChecked()) {
                     showToastMsg("请选择您最关注得部位");
-                    return;
+//                    return;
                 }
                 Log.e("-----", "cbChest = " + cbChest.isChecked()
                         + "  cbArm = " + cbArm.isChecked()
                         + "  cbAbdomen = " + cbAbdomen.isChecked()
                         + "  cbHips = " + cbHips.isChecked()
                         + "  cbLeg = " + cbLeg.isChecked());
+                finish();
                 break;
             default:
                 break;

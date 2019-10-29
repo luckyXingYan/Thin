@@ -55,6 +55,7 @@
     <include layout="@layout/layout_line" />
 
     <Button
+        android:id="@+id/btn_login"
         android:layout_width="@dimen/y280"
         android:layout_height="@dimen/y100"
         android:layout_marginTop="@dimen/y200"
@@ -64,11 +65,13 @@
         android:textSize="17sp" />
 
     <TextView
+        android:id="@+id/tv_forget_pwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/y400"
         android:layout_marginBottom="@dimen/y100"
         android:gravity="bottom"
+        android:padding="@dimen/y40"
         android:text="忘记密码"
         android:textColor="@color/color_99"
         android:textSize="14sp" />

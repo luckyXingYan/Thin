@@ -8,4 +8,6 @@ package com.example.thin.bean;
 public class UserInfo {
     public String userId;
     public String userName;
+    public String userSex;
+    public String userTargetWeight;
 }

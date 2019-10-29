@@ -51,6 +51,7 @@ public class WelcomeJoinActivity extends BaseActivity<BasePresenter> implements 
         switch (v.getId()) {
             case R.id.btn_start_evaluating://开始评测
                 FollowPositionActivity.open(this);
+                finish();
                 break;
         }
     }

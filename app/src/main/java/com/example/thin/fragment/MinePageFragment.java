@@ -1,6 +1,5 @@
 package com.example.thin.fragment;
 
-import android.app.Dialog;
 import android.view.View;
 import android.widget.TextView;
 
@@ -8,16 +7,11 @@ import com.example.thin.R;
 import com.example.thin.activity.CreateAddressActivity;
 import com.example.thin.activity.LoginActivity;
 import com.example.thin.activity.MyOrderActivity;
-import com.example.thin.activity.RegisterActivity;
-import com.example.thin.activity.SexSettingActivity;
-import com.example.thin.activity.TargetWeightActivity;
-import com.example.thin.activity.WelcomeJoinActivity;
 import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.presenter.MinePagePresenter;
 import com.example.thin.util.LocalUser;
-import com.example.thin.view.CommonDialogUtils;
 import com.example.thin.view.MineLoginView;
 
 /**
@@ -63,37 +57,12 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
         tvWaitGet.setOnClickListener(this);
         tvFinish.setOnClickListener(this);
 
-        getView(view, R.id.tv00).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RegisterActivity.open(getActivity());
-            }
-        });
-        getView(view, R.id.tv01).setOnClickListener(new View.OnClickListener() {
+        getView(view, R.id.tv_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LoginActivity.open(getActivity());
             }
         });
-        getView(view, R.id.tv02).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WelcomeJoinActivity.open(getActivity());
-            }
-        });
-        getView(view, R.id.tv03).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SexSettingActivity.open(getActivity());
-            }
-        });
-        getView(view, R.id.tv04).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TargetWeightActivity.open(getActivity());
-            }
-        });
-
     }
 
     @Override
@@ -108,6 +77,22 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
         } else {
             mineLoginView.dismiss();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (LocalUser.getInstance().isLogin()) {
+            mineLoginView.dismiss();
+        } else {
+            mineLoginView.show();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+//        mineLoginView.dismiss();
     }
 
     /**

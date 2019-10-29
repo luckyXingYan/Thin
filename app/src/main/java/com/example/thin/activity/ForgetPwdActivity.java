@@ -9,31 +9,30 @@ import com.example.thin.R;
 import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.util.LocalUser;
 
 /**
  * @Author: xingyan
- * @Date: 2019/10/22
+ * @Date: 2019/10/29
  * @Desc:
  */
-public class SexSettingActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
-    private Button next;
+public class ForgetPwdActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+    private Button btnForgetPwdNext;
 
     public static void open(Context context) {
-        context.startActivity(new Intent(context, SexSettingActivity.class));
+        context.startActivity(new Intent(context, ForgetPwdActivity.class));
     }
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.activity_sex_setting;
+        return R.layout.activity_forget_pwd;
     }
 
     @Override
     protected void initContentView() {
-        mTitleBar.setTitle("性别");
-        next = getView(R.id.btn_sex_next);
-        next.setOnClickListener(this);
+        mTitleBar.setTitle("忘记密码");
 
+        btnForgetPwdNext = getView(R.id.btn_forget_pwd_next);
+        btnForgetPwdNext.setOnClickListener(this);
     }
 
     @Override
@@ -49,9 +48,7 @@ public class SexSettingActivity extends BaseScrollTitleBarActivity<BasePresenter
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_sex_next://下一步
-                LocalUser.getInstance().setUserSex("男");
-                BodyHeightActivity.open(this);
+            case R.id.btn_forget_pwd_next://下一步
                 finish();
                 break;
             default:

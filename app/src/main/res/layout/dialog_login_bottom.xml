@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y434"
         android:layout_alignParentBottom="true"
-        android:background="@color/white">
+        android:background="@mipmap/me_logged_in_pic_bg">
 
         <TextView
             android:id="@+id/tv_login_btn"
@@ -18,8 +18,7 @@
             android:layout_height="@dimen/y200"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/y10"
-            android:text="登录" />
+            android:layout_marginBottom="@dimen/y10" />
     </RelativeLayout>
 
 </com.example.thin.view.FocusRelativeLayout>

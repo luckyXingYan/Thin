@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/y100">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="vertical"
-        tools:context=".activity.SecondActivity">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -156,54 +156,18 @@
         <include layout="@layout/layout_line" />
 
         <TextView
-            android:id="@+id/tv00"
+            android:id="@+id/tv_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/y100"
+            android:drawableRight="@mipmap/mine_item_icon"
             android:gravity="center_vertical"
-            android:padding="@dimen/y20"
-            android:paddingLeft="@dimen/y20"
+            android:paddingLeft="@dimen/y30"
             android:paddingRight="@dimen/y30"
-            android:text="注册并登录" />
+            android:text="模拟登录"
+            android:textColor="@color/color_38"
+            android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tv01"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="@dimen/y20"
-            android:paddingLeft="@dimen/y20"
-            android:paddingRight="@dimen/y30"
-            android:text="登录" />
-
-        <TextView
-            android:id="@+id/tv02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="@dimen/y20"
-            android:paddingLeft="@dimen/y20"
-            android:paddingRight="@dimen/y30"
-            android:text="自测" />
-
-        <TextView
-            android:id="@+id/tv03"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="@dimen/y20"
-            android:paddingLeft="@dimen/y20"
-            android:paddingRight="@dimen/y30"
-            android:text="性别" />
-
-        <TextView
-            android:id="@+id/tv04"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="@dimen/y20"
-            android:paddingLeft="@dimen/y20"
-            android:paddingRight="@dimen/y30"
-            android:text="目标体重" />
+        <include layout="@layout/layout_line" />
     </LinearLayout>
 
     <com.example.thin.view.MineLoginView
