@@ -8,4 +8,5 @@ package com.example.thin.bean;
 public class CartGoodsBean {
     public String title;
     public String id;
+    public boolean isSelect;
 }

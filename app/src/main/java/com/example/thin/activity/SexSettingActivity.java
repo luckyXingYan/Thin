@@ -51,7 +51,7 @@ public class SexSettingActivity extends BaseScrollTitleBarActivity<BasePresenter
         switch (v.getId()) {
             case R.id.btn_sex_next://下一步
                 LocalUser.getInstance().setUserSex("男");
-                BodyHeightActivity.open(this);
+                NickNameActivity.open(this);
                 finish();
                 break;
             default:

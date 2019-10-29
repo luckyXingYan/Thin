@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/y160"
     android:background="@color/white"
-    android:orientation="horizontal"
-    android:paddingTop="@dimen/y20"
-    android:paddingBottom="@dimen/y20">
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/tv_shop_cart"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/y160"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-       android:layout_marginLeft="@dimen/x30"
+        android:layout_marginLeft="@dimen/x30"
         android:text="共计10件"
         android:textColor="@color/color_99"
         android:textSize="14sp"
         android:visibility="gone" />
 
     <CheckBox
-        android:id="@+id/cb_place_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/cb_all_select"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y160"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-       android:layout_marginLeft="@dimen/x30"
         android:button="@null"
-        android:drawableLeft="@mipmap/all_select"
+        android:drawableLeft="@drawable/select_selector"
         android:drawablePadding="@dimen/x10"
+        android:paddingLeft="@dimen/y30"
         android:text="全选"
         android:textColor="@color/color_99"
         android:textSize="14sp" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/y160"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/y10"
         android:layout_toLeftOf="@+id/tv_total"
+        android:gravity="center_vertical"
         android:text="合计"
         android:textColor="@color/color_99"
         android:textSize="14sp" />
@@ -59,7 +58,7 @@
         android:layout_height="@dimen/y100"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-    android:layout_marginRight="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
         android:background="@drawable/shape_rectangle_50_corners_green"
         android:text="结算"
         android:textColor="@color/white"

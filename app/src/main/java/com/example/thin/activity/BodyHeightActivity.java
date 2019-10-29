@@ -61,7 +61,7 @@ public class BodyHeightActivity extends BaseScrollTitleBarActivity<BasePresenter
         switch (v.getId()) {
             case R.id.btn_body_height_next://下一步
                 LocalUser.getInstance().setUserBodyHeight("175");
-                NickNameActivity.open(this);
+                TargetWeightActivity.open(this);
                 finish();
                 break;
             default:

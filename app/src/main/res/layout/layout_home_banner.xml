@@ -9,9 +9,10 @@
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y260"
-        android:layout_marginTop="@dimen/y20"
-        app:page_left_margin="@dimen/x30"
-        app:page_right_margin="@dimen/x30" />
+        android:layout_marginTop="@dimen/y30"
+        android:layout_marginBottom="@dimen/y30"
+        app:page_left_margin="@dimen/x40"
+        app:page_right_margin="@dimen/x40" />
 
     <TextView
         android:id="@+id/tv_hot_title"

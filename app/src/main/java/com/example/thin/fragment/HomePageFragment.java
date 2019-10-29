@@ -113,18 +113,24 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        if (adapter != null) {
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            adapter.setBannerStopAutoPlay(false);
+        } else {
             adapter.setBannerStopAutoPlay(true);
         }
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        adapter.setBannerStopAutoPlay(true);
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
-        if (adapter != null) {
-            adapter.setBannerStopAutoPlay(false);
-        }
+        adapter.setBannerStopAutoPlay(false);
     }
 }

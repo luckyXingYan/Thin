@@ -53,7 +53,7 @@ public class NickNameActivity extends BaseScrollTitleBarActivity<BasePresenter> 
         switch (v.getId()) {
             case R.id.btn_nick_name_next://下一步
                 LocalUser.getInstance().setUserNickName("耶**");
-                TargetWeightActivity.open(this);
+                BodyHeightActivity.open(this);
                 finish();
                 break;
             default:

@@ -92,7 +92,7 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
     @Override
     public void onStop() {
         super.onStop();
-//        mineLoginView.dismiss();
+        mineLoginView.dismiss();
     }
 
     /**

@@ -52,7 +52,7 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
     @Override
     protected void initContentView() {
         mTitleBar.setTitle("订单信息");
-        cb = getView(R.id.cb_place_order);
+        cb = getView(R.id.cb_all_select);
         totalNum = getView(R.id.tv_shop_cart);
         btnSettlement = getView(R.id.btn_settlement);
         tvNewAddress = getView(R.id.tv_new_address);
