@@ -53,7 +53,7 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
         content = getView(R.id.et_input_search);
         shopCart = getView(R.id.iv_shop_cart);
         rlShopCart = getView(R.id.rl_shop_cart);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new GoodsDetailAdapter(this, 1);

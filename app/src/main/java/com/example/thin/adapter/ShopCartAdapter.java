@@ -2,16 +2,15 @@ package com.example.thin.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
+import android.view.View;
 
-import com.example.thin.bean.CartShopBean;
-import com.example.thin.bean.CartGoodsBean;
-import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.CartGoodsView;
-import com.example.thin.view.CartShopView;
+import com.example.thin.R;
+import com.example.thin.base.adapter.BaseRecyclerAdapter;
+import com.example.thin.base.adapter.BaseViewHolder;
+import com.example.thin.bean.CartListBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,105 +18,101 @@ import java.util.List;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.MyViewHolder> {
+public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartAdapter.MyViewHolder> {
     private Context context;
-    private static final int SHOP = 0;
-    private static final int GOODS = 1;
-    private List<Object> data;
-    private CartGoodsView cartGoodsView;
-    private List<CartGoodsBean> selectList;
+    private GoodsCartAdapter adapter;
 
     public ShopCartAdapter(Context context) {
+        super(context);
         this.context = context;
-        selectList = new ArrayList<>();
-    }
-
-    public void setData(List<Object> data) {
-        this.data = data;
-        notifyDataSetChanged();
     }
 
     public void setAllSelectData() {
-        for (Object bean : data) {
-            if (bean instanceof CartGoodsBean) {
-                ((CartGoodsBean) bean).isSelect = true;
-            }
+        for (CartListBean bean : getData()) {
+            adapter.setAllSelectData(bean.goods);
         }
-        notifyDataSetChanged();
+        notifyItemRangeChanged(0, getData().size(), "checkBox");
     }
 
     public void setNoSelectData() {
-        for (Object bean : data) {
-            if (bean instanceof CartGoodsBean) {
-                ((CartGoodsBean) bean).isSelect = false;
-            }
+        for (CartListBean bean : getData()) {
+            adapter.setNoSelectData(bean.goods);
         }
-        notifyDataSetChanged();
+        notifyItemRangeChanged(0, getData().size(), "checkBox");
     }
 
-    public List<CartGoodsBean> getSelectData() {
-        for (Object bean : data) {
-            if (bean instanceof CartGoodsBean) {
-                if (((CartGoodsBean) bean).isSelect) {
-                    selectList.add(((CartGoodsBean) bean));
-                }
-            }
+    public double getTotalPrice() {
+        double total = 0;
+        for (CartListBean bean : getData()) {
+            total += adapter.getTotalPrice(bean.goods);
         }
-        return selectList;
+        return total;
     }
 
     @Override
-    public int getItemViewType(int position) {
-        if (data.get(position) instanceof CartShopBean) {
-            return SHOP;
-        } else if (data.get(position) instanceof CartGoodsBean) {
-            return GOODS;
-        }
-        return SHOP;
+    public int getItemLayout(int viewType) {
+        return R.layout.item_shop_cart;
     }
 
-    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        MyViewHolder myViewHolder = null;
-        switch (i) {
-            case SHOP:
-                myViewHolder = new MyViewHolder(new CartShopView(context, 0));
-                break;
-            case GOODS:
-                cartGoodsView = new CartGoodsView(context);
-                myViewHolder = new MyViewHolder(cartGoodsView);
-                break;
+    public int getViewType(int position) {
+        return 0;
+    }
+
+    @Override
+    public MyViewHolder getViewHolder(View view, int viewType) {
+        return new MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
+        super.onBindViewHolder(holder, position, payloads);
+        if (payloads.isEmpty()) {
+            // payloads 为 空，说明是更新整个 ViewHolder
+            onBindViewHolder(holder, position);
+        } else {
+            // payloads 不为空，这只更新需要更新的 View 即可。
+//            getTotalPrice();
         }
-        return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
-        if (data == null) return;
-        if (getItemViewType(i) == SHOP) {//店铺
-            myViewHolder.setData(data.get(i));
-        } else if (getItemViewType(i) == GOODS) {//商品
-            myViewHolder.setData(data.get(i));
-        }
+        myViewHolder.rvGoodsCart.setLayoutManager(new LinearLayoutManager(context));
+        /**
+         * 当确定Item的改变不会影响RecyclerView的宽高时
+         * 可以设置setHasFixedSize(true)，
+         * 并通过Adapter的增删改插方法去刷新RecyclerView，
+         *       === 比如更新pos位置的item：notifyItemChanged(pos);/notifyItemChanged(pos,payload);而不是通过notifyDataSetChanged()。
+         *       ===notifyItemRangeChanged(pos, getData().size(), "payload");
+         * （其实可以直接设置为true，当需要改变宽高的时候就用 notifyDataSetChanged() 去整体刷新一下）
+         * 因为删除时改变了rv的宽高，所以不用考虑 直接 notifyDataSetChanged 更新即可
+         */
+        myViewHolder.rvGoodsCart.setHasFixedSize(true);
+        adapter = new GoodsCartAdapter(context);
+        myViewHolder.rvGoodsCart.setAdapter(adapter);
 
+        adapter.setData(getItemData(i).goods);
+
+        adapter.setDeleteShopItemListener(new GoodsCartAdapter.DeleteShopItemListener() {
+            @Override
+            public void deleteShopItem() {
+                if (getItemData(i).goods.size() == 0) {
+                    getData().remove(getItemData(i));
+                    notifyDataSetChanged();
+                }
+            }
+        });
     }
 
-    @Override
-    public int getItemCount() {
-        return data == null ? 0 : data.size();
-    }
+    protected class MyViewHolder extends BaseViewHolder {
 
-    protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseHomeLayout itemView;
+        private RecyclerView rvGoodsCart;
 
-        public MyViewHolder(@NonNull BaseHomeLayout itemView) {
+
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.itemView = itemView;
-        }
-
-        public void setData(T data) {
-            itemView.setData(data);
+            rvGoodsCart = itemView.findViewById(R.id.rv_goods_cart);
         }
     }
 }

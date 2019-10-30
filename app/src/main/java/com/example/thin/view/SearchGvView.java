@@ -32,7 +32,7 @@ public class SearchGvView extends BaseHomeLayout<String> {
     protected void init() {
         inflate(getContext(), R.layout.layout_search, this);
         recyclerView = findViewById(R.id.rv_search_gv);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         adapter = new SearchRvAdapter(getContext());
         recyclerView.setAdapter(adapter);

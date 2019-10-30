@@ -2,7 +2,6 @@ package com.example.thin.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,7 +14,6 @@ import com.example.thin.adapter.ShopCartAdapter;
 import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.OrderDataHelper;
 import com.example.thin.bean.CartGoodsBean;
 import com.example.thin.bean.CartListBean;
 
@@ -33,6 +31,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     private ShopCartAdapter adapter;
     private Button settlement;
     private CheckBox cbAllSelect;
+    private TextView tvTotal;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, ShopCartActivity.class));
@@ -55,7 +54,8 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
         recyclerView = getView(R.id.rv_shop_cart);
         settlement = getView(R.id.btn_settlement);
         cbAllSelect = getView(R.id.cb_all_select);
-        recyclerView.setHasFixedSize(false);
+        tvTotal = getView(R.id.tv_total);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ShopCartAdapter(this);
         recyclerView.setAdapter(adapter);
@@ -67,23 +67,56 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     @Override
     protected void initData() {
         List<CartListBean> data = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            CartListBean bean = new CartListBean();
-            bean.title = "店铺" + i;
 
-            CartGoodsBean info = new CartGoodsBean();
-            info.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
-            info.id = "1";
-            bean.goods.add(info);
+        CartListBean bean1 = new CartListBean();
+        bean1.id = "11";
+        bean1.title = "店铺1";
 
-            CartGoodsBean info2 = new CartGoodsBean();
-            info.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
-            info.id = "2";
-            bean.goods.add(info2);
 
-            data.add(bean);
-        }
-        adapter.setData(OrderDataHelper.getDataAfterHandle(data));
+        CartGoodsBean info1 = new CartGoodsBean();
+        info1.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
+        info1.id = "1";
+        info1.shopId = "11";
+        info1.price = "1";
+        bean1.goods.add(info1);
+
+
+        CartGoodsBean info2 = new CartGoodsBean();
+        info2.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
+        info2.id = "2";
+        info2.shopId = "11";
+        info2.price = "2";
+        bean1.goods.add(info2);
+
+        data.add(bean1);
+
+
+        CartListBean bean2 = new CartListBean();
+        bean2.id = "22";
+        bean2.title = "店铺2";
+
+
+        CartGoodsBean info3 = new CartGoodsBean();
+        info3.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
+        info3.id = "3";
+        info3.shopId = "22";
+        info3.price = "3";
+        bean2.goods.add(info3);
+
+        CartGoodsBean info4 = new CartGoodsBean();
+        info4.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
+        info4.id = "4";
+        info4.shopId = "22";
+        info4.price = "4";
+        bean2.goods.add(info4);
+
+        data.add(bean2);
+
+//        adapter.setData(OrderDataHelper.getDataAfterHandle(data));
+        adapter.setData(data);
+
+//        tvTotal.setText(adapter.getTotalPrice() + "");
+
     }
 
     @Override
@@ -100,6 +133,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
                 } else {
                     adapter.setNoSelectData();
                 }
+                tvTotal.setText(adapter.getTotalPrice() + "");
                 break;
             case R.id.btn_settlement://订单信息
                 TakeOrderActivity.open(this);

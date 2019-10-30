@@ -23,6 +23,18 @@ public abstract class CommonDialogUtils {
     private View view;
     private Context context;
     private AlertDialog alertDialog;
+    //                CommonDialogUtils dialogUtils = new CommonDialogUtils(getContext()) {
+//                    @Override
+//                    protected int layoutId() {
+//                        return R.layout.layout_dialog_common;
+//                    }
+//
+//                    @Override
+//                    protected void initView(View view) {
+//
+//                    }
+//                };
+//                dialogUtils.show();
 
 
     public CommonDialogUtils(Context context) {

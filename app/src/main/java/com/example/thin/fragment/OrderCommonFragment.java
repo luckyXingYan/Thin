@@ -49,7 +49,7 @@ public class OrderCommonFragment extends BaseFragment<BasePresenter> implements 
         recyclerView = getView(view, R.id.rv_order_common);
         refreshLayout = getView(view, R.id.refresh_layout);
         refreshLayout.setEnableLoadMore(true);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new OrderAdapter(getActivity());

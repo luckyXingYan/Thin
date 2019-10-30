@@ -26,7 +26,7 @@ public class ShopDetailItem extends BaseHomeLayout<List<String>> {
     protected void init() {
         inflate(getContext(), R.layout.layout_mall_detail_img, this);
         recyclerView = findViewById(R.id.rv_mall_detail);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new MallDetailImgAdapter(getContext());
         recyclerView.setAdapter(adapter);

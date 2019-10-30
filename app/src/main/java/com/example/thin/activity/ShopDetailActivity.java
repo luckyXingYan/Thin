@@ -52,7 +52,7 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
         recyclerView = getView(R.id.rv_mall_detail);
         content = getView(R.id.et_input_search);
         back = getView(R.id.iv_back);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new ShopDetailAdapter(this, 0);

@@ -38,7 +38,7 @@ public class TopTypeView extends BaseHomeLayout<List<String>> {
     protected void init() {
         inflate(getContext(), R.layout.layout_home_top_type, this);
         recyclerView = findViewById(R.id.rv_home_type);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
         adapter = new TypeAdapter(getContext());
         recyclerView.setAdapter(adapter);

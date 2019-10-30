@@ -51,7 +51,7 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
         back.setOnClickListener(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         adapter = new HomeTypeDetailAdapter(this);
         recyclerView.setAdapter(adapter);
         refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {

@@ -37,7 +37,7 @@ public class SearchActivity extends BaseActivity<BasePresenter> implements IBase
     protected void initView(Bundle savedInstanceState) {
 
         recyclerView = getView(R.id.rv_search);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new SearchAdapter(this);
         recyclerView.setAdapter(adapter);

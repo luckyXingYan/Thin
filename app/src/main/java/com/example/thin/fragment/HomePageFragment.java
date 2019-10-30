@@ -47,7 +47,7 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
         refreshLayout = getView(view, R.id.rl_home);
         search = getView(view, R.id.tv_input_search);
         refreshLayout.setEnableLoadMore(false);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new HomeAdapter(getActivity());
         recyclerView.setAdapter(adapter);

@@ -44,7 +44,7 @@ public class MallCommonFragment extends BaseFragment<BasePresenter> implements I
         recyclerView = getView(view, R.id.rv_mall_common);
         refreshLayout = getView(view, R.id.refresh_layout);
         refreshLayout.setEnableLoadMore(true);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
         adapter = new MallAdapter(getActivity());

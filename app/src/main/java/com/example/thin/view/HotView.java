@@ -36,7 +36,7 @@ public class HotView extends BaseHomeLayout<List<String>> {
     protected void init() {
         inflate(getContext(), R.layout.layout_home_hot, this);
         recyclerView = findViewById(R.id.rv_home_hot);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         adapter = new HotAdapter(getContext());

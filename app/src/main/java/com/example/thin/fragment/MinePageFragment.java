@@ -113,21 +113,8 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
     @Override
     protected void initData() {
 
-//        LocalUser.getInstance().getProfile().userId
         if (!LocalUser.getInstance().isLogin()) {
             mineLoginView.show();
-//            CommonDialogUtils dialogUtils = new CommonDialogUtils(getActivity()) {
-//                @Override
-//                protected int layoutId() {
-//                    return R.layout.layout_login;
-//                }
-//
-//                @Override
-//                protected void initView(View view) {
-//
-//                }
-//            };
-//            dialogUtils.show();
             return;
         }
 

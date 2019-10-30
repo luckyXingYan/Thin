@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class CartListBean {
     public String title;
+    public String id;
     public List<CartGoodsBean> goods = new ArrayList<>();
     public FootBean footBean;
 

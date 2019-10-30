@@ -65,7 +65,7 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
 
 
         recyclerView = getView(R.id.rv_take_order);
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new TakeOrderAdapter(this);
         recyclerView.setAdapter(adapter);
