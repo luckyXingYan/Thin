@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/y160"
+    android:layout_height="@dimen/y150"
     android:background="@color/white"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/tv_shop_cart"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/y160"
+        android:layout_height="@dimen/y150"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/x30"
-        android:text="共计10件"
+        android:gravity="center"
+        android:text="共计 10 件"
         android:textColor="@color/color_99"
         android:textSize="14sp"
         android:visibility="gone" />
@@ -20,7 +21,7 @@
     <CheckBox
         android:id="@+id/cb_all_select"
         android:layout_width="@dimen/x150"
-        android:layout_height="@dimen/y160"
+        android:layout_height="@dimen/y150"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:button="@null"
@@ -33,7 +34,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/y160"
+        android:layout_height="@dimen/y150"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/y10"
         android:layout_toLeftOf="@+id/tv_total"
@@ -48,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="999999"
+        android:text="0.0"
         android:textColor="@color/color_E4382B"
         android:textSize="20sp" />
 

@@ -17,7 +17,9 @@ import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.bean.CartGoodsBean;
 import com.example.thin.bean.CartListBean;
 import com.example.thin.bean.OrderDataHelper;
+import com.example.thin.util.Constants;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +34,17 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
     private CheckBox cb;
     private TextView totalNum;
     private Button btnSettlement;
-    private TextView tvNewAddress;
+    private TextView tvNewAddress, tvTotalPrice;
+    private String totalNumOfShops, totalPriceOfShops;
+    private List<CartListBean> listCart;
 
 
-    public static void open(Context context) {
-        context.startActivity(new Intent(context, TakeOrderActivity.class));
+    public static void open(Context context, List<CartListBean> listCart, String totalNumOfShops, String totalPriceOfShops) {
+        Intent intent = new Intent(context, TakeOrderActivity.class);
+        intent.putExtra(Constants.LIST_CART, (Serializable) listCart);
+        intent.putExtra(Constants.TOTAL_NUM_OF_SHOPS, totalNumOfShops);
+        intent.putExtra(Constants.TOTAL_PRICE_OF_SHOPS, totalPriceOfShops);
+        context.startActivity(intent);
     }
 
     @Override
@@ -51,11 +59,15 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
 
     @Override
     protected void initContentView() {
+        listCart = (List<CartListBean>) getIntent().getSerializableExtra(Constants.LIST_CART);
+        totalNumOfShops = getIntent().getStringExtra(Constants.TOTAL_NUM_OF_SHOPS);
+        totalPriceOfShops = getIntent().getStringExtra(Constants.TOTAL_PRICE_OF_SHOPS);
         mTitleBar.setTitle("订单信息");
         cb = getView(R.id.cb_all_select);
         totalNum = getView(R.id.tv_shop_cart);
         btnSettlement = getView(R.id.btn_settlement);
         tvNewAddress = getView(R.id.tv_new_address);
+        tvTotalPrice = getView(R.id.tv_total);
 
         cb.setVisibility(View.GONE);
         totalNum.setVisibility(View.VISIBLE);
@@ -70,28 +82,14 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
         adapter = new TakeOrderAdapter(this);
         recyclerView.setAdapter(adapter);
 
+        totalNum.setText("共计 " + totalNumOfShops + " 件");
+        tvTotalPrice.setText(totalPriceOfShops);
+
     }
 
     @Override
     protected void initData() {
-        List<CartListBean> data = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            CartListBean bean = new CartListBean();
-            bean.title = "店铺" + i;
-
-            CartGoodsBean info = new CartGoodsBean();
-            info.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
-            info.id = "1";
-            bean.goods.add(info);
-
-            CartGoodsBean info2 = new CartGoodsBean();
-            info.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
-            info.id = "2";
-            bean.goods.add(info2);
-
-            data.add(bean);
-        }
-        adapter.setData(OrderDataHelper.getDataAfterHandle(data));
+        adapter.setData(OrderDataHelper.getDataAfterHandle(listCart));
     }
 
     @Override

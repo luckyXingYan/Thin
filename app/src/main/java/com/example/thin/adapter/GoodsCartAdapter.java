@@ -6,12 +6,17 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
 import com.example.thin.bean.CartGoodsBean;
+import com.example.thin.eventbus.TotalPriceEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -23,45 +28,27 @@ import java.util.List;
 public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCartAdapter.MyViewHolder> {
     private Context context;
 
+
     public GoodsCartAdapter(Context context) {
         super(context);
         this.context = context;
     }
 
-    public void setAllSelectData(List<CartGoodsBean> goods) {
-        for (int i = 0; i < goods.size(); i++) {
-            goods.get(i).isSelect = true;
-        }
-        notifyItemRangeChanged(0, goods.size(), "checkBox");//只更新item布局中的checkBox
-    }
-
-    public void setNoSelectData(List<CartGoodsBean> goods) {
-        for (int i = 0; i < goods.size(); i++) {
-            goods.get(i).isSelect = false;
-        }
-        notifyItemRangeChanged(0, goods.size(), "checkBox");//只更新item布局中的checkBox
-    }
-
-    private double total, prices;
-    private int nums;
-
-    public double getTotalPrice(List<CartGoodsBean> goods) {
-        total = 0;
-        for (int i = 0; i < goods.size(); i++) {
-            if (goods.get(i).isSelect) {
-                String num = goods.get(i).num;
-                nums = Integer.valueOf(num);
-                String price = goods.get(i).price;
-                prices = Double.valueOf(price);
-                total += nums * prices;
-            }
-        }
-        return total;
-    }
-
     @Override
     public int getItemLayout(int viewType) {
         return R.layout.item_goods_cart;
+    }
+
+    public void setAllSelectData(final List<CartGoodsBean> goods) {
+        for (int i = 0; i < goods.size(); i++) {
+            goods.get(i).isSelect = true;
+        }
+    }
+
+    public void setNoSelectData(final List<CartGoodsBean> goods) {
+        for (int i = 0; i < goods.size(); i++) {
+            goods.get(i).isSelect = false;
+        }
     }
 
     @Override
@@ -81,18 +68,29 @@ public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCa
             onBindViewHolder(holder, position);
         } else {
             // payloads 不为空，这只更新需要更新的 View 即可。
-            holder.checkBox.setChecked(getItemData(position).isSelect);
-            getTotalPrice(getData());
+            for (Object payload : payloads) {
+                String payloadStr = ((String) payload);
+                if ("checkBox".equals(payloadStr)) {
+                    holder.checkBox.setChecked(getItemData(position).isSelect);//更新是否选中
+                    //通知更新合计总价（重新遍历集合计算总价）
+                    EventBus.getDefault().post(TotalPriceEvent.getInstance());
+                } else if ("tv_num".equals(payloadStr)) {
+                    holder.tvNum.setText(getItemData(position).num);
+                }
+            }
+
         }
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
         myViewHolder.checkBox.setChecked(getItemData(i).isSelect);
+        myViewHolder.tvNum.setText(getItemData(i).num);
+        //选中
         myViewHolder.llItemShopCartGoods.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {//选中
+            public void onClick(View v) {
                 if (!getItemData(i).isSelect) {
                     getItemData(i).isSelect = true;
                 } else {
@@ -101,9 +99,10 @@ public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCa
                 notifyItemChanged(i, "checkBox");//只更新item布局中的checkBox
             }
         });
+        //长按删除
         myViewHolder.llItemShopCartGoods.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View v) {//删除
+            public boolean onLongClick(View v) {
                 new AlertDialog.Builder(context).setTitle("确认删除吗？")
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
@@ -128,16 +127,59 @@ public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCa
             }
         });
 
+        //num  加
+        myViewHolder.ivAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int num = Integer.parseInt(getItemData(i).num);
+                if (num == 10) {
+                    return;
+                }
+                getItemData(i).num = ++num + "";
+
+                notifyItemChanged(i, "tv_num");//只更新item布局中的checkBox
+                if (myViewHolder.checkBox.isChecked()) {
+                    //通知更新合计总价（重新遍历集合计算总价）
+                    EventBus.getDefault().post(TotalPriceEvent.getInstance());
+                }
+            }
+        });
+        //num 减
+        myViewHolder.ivSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int num = Integer.parseInt(getItemData(i).num);
+                if (num == 1) {
+                    return;
+                }
+                getItemData(i).num = --num + "";
+
+                notifyItemChanged(i, "tv_num");//只更新item布局中的checkBox
+                if (myViewHolder.checkBox.isChecked()) {
+                    //通知更新合计总价（重新遍历集合计算总价）
+                    EventBus.getDefault().post(TotalPriceEvent.getInstance());
+                }
+            }
+        });
+
     }
 
     protected class MyViewHolder extends BaseViewHolder {
         private LinearLayout llItemShopCartGoods;
         private CheckBox checkBox;
+        private ImageView ivSub;
+        private TextView tvNum;
+        private ImageView ivAdd;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             llItemShopCartGoods = itemView.findViewById(R.id.ll_item_shop_cart_goods);
             checkBox = itemView.findViewById(R.id.cb_cart_shop);
+
+            ivSub = itemView.findViewById(R.id.iv_sub);
+            tvNum = itemView.findViewById(R.id.tv_num);
+            ivAdd = itemView.findViewById(R.id.iv_add);
+
         }
     }
 
