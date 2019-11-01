@@ -5,20 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.example.thin.bean.CartGoodsBean;
-import com.example.thin.bean.CartShopBean;
-import com.example.thin.bean.FootBean;
-import com.example.thin.bean.HomeDataBean;
-import com.example.thin.view.BannerView;
 import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.CartGoodsView;
-import com.example.thin.view.CartShopView;
-import com.example.thin.view.HomeFootView;
-import com.example.thin.view.HotView;
-import com.example.thin.view.OrderFootView;
 import com.example.thin.view.SearchGvView;
 import com.example.thin.view.SearchView;
-import com.example.thin.view.TopTypeView;
 
 import java.util.ArrayList;
 import java.util.List;

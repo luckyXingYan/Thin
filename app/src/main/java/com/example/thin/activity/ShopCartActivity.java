@@ -16,10 +16,11 @@ import com.example.thin.adapter.ShopCartAdapter;
 import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.CartGoodsBean;
-import com.example.thin.bean.CartListBean;
+import com.example.thin.bean.GoodBean;
+import com.example.thin.bean.ShopCartBean;
 import com.example.thin.bean.TotalPriceNumBean;
 import com.example.thin.eventbus.TotalPriceEvent;
+import com.example.thin.util.Constants;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -42,7 +43,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     private CheckBox cbAllSelect;
     private TextView tvTotal;
     private String totalNumOfShops, totalPriceOfShops;
-    private List<CartListBean> listCart;
+    private List<ShopCartBean> listCart;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, ShopCartActivity.class));
@@ -79,55 +80,54 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     @Override
     protected void initData() {
         listCart = new ArrayList<>();
-        List<CartListBean> data = new ArrayList<>();
+        List<ShopCartBean> data = new ArrayList<>();
 
-        CartListBean bean1 = new CartListBean();
-        bean1.id = "11";
-        bean1.title = "店铺1";
+        ShopCartBean cartListBean1 = new ShopCartBean();
+
+        cartListBean1.id = "11";
+        cartListBean1.title = "店铺1";
 
 
-        CartGoodsBean info1 = new CartGoodsBean();
+        GoodBean info1 = new GoodBean();
         info1.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
         info1.id = "1";
         info1.shopId = "11";
         info1.price = "1";
         info1.num = "1";
-        bean1.goods.add(info1);
-
-
-        CartGoodsBean info2 = new CartGoodsBean();
+        cartListBean1.goods.add(info1);
+        GoodBean info2 = new GoodBean();
         info2.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
         info2.id = "2";
         info2.shopId = "11";
         info2.price = "2";
         info2.num = "2";
-        bean1.goods.add(info2);
+        cartListBean1.goods.add(info2);
 
-        data.add(bean1);
-
-
-        CartListBean bean2 = new CartListBean();
-        bean2.id = "22";
-        bean2.title = "店铺2";
+        data.add(cartListBean1);
 
 
-        CartGoodsBean info3 = new CartGoodsBean();
+        ShopCartBean cartListBean2 = new ShopCartBean();
+
+        cartListBean2.id = "22";
+        cartListBean2.title = "店铺2";
+
+        GoodBean info3 = new GoodBean();
         info3.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
         info3.id = "3";
         info3.shopId = "22";
         info3.price = "3";
         info3.num = "3";
-        bean2.goods.add(info3);
+        cartListBean2.goods.add(info3);
 
-        CartGoodsBean info4 = new CartGoodsBean();
+        GoodBean info4 = new GoodBean();
         info4.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
         info4.id = "4";
         info4.shopId = "22";
         info4.price = "4";
         info4.num = "4";
-        bean2.goods.add(info4);
+        cartListBean2.goods.add(info4);
 
-        data.add(bean2);
+        data.add(cartListBean2);
 
         adapter.setData(data);
     }
@@ -140,7 +140,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onNotifyEvent(TotalPriceEvent event) {
         adapter.isAllSelect();
-        adapter.getTotalPrice();
+        adapter.getTotalPriceAndNum();
     }
 
     @Override
@@ -157,7 +157,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
                 } else {
                     adapter.setNoSelectData();
                 }
-                adapter.getTotalPrice();//点击全选、反选 更新选中商品总价
+                adapter.getTotalPriceAndNum();//点击全选、反选 更新选中商品总价
                 break;
             case R.id.btn_settlement://结算  订单信息
                 adapter.getSelectBean();
@@ -188,22 +188,22 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
                 return;
             }
             switch (msg.what) {
-                case 101:
+                case Constants.IS_ALL_SELECT:
                     activity.adapter.notifyShopItemRangeChanged();
                     break;
-                case 102:
+                case Constants.TOTAL_PRICE_NUM:
                     TotalPriceNumBean totalPriceNumBean = (TotalPriceNumBean) msg.obj;
                     activity.totalPriceOfShops = totalPriceNumBean.totalPriceOfShops;
                     activity.tvTotal.setText(activity.totalPriceOfShops);
                     activity.totalNumOfShops = totalPriceNumBean.totalNumOfShops;
                     break;
-                case 103:
+                case Constants.GOODS_ALL_SELECT:
                     boolean isAllSelect = (boolean) msg.obj;
                     activity.cbAllSelect.setChecked(isAllSelect);
                     break;
-                case 104:
-                    activity.listCart = (List<CartListBean>) msg.obj;
-                    TakeOrderActivity.open(activity, activity.listCart, activity.totalNumOfShops, activity.totalPriceOfShops);
+                case Constants.GET_SELECT:
+                    activity.listCart = (List<ShopCartBean>) msg.obj;
+                    SubmitOrderActivity.open(activity, activity.listCart, activity.totalNumOfShops, activity.totalPriceOfShops);
                     break;
                 default:
                     break;

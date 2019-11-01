@@ -10,17 +10,16 @@ import com.example.thin.bean.GoodBean;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class OrderGoodsView extends BaseHomeLayout<GoodBean> {
+public class SubmitOrderGoodsView extends BaseHomeLayout<GoodBean> {
 
-    public OrderGoodsView(Context context) {
+    public SubmitOrderGoodsView(Context context) {
         super(context);
     }
 
     @Override
     protected void init() {
 
-        inflate(getContext(), R.layout.layout_order_goods, this);
-//        swipeRevealLayout = findViewById(R.id.swipe_reveal_layout);
+        inflate(getContext(), R.layout.layout_submit_order_goods, this);
 
     }
 

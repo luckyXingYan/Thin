@@ -13,8 +13,9 @@ import android.widget.TextView;
 import com.example.thin.R;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
-import com.example.thin.bean.CartGoodsBean;
+import com.example.thin.bean.GoodBean;
 import com.example.thin.eventbus.TotalPriceEvent;
+import com.example.thin.util.Constants;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -25,27 +26,27 @@ import java.util.List;
  * @Date: 2019/10/30
  * @Desc:
  */
-public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCartAdapter.MyViewHolder> {
+public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyViewHolder> {
     private Context context;
 
 
-    public GoodsCartAdapter(Context context) {
+    public GoodsAdapter(Context context) {
         super(context);
         this.context = context;
     }
 
     @Override
     public int getItemLayout(int viewType) {
-        return R.layout.item_goods_cart;
+        return R.layout.item_goods;
     }
 
-    public void setAllSelectData(final List<CartGoodsBean> goods) {
+    public void setAllSelectData(final List<GoodBean> goods) {
         for (int i = 0; i < goods.size(); i++) {
             goods.get(i).isSelect = true;
         }
     }
 
-    public void setNoSelectData(final List<CartGoodsBean> goods) {
+    public void setNoSelectData(final List<GoodBean> goods) {
         for (int i = 0; i < goods.size(); i++) {
             goods.get(i).isSelect = false;
         }
@@ -70,11 +71,11 @@ public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCa
             // payloads 不为空，这只更新需要更新的 View 即可。
             for (Object payload : payloads) {
                 String payloadStr = ((String) payload);
-                if ("checkBox".equals(payloadStr)) {
+                if (Constants.CHECK_BOX_GOODS.equals(payloadStr)) {
                     holder.checkBox.setChecked(getItemData(position).isSelect);//更新是否选中
                     //通知更新合计总价（重新遍历集合计算总价）
                     EventBus.getDefault().post(TotalPriceEvent.getInstance());
-                } else if ("tv_num".equals(payloadStr)) {
+                } else if (Constants.TV_NUM.equals(payloadStr)) {
                     holder.tvNum.setText(getItemData(position).num);
                 }
             }
@@ -96,7 +97,7 @@ public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCa
                 } else {
                     getItemData(i).isSelect = false;
                 }
-                notifyItemChanged(i, "checkBox");//只更新item布局中的checkBox
+                notifyItemChanged(i, Constants.CHECK_BOX_GOODS);//只更新item布局中的checkBox
             }
         });
         //长按删除
@@ -137,7 +138,7 @@ public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCa
                 }
                 getItemData(i).num = ++num + "";
 
-                notifyItemChanged(i, "tv_num");//只更新item布局中的checkBox
+                notifyItemChanged(i, Constants.TV_NUM);//只更新item布局中的checkBox
                 if (myViewHolder.checkBox.isChecked()) {
                     //通知更新合计总价（重新遍历集合计算总价）
                     EventBus.getDefault().post(TotalPriceEvent.getInstance());
@@ -154,7 +155,7 @@ public class GoodsCartAdapter extends BaseRecyclerAdapter<CartGoodsBean, GoodsCa
                 }
                 getItemData(i).num = --num + "";
 
-                notifyItemChanged(i, "tv_num");//只更新item布局中的checkBox
+                notifyItemChanged(i, Constants.TV_NUM);//只更新item布局中的checkBox
                 if (myViewHolder.checkBox.isChecked()) {
                     //通知更新合计总价（重新遍历集合计算总价）
                     EventBus.getDefault().post(TotalPriceEvent.getInstance());

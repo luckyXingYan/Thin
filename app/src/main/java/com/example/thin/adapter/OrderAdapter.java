@@ -5,13 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.example.thin.bean.CartGoodsBean;
-import com.example.thin.bean.CartShopBean;
-import com.example.thin.bean.FootBean;
+import com.example.thin.bean.GoodBean;
+import com.example.thin.bean.ShopBean;
+import com.example.thin.bean.OrderBottomBean;
 import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.CartGoodsView;
-import com.example.thin.view.CartShopView;
-import com.example.thin.view.OrderFootView;
+import com.example.thin.view.ShopView;
+import com.example.thin.view.OrderBottomView;
 import com.example.thin.view.OrderGoodsView;
 
 import java.util.List;
@@ -39,11 +38,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        if (data.get(position) instanceof CartShopBean) {
+        if (data.get(position) instanceof ShopBean) {
             return SHOP;
-        } else if (data.get(position) instanceof CartGoodsBean) {
+        } else if (data.get(position) instanceof GoodBean) {
             return GOODS;
-        } else if (data.get(position) instanceof FootBean) {
+        } else if (data.get(position) instanceof OrderBottomBean) {
             return FOOT;
         }
         return SHOP;
@@ -55,13 +54,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
-                myViewHolder = new MyViewHolder(new CartShopView(context, 1));
+                myViewHolder = new MyViewHolder(new ShopView(context, 1));
                 break;
             case GOODS:
                 myViewHolder = new MyViewHolder(new OrderGoodsView(context));
                 break;
             case FOOT:
-                myViewHolder = new MyViewHolder(new OrderFootView(context));
+                myViewHolder = new MyViewHolder(new OrderBottomView(context));
                 break;
         }
         return myViewHolder;

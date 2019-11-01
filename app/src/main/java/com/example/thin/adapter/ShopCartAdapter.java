@@ -12,29 +12,22 @@ import com.example.thin.R;
 import com.example.thin.activity.ShopCartActivity;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
-import com.example.thin.bean.CartGoodsBean;
-import com.example.thin.bean.CartListBean;
-import com.example.thin.bean.CartShopBean;
+import com.example.thin.bean.GoodBean;
+import com.example.thin.bean.ShopCartBean;
 import com.example.thin.bean.TotalPriceNumBean;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
+import com.example.thin.util.Constants;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/23
  * @Desc:
  */
-public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartAdapter.MyViewHolder> {
+public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartAdapter.MyViewHolder> {
     private Context context;
-    private GoodsCartAdapter adapter;
+    private GoodsAdapter adapter;
     private ShopCartActivity.MyHandler myHandler;
 
     public ShopCartAdapter(Context context) {
@@ -53,13 +46,13 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
             @Override
             public void run() {
                 //子线程耗时循环店铺
-                for (final CartListBean bean : getData()) {
+                for (final ShopCartBean bean : getData()) {
                     adapter.setAllSelectData(bean.goods);
                     //通知主线程更新商品
                     //myHandler.sendEmptyMessage(100);
                 }
                 //通知主线程更新店铺
-                myHandler.sendEmptyMessage(101);
+                myHandler.sendEmptyMessage(Constants.IS_ALL_SELECT);
             }
         }).start();
     }
@@ -68,10 +61,10 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (final CartListBean bean : getData()) {
+                for (final ShopCartBean bean : getData()) {
                     adapter.setNoSelectData(bean.goods);
                 }
-                myHandler.sendEmptyMessage(101);
+                myHandler.sendEmptyMessage(Constants.IS_ALL_SELECT);
             }
         }).start();
     }
@@ -87,9 +80,9 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
             @Override
             public void run() {
                 Message message = Message.obtain();
-                message.what = 103;
-                for (CartListBean bean : getData()) {
-                    for (CartGoodsBean goodsBean : bean.goods) {
+                message.what = Constants.GOODS_ALL_SELECT;
+                for (ShopCartBean bean : getData()) {
+                    for (GoodBean goodsBean : bean.goods) {
                         if (!goodsBean.isSelect) {
                             message.obj = false;
                             myHandler.sendMessage(message);
@@ -108,7 +101,7 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
      * 更新店铺选中状态
      */
     public void notifyShopItemRangeChanged() {
-        notifyItemRangeChanged(0, getData().size(), "checkBox");
+        notifyItemRangeChanged(0, getData().size(), Constants.CHECK_BOX_SHOP_CART);
     }
 
     /**
@@ -118,35 +111,33 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
         myHandler.removeCallbacks(null);
     }
 
+    /**
+     * 获取选中的 店铺 + 商品
+     */
     public void getSelectBean() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<Map<CartListBean, List<CartGoodsBean>>> shopBeans = new ArrayList<>();
-                for (CartListBean bean : getData()) {
-                    Map<CartListBean, List<CartGoodsBean>> map = new HashMap<>();
-                    List<CartGoodsBean> goodsBeans = new ArrayList<>();
-                    for (CartGoodsBean goodsBean : bean.goods) {
-                        if (goodsBean.isSelect) {
-                            goodsBeans.add(goodsBean);
-                            map.put(bean, goodsBeans);
-                            shopBeans.add(map);
+                List<ShopCartBean> shopBeans = new ArrayList<>();
+                for (ShopCartBean listBean : getData()) {
+                    ShopCartBean cartListBean = new ShopCartBean();
+                    for (GoodBean goodBean : listBean.goods) {
+                        if (goodBean.isSelect) {
+                            if (cartListBean.id != listBean.id) {
+                                cartListBean.title = listBean.title;
+                                cartListBean.id = listBean.id;
+                            }
+                            cartListBean.goods.add(goodBean);
                         }
                     }
+                    if (cartListBean.goods != null && cartListBean.goods.size() > 0) {
+                        shopBeans.add(cartListBean);
+                    }
                 }
+
                 Message message = Message.obtain();
-                message.what = 104;
-
-                Gson gson = new Gson();
-                String jsonStr = gson.toJson(shopBeans);
-                /**
-                 * TypeToken<List<需要映射的Bean对象>>(){}.getType()
-                 *  // 参数二：需要指定类型，类型来决定解析的集合
-                 */
-                List<CartListBean> list = gson.fromJson(jsonStr, new TypeToken<List<CartListBean>>() {
-                }.getType());
-
-                message.obj = list;
+                message.what = Constants.GET_SELECT;
+                message.obj = shopBeans;
                 myHandler.sendMessage(message);
                 return;
             }
@@ -158,13 +149,13 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
     private int numOfPerShop;//选中的每个店铺的商品个数
     private int totalNumOfShops;//选中的所有的商品个数
 
-    public void getTotalPrice() {
+    public void getTotalPriceAndNum() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 totalPriceOfShops = 0;
                 totalNumOfShops = 0;
-                for (CartListBean bean : getData()) {
+                for (ShopCartBean bean : getData()) {
                     totalPriceOfPerShop = 0;
                     for (int i = 0; i < bean.goods.size(); i++) {
                         if (bean.goods.get(i).isSelect) {
@@ -179,7 +170,7 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
                 }
 
                 Message message = Message.obtain();
-                message.what = 102;
+                message.what = Constants.TOTAL_PRICE_NUM;
                 TotalPriceNumBean totalPriceNumBean = new TotalPriceNumBean();
                 totalPriceNumBean.totalPriceOfShops = (totalPriceOfShops + "").trim();
                 totalPriceNumBean.totalNumOfShops = (totalNumOfShops + "").trim();
@@ -208,7 +199,12 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
             onBindViewHolder(holder, position);
         } else {
             // payloads 不为空，这只更新需要更新的 View 即可。
-            Log.e("----onBindViewHolder", payloads + "");
+            for (Object payload : payloads) {
+                String payloadStr = ((String) payload);
+                if (Constants.CHECK_BOX_SHOP_CART.equals(payloadStr)) {
+                    Log.e("----onBindViewHolder", payloads + "");
+                }
+            }
         }
     }
 
@@ -225,12 +221,12 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
          * 因为删除时改变了rv的宽高，所以不用考虑 直接 notifyDataSetChanged 更新即可
          */
         myViewHolder.rvGoodsCart.setHasFixedSize(true);
-        adapter = new GoodsCartAdapter(context);
+        adapter = new GoodsAdapter(context);
         myViewHolder.rvGoodsCart.setAdapter(adapter);
 
         adapter.setData(getItemData(i).goods);
 
-        adapter.setDeleteShopItemListener(new GoodsCartAdapter.DeleteShopItemListener() {
+        adapter.setDeleteShopItemListener(new GoodsAdapter.DeleteShopItemListener() {
             @Override
             public void deleteShopItem() {
                 if (getItemData(i).goods.size() == 0) {
@@ -245,29 +241,9 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<CartListBean, ShopCartA
 
         private RecyclerView rvGoodsCart;
 
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             rvGoodsCart = itemView.findViewById(R.id.rv_goods_cart);
         }
-    }
-
-    /**
-     * 将JSON字符串转换为集合
-     *
-     * @param json
-     * @param clazz
-     * @return
-     */
-    public static <T> ArrayList<T> jsonToArrayList(String json, Class<T> clazz) {
-        Type type = new TypeToken<ArrayList<JsonObject>>() {
-        }.getType();
-        ArrayList<JsonObject> jsonObjects = new Gson().fromJson(json, type);
-
-        ArrayList<T> arrayList = new ArrayList<>();
-        for (JsonObject jsonObject : jsonObjects) {
-            arrayList.add(new Gson().fromJson(jsonObject, clazz));
-        }
-        return arrayList;
     }
 }

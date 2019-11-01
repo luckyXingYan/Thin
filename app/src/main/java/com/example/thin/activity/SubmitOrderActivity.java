@@ -10,17 +10,15 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.thin.R;
-import com.example.thin.adapter.TakeOrderAdapter;
+import com.example.thin.adapter.SubmitOrderAdapter;
 import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.CartGoodsBean;
-import com.example.thin.bean.CartListBean;
+import com.example.thin.bean.ShopCartBean;
 import com.example.thin.bean.OrderDataHelper;
 import com.example.thin.util.Constants;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,19 +26,19 @@ import java.util.List;
  * @Date: 2019/10/24
  * @Desc:
  */
-public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+public class SubmitOrderActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
     private RecyclerView recyclerView;
-    private TakeOrderAdapter adapter;
+    private SubmitOrderAdapter adapter;
     private CheckBox cb;
     private TextView totalNum;
     private Button btnSettlement;
     private TextView tvNewAddress, tvTotalPrice;
     private String totalNumOfShops, totalPriceOfShops;
-    private List<CartListBean> listCart;
+    private List<ShopCartBean> listCart;
 
 
-    public static void open(Context context, List<CartListBean> listCart, String totalNumOfShops, String totalPriceOfShops) {
-        Intent intent = new Intent(context, TakeOrderActivity.class);
+    public static void open(Context context, List<ShopCartBean> listCart, String totalNumOfShops, String totalPriceOfShops) {
+        Intent intent = new Intent(context, SubmitOrderActivity.class);
         intent.putExtra(Constants.LIST_CART, (Serializable) listCart);
         intent.putExtra(Constants.TOTAL_NUM_OF_SHOPS, totalNumOfShops);
         intent.putExtra(Constants.TOTAL_PRICE_OF_SHOPS, totalPriceOfShops);
@@ -49,7 +47,7 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.activity_take_order;
+        return R.layout.activity_submit_order;
     }
 
     @Override
@@ -59,7 +57,7 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
 
     @Override
     protected void initContentView() {
-        listCart = (List<CartListBean>) getIntent().getSerializableExtra(Constants.LIST_CART);
+        listCart = (List<ShopCartBean>) getIntent().getSerializableExtra(Constants.LIST_CART);
         totalNumOfShops = getIntent().getStringExtra(Constants.TOTAL_NUM_OF_SHOPS);
         totalPriceOfShops = getIntent().getStringExtra(Constants.TOTAL_PRICE_OF_SHOPS);
         mTitleBar.setTitle("订单信息");
@@ -79,7 +77,7 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
         recyclerView = getView(R.id.rv_take_order);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TakeOrderAdapter(this);
+        adapter = new SubmitOrderAdapter(this);
         recyclerView.setAdapter(adapter);
 
         totalNum.setText("共计 " + totalNumOfShops + " 件");
@@ -89,7 +87,7 @@ public class TakeOrderActivity extends BaseScrollTitleBarActivity<BasePresenter>
 
     @Override
     protected void initData() {
-        adapter.setData(OrderDataHelper.getDataAfterHandle(listCart));
+        adapter.setData(OrderDataHelper.getSubmitOrderList(listCart));
     }
 
     @Override

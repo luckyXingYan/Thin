@@ -5,6 +5,7 @@ package com.example.thin.bean;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class CartShopBean {
-    public String titile;
+public class ShopBean {
+    public String title;
+    public String id;
 }

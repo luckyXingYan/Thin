@@ -5,10 +5,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thin.R;
-import com.example.thin.bean.CartShopBean;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author: xingyan

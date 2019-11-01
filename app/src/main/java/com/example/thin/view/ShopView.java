@@ -4,18 +4,18 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.example.thin.R;
-import com.example.thin.bean.CartShopBean;
+import com.example.thin.bean.ShopBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/23
  * @Desc:
  */
-public class CartShopView extends BaseHomeLayout<CartShopBean> {
+public class ShopView extends BaseHomeLayout<ShopBean> {
     private int type;
     private TextView sendType;
 
-    public CartShopView(Context context, int type) {
+    public ShopView(Context context, int type) {
         super(context);
         this.type = type;
     }
@@ -23,7 +23,7 @@ public class CartShopView extends BaseHomeLayout<CartShopBean> {
     @Override
     protected void init() {
 
-        inflate(getContext(), R.layout.layout_cart_shop, this);
+        inflate(getContext(), R.layout.layout_shop, this);
         sendType = findViewById(R.id.tv_send_type);
         if (type == 1) {
             sendType.setVisibility(VISIBLE);
@@ -32,7 +32,7 @@ public class CartShopView extends BaseHomeLayout<CartShopBean> {
     }
 
     @Override
-    public void setData(CartShopBean data) {
+    public void setData(ShopBean data) {
 
     }
 }

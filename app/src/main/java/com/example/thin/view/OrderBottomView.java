@@ -1,13 +1,10 @@
 package com.example.thin.view;
 
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.thin.R;
-import com.example.thin.activity.CreateAddressActivity;
-import com.example.thin.activity.MyOrderActivity;
 import com.example.thin.activity.SeeCouponCodeActivity;
 
 /**
@@ -15,19 +12,19 @@ import com.example.thin.activity.SeeCouponCodeActivity;
  * @Date: 2019/10/21
  * @Desc:
  */
-public class OrderFootView extends BaseHomeLayout implements View.OnClickListener {
+public class OrderBottomView extends BaseHomeLayout implements View.OnClickListener {
     private Button btnOne;
     private Button btnTwo;
 
 
-    public OrderFootView(Context context) {
+    public OrderBottomView(Context context) {
         super(context);
     }
 
 
     @Override
     protected void init() {
-        inflate(getContext(), R.layout.layout_order_foot, this);
+        inflate(getContext(), R.layout.layout_order_bottom, this);
 
         btnOne = (Button) findViewById(R.id.btn_one);
         btnTwo = (Button) findViewById(R.id.btn_two);

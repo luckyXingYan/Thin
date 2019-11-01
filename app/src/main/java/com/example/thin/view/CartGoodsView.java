@@ -8,21 +8,21 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
 import com.example.thin.R;
-import com.example.thin.bean.CartGoodsBean;
+import com.example.thin.bean.GoodBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/23
  * @Desc:
  */
-public class CartGoodsView extends BaseHomeLayout<CartGoodsBean> implements View.OnClickListener {
+public class CartGoodsView extends BaseHomeLayout<GoodBean> implements View.OnClickListener {
     private LinearLayout item;
-    private CartGoodsBean data;
+    private GoodBean data;
     private CheckBox checkBox;
 
     public CartGoodsView(Context context) {
         super(context);
-        data = new CartGoodsBean();
+        data = new GoodBean();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CartGoodsView extends BaseHomeLayout<CartGoodsBean> implements View
     }
 
     @Override
-    public void setData(CartGoodsBean data) {
+    public void setData(GoodBean data) {
         this.data = data;
         checkBox.setChecked(data.isSelect);
     }
@@ -81,7 +81,7 @@ public class CartGoodsView extends BaseHomeLayout<CartGoodsBean> implements View
     private DeletePosDataListener deletePosDataListener;
 
     public interface DeletePosDataListener {
-        void setOnDeletePosData(CartGoodsBean bean);
+        void setOnDeletePosData(GoodBean bean);
     }
 
     public void setOnDeletePosDataLinstener(DeletePosDataListener deletePosDataListener) {

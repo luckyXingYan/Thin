@@ -14,4 +14,15 @@ public class Constants {
     public static final String TOTAL_NUM_OF_SHOPS = "totalNumOfShops";
     public static final String TOTAL_PRICE_OF_SHOPS = "totalPriceOfShops";
     public static final String LIST_CART = "listCart";
+    public static final String CHECK_BOX_GOODS = "checkBoxGoods";
+    public static final String CHECK_BOX_SHOP_CART = "checkBoxShopCart";
+    public static final String TV_NUM = "tv_num";
+
+
+
+
+    public static final int IS_ALL_SELECT = 101;//全选 or 反选
+    public static final int TOTAL_PRICE_NUM = 102;//获取选中的 商品的 总价格 和 数量
+    public static final int GOODS_ALL_SELECT = 103;//商品是否全选了
+    public static final int GET_SELECT = 104;//获取选中的所有 店铺 和 商品
 }

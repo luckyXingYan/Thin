@@ -5,12 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.example.thin.bean.CartGoodsBean;
-import com.example.thin.bean.CartShopBean;
+import com.example.thin.bean.ShopBean;
+import com.example.thin.bean.GoodBean;
 import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.CartGoodsView;
-import com.example.thin.view.CartShopView;
-import com.example.thin.view.TakeOederGoodsView;
+import com.example.thin.view.ShopView;
+import com.example.thin.view.SubmitOrderGoodsView;
 
 import java.util.List;
 
@@ -19,13 +18,13 @@ import java.util.List;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class TakeOrderAdapter extends RecyclerView.Adapter<TakeOrderAdapter.MyViewHolder> {
+public class SubmitOrderAdapter extends RecyclerView.Adapter<SubmitOrderAdapter.MyViewHolder> {
     private Context context;
     private static final int SHOP = 0;
     private static final int GOODS = 1;
     private List<Object> data;
 
-    public TakeOrderAdapter(Context context) {
+    public SubmitOrderAdapter(Context context) {
         this.context = context;
     }
 
@@ -36,9 +35,9 @@ public class TakeOrderAdapter extends RecyclerView.Adapter<TakeOrderAdapter.MyVi
 
     @Override
     public int getItemViewType(int position) {
-        if (data.get(position) instanceof CartShopBean) {
+        if (data.get(position) instanceof ShopBean) {
             return SHOP;
-        } else if (data.get(position) instanceof CartGoodsBean) {
+        } else if (data.get(position) instanceof GoodBean) {
             return GOODS;
         }
         return SHOP;
@@ -50,10 +49,10 @@ public class TakeOrderAdapter extends RecyclerView.Adapter<TakeOrderAdapter.MyVi
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
-                myViewHolder = new MyViewHolder(new CartShopView(context, 0));
+                myViewHolder = new MyViewHolder(new ShopView(context, 0));
                 break;
             case GOODS:
-                myViewHolder = new MyViewHolder(new TakeOederGoodsView(context));
+                myViewHolder = new MyViewHolder(new SubmitOrderGoodsView(context));
                 break;
         }
         return myViewHolder;

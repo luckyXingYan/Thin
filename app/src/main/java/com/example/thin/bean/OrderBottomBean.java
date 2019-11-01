@@ -5,7 +5,7 @@ package com.example.thin.bean;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class FootBean {
+public class OrderBottomBean {
     public String title;
     public String id;
 }
