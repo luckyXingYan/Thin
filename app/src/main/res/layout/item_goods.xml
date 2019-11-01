@@ -3,12 +3,107 @@
     android:id="@+id/ll_item_shop_cart_goods"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/x30"
     android:layout_marginTop="@dimen/y30"
     android:layout_marginRight="@dimen/x30"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y180"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_cart_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:button="@null"
+            android:drawableLeft="@drawable/select_selector"
+            android:gravity="center"
+            android:padding="@dimen/y30" />
+
+        <RelativeLayout
+            android:id="@+id/rl_goods_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_cart"
+                android:layout_width="@dimen/y140"
+                android:layout_height="@dimen/y140"
+                android:layout_marginRight="@dimen/y20"
+                android:src="@mipmap/home_icon_shangpinxiangqing" />
+
+            <TextView
+                android:id="@+id/iv_cart_goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:layout_toRightOf="@id/iv_cart"
+                android:text="商品名称"
+                android:textColor="@color/color_38"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_cart_goods_name"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="@dimen/y30"
+                android:layout_toRightOf="@id/iv_cart"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="@color/color_E4382B"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9999"
+                    android:textColor="@color/color_E4382B"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/iv_sub"
+                    android:layout_width="@dimen/x50"
+                    android:layout_height="@dimen/y50"
+                    android:src="@mipmap/no_select" />
+
+                <TextView
+                    android:id="@+id/tv_num"
+                    android:layout_width="@dimen/x100"
+                    android:layout_height="@dimen/y50"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/color_3f3f3f"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/iv_add"
+                    android:layout_width="@dimen/x50"
+                    android:layout_height="@dimen/y50"
+                    android:src="@mipmap/select" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <!--
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/y28"
@@ -16,85 +111,15 @@
 
         <CheckBox
             android:id="@+id/cb_cart_shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x32"
+            android:layout_height="@dimen/y32"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/y20"
             android:button="@null"
-            android:clickable="false"
             android:drawableLeft="@drawable/select_selector" />
 
-        <ImageView
-            android:id="@+id/iv_cart"
-            android:layout_width="@dimen/y140"
-            android:layout_height="@dimen/y140"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/y20"
-            android:layout_toRightOf="@id/cb_cart_shop"
-            android:src="@mipmap/home_icon_shangpinxiangqing" />
 
-        <TextView
-            android:id="@+id/iv_cart_goods_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/y10"
-            android:layout_toRightOf="@id/iv_cart"
-            android:text="商品名称"
-            android:textColor="@color/color_38"
-            android:textSize="15sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/iv_cart_goods_name"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="@dimen/y30"
-            android:layout_toRightOf="@id/iv_cart"
-            android:gravity="bottom"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="￥"
-                android:textColor="@color/color_E4382B"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="9999"
-                android:textColor="@color/color_E4382B"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <ImageView
-                android:id="@+id/iv_sub"
-                android:layout_width="@dimen/x50"
-                android:layout_height="@dimen/y50"
-                android:src="@mipmap/no_select" />
-
-            <TextView
-                android:id="@+id/tv_num"
-                android:layout_width="@dimen/x100"
-                android:layout_height="@dimen/y50"
-                android:gravity="center"
-                android:text="1"
-                android:textColor="@color/color_3f3f3f"
-                android:textSize="18sp" />
-
-            <ImageView
-                android:id="@+id/iv_add"
-                android:layout_width="@dimen/x50"
-                android:layout_height="@dimen/y50"
-                android:src="@mipmap/select" />
-        </LinearLayout>
-    </RelativeLayout>
-
+    </LinearLayout>
+-->
     <include layout="@layout/layout_line" />
 </LinearLayout>

@@ -49,7 +49,7 @@ public class SubmitOrderAdapter extends RecyclerView.Adapter<SubmitOrderAdapter.
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
-                myViewHolder = new MyViewHolder(new ShopView(context, 0));
+                myViewHolder = new MyViewHolder(new ShopView(context));
                 break;
             case GOODS:
                 myViewHolder = new MyViewHolder(new SubmitOrderGoodsView(context));

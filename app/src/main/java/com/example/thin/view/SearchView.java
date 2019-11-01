@@ -30,13 +30,10 @@ public class SearchView extends BaseHomeLayout<String> {
         ivSearchHot = (ImageView) findViewById(R.id.iv_search_hot);
 
 
-
-
     }
 
     @Override
     public void setData(String data) {
-
         if (type == 1) {
             ivSearchHot.setVisibility(VISIBLE);
         } else {

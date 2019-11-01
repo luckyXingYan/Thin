@@ -7,10 +7,11 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.thin.R;
+import com.example.thin.activity.GoodsDetailActivity;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
 import com.example.thin.bean.GoodBean;
@@ -40,28 +41,6 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
         return R.layout.item_goods;
     }
 
-    public void setAllSelectData(final List<GoodBean> goods) {
-        for (int i = 0; i < goods.size(); i++) {
-            goods.get(i).isSelect = true;
-        }
-    }
-
-    public void setNoSelectData(final List<GoodBean> goods) {
-        for (int i = 0; i < goods.size(); i++) {
-            goods.get(i).isSelect = false;
-        }
-    }
-
-    @Override
-    public int getViewType(int position) {
-        return 0;
-    }
-
-    @Override
-    public MyViewHolder getViewHolder(View view, int viewType) {
-        return new MyViewHolder(view);
-    }
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull List<Object> payloads) {
         if (payloads.isEmpty()) {
@@ -89,7 +68,7 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
         myViewHolder.checkBox.setChecked(getItemData(i).isSelect);
         myViewHolder.tvNum.setText(getItemData(i).num);
         //选中
-        myViewHolder.llItemShopCartGoods.setOnClickListener(new View.OnClickListener() {
+        myViewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!getItemData(i).isSelect) {
@@ -100,8 +79,15 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
                 notifyItemChanged(i, Constants.CHECK_BOX_GOODS);//只更新item布局中的checkBox
             }
         });
+        //商品详情
+        myViewHolder.rlGoodsDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GoodsDetailActivity.open(context);
+            }
+        });
         //长按删除
-        myViewHolder.llItemShopCartGoods.setOnLongClickListener(new View.OnLongClickListener() {
+        myViewHolder.rlGoodsDetail.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 new AlertDialog.Builder(context).setTitle("确认删除吗？")
@@ -165,21 +151,43 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
 
     }
 
+    public void setAllSelectData(final List<GoodBean> goods) {
+        for (int i = 0; i < goods.size(); i++) {
+            goods.get(i).isSelect = true;
+        }
+    }
+
+    public void setNoSelectData(final List<GoodBean> goods) {
+        for (int i = 0; i < goods.size(); i++) {
+            goods.get(i).isSelect = false;
+        }
+    }
+
+    @Override
+    public int getViewType(int position) {
+        return 0;
+    }
+
+    @Override
+    public MyViewHolder getViewHolder(View view, int viewType) {
+        return new MyViewHolder(view);
+    }
+
     protected class MyViewHolder extends BaseViewHolder {
-        private LinearLayout llItemShopCartGoods;
         private CheckBox checkBox;
         private ImageView ivSub;
         private TextView tvNum;
         private ImageView ivAdd;
+        private RelativeLayout rlGoodsDetail;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            llItemShopCartGoods = itemView.findViewById(R.id.ll_item_shop_cart_goods);
             checkBox = itemView.findViewById(R.id.cb_cart_shop);
 
             ivSub = itemView.findViewById(R.id.iv_sub);
             tvNum = itemView.findViewById(R.id.tv_num);
             ivAdd = itemView.findViewById(R.id.iv_add);
+            rlGoodsDetail = itemView.findViewById(R.id.rl_goods_detail);
 
         }
     }

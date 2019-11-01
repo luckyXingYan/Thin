@@ -42,6 +42,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".activity.ShopDetailOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity

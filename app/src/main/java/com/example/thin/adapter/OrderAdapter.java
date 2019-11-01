@@ -54,7 +54,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
-                myViewHolder = new MyViewHolder(new ShopView(context, 1));
+                myViewHolder = new MyViewHolder(new ShopView(context));
                 break;
             case GOODS:
                 myViewHolder = new MyViewHolder(new OrderGoodsView(context));

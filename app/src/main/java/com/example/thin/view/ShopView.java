@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.example.thin.R;
+import com.example.thin.activity.MyOrderActivity;
 import com.example.thin.bean.ShopBean;
 
 /**
@@ -12,23 +13,20 @@ import com.example.thin.bean.ShopBean;
  * @Desc:
  */
 public class ShopView extends BaseHomeLayout<ShopBean> {
-    private int type;
     private TextView sendType;
 
-    public ShopView(Context context, int type) {
+    public ShopView(Context context) {
         super(context);
-        this.type = type;
     }
 
     @Override
     protected void init() {
-
         inflate(getContext(), R.layout.layout_shop, this);
         sendType = findViewById(R.id.tv_send_type);
-        if (type == 1) {
+
+        if (getContext() instanceof MyOrderActivity) {
             sendType.setVisibility(VISIBLE);
         }
-
     }
 
     @Override
