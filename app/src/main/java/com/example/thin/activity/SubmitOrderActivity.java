@@ -99,7 +99,7 @@ public class SubmitOrderActivity extends BaseScrollTitleBarActivity<BasePresente
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_settlement://提交订单 收银台
-                CashierActivity.open(this);
+                CashierActivity.open(this, totalPriceOfShops);
                 break;
             case R.id.tv_new_address://新建收货地址
                 CreateAddressActivity.open(this);

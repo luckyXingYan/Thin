@@ -18,11 +18,28 @@ import java.util.List;
  * @Desc:
  */
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
+
+
+    private enum SearchPageType {
+
+        RECENT_SEARCH(0),
+        RECENT_SEARCH_GV(1),
+        HOT_SEARCH(2),
+        HOT_SEARCH_GV(3);
+
+        private int value;
+
+        SearchPageType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+    }
+
     private Context context;
-    private static final int RECENT_SEARCH = 0;
-    private static final int RECENT_SEARCH_GV = 1;
-    private static final int HOT_SEARCH = 2;
-    private static final int HOT_SEARCH_GV = 3;
     private List<String> data = new ArrayList<>();
 
     public SearchAdapter(Context context) {
@@ -37,19 +54,20 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        SearchPageType type = SearchPageType.values()[i];
         MyViewHolder myViewHolder = null;
-        switch (i) {
+        switch (type) {
             case RECENT_SEARCH:
                 myViewHolder = new MyViewHolder(new SearchView(context, 0));
                 break;
             case RECENT_SEARCH_GV:
-                myViewHolder = new MyViewHolder(new SearchGvView(context));
+                myViewHolder = new MyViewHolder(new SearchGvView(context, 0));
                 break;
             case HOT_SEARCH:
                 myViewHolder = new MyViewHolder(new SearchView(context, 1));
                 break;
             case HOT_SEARCH_GV:
-                myViewHolder = new MyViewHolder(new SearchGvView(context));
+                myViewHolder = new MyViewHolder(new SearchGvView(context, 1));
                 break;
         }
         return myViewHolder;
@@ -58,20 +76,20 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder myViewHolder, int i) {
         if (data == null) return;
-        if (getItemViewType(i) == RECENT_SEARCH) {
+        if (getItemViewType(i) == SearchPageType.RECENT_SEARCH.getValue()) {
             myViewHolder.setData(data.get(i));
-        } else if (i == RECENT_SEARCH_GV) {
+        } else if (i == SearchPageType.RECENT_SEARCH_GV.getValue()) {
             myViewHolder.setData(data.get(i));
-        } else if (i == HOT_SEARCH) {
+        } else if (i == SearchPageType.HOT_SEARCH.getValue()) {
             myViewHolder.setData(data.get(i));
-        } else if (i == HOT_SEARCH_GV) {
+        } else if (i == SearchPageType.HOT_SEARCH_GV.getValue()) {
             myViewHolder.setData(data.get(i));
         }
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return SearchPageType.values().length;
     }
 
     @Override

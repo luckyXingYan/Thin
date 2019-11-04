@@ -30,28 +30,28 @@ import java.util.List;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+public class SearchResultActivity extends BaseActivity<BasePresenter> implements IBaseView, View.OnClickListener {
     private TwinklingRefreshLayout refreshLayout;
     private RecyclerView recyclerView;
     private HomeTypeDetailAdapter adapter;
     private ImageView back;
-//    private String inputStr;
+    private String inputStr;
     private EditText etSearch;
 
-    public static void open(Context context) {
-        Intent intent = new Intent(context, HomeTypeDetailActivity.class);
-//        intent.putExtra(Constants.SEARCH_INPUT_CONTENT, inputStr);
+    public static void open(Context context, String inputStr) {
+        Intent intent = new Intent(context, SearchResultActivity.class);
+        intent.putExtra(Constants.SEARCH_INPUT_CONTENT, inputStr);
         context.startActivity(intent);
     }
 
     @Override
     protected int layoutId() {
-        return R.layout.activity_home_type_detail;
+        return R.layout.activity_search_result;
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-//        inputStr = getIntent().getStringExtra(Constants.SEARCH_INPUT_CONTENT);
+        inputStr = getIntent().getStringExtra(Constants.SEARCH_INPUT_CONTENT);
         refreshLayout = getView(R.id.refresh_layout);
         recyclerView = getView(R.id.rv_home_type);
         etSearch = getView(R.id.et_input_search);
@@ -79,12 +79,12 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, String s, int position) {
-                ShopDetailActivity.open(HomeTypeDetailActivity.this);
+                ShopDetailActivity.open(SearchResultActivity.this);
             }
         });
 
-//        etSearch.setText(inputStr);
-//        etSearch.setSelection(inputStr.length());
+        etSearch.setText(inputStr);
+        etSearch.setSelection(inputStr.length());
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 
 import com.example.thin.R;
 import com.example.thin.adapter.SearchRvAdapter;
+import com.example.thin.util.SearchStorageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +20,12 @@ import java.util.List;
 public class SearchGvView extends BaseHomeLayout<String> {
     private RecyclerView recyclerView;
     private SearchRvAdapter adapter;
+    private List<String> historyList;
+    private int type;
 
-    public SearchGvView(Context context) {
+    public SearchGvView(Context context, int type) {
         this(context, null);
+        this.type = type;
     }
 
     public SearchGvView(Context context, AttributeSet attrs) {
@@ -39,17 +43,15 @@ public class SearchGvView extends BaseHomeLayout<String> {
     }
 
     @Override
-    public void setData(String data) {
-
-
-        List<String> data1 = new ArrayList<>();
-        data1.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
-        data1.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
-        data1.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
-        data1.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
-        data1.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
-
-        adapter.setData(data1);
+    public void setData(final String data) {
+        if (type == 0) {//最近搜索
+            historyList = SearchStorageUtils.getSearchHistory();
+        } else if (type == 1) {//热门搜索
+            historyList = new ArrayList<>();
+            for (int i = 0; i < 6; i++) {
+                historyList.add("数据" + i);
+            }
+        }
+        adapter.setData(historyList);
     }
-
 }

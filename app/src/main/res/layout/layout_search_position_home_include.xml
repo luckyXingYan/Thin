@@ -14,9 +14,28 @@
         android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray"
         android:gravity="center_vertical"
         android:hint="大家都在搜索“减肥药"
+        android:imeOptions="actionSearch"
+        android:maxLines="1"
         android:paddingLeft="@dimen/x20"
         android:textColor="@color/color_99"
         android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/et_input_search"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y60"
+        android:layout_weight="1"
+        android:background="@drawable/shape_rectangle_50_corners_white_stroke_gray"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:hint="大家都在搜索“减肥药"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/x20"
+        android:textColor="@color/color_99"
+        android:textSize="14sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_pos_name"

@@ -13,7 +13,6 @@ import com.example.thin.R;
  */
 public class SearchView extends BaseHomeLayout<String> {
     private int type;
-    private TextView sendType;
     private TextView tvSearchTitle;
     private ImageView ivSearchHot;
 
@@ -34,10 +33,12 @@ public class SearchView extends BaseHomeLayout<String> {
 
     @Override
     public void setData(String data) {
-        if (type == 1) {
-            ivSearchHot.setVisibility(VISIBLE);
-        } else {
+        if (type == 0) {
             ivSearchHot.setVisibility(GONE);
+            tvSearchTitle.setText("最近搜索");
+        } else if (type == 1) {
+            ivSearchHot.setVisibility(VISIBLE);
+            tvSearchTitle.setText("热门搜索");
         }
     }
 }

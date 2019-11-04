@@ -3,8 +3,11 @@ package com.example.thin.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.thin.R;
+import com.example.thin.activity.SearchResultActivity;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
 
@@ -14,9 +17,11 @@ import com.example.thin.base.adapter.BaseViewHolder;
  * @Desc:
  */
 public class SearchRvAdapter extends BaseRecyclerAdapter<String, SearchRvAdapter.MyViewHolder> {
+    private Context context;
 
     public SearchRvAdapter(Context context) {
         super(context);
+        this.context = context;
     }
 
     @Override
@@ -36,13 +41,23 @@ public class SearchRvAdapter extends BaseRecyclerAdapter<String, SearchRvAdapter
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+        myViewHolder.tvSearchContent.setText(getItemData(i));
 
+        this.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+            @Override
+            public void onItemClick(ViewGroup parent, View view, String s, int position) {
+                SearchResultActivity.open(context, getItemData(position));
+            }
+        });
     }
 
     protected class MyViewHolder extends BaseViewHolder {
+        private TextView tvSearchContent;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvSearchContent = itemView.findViewById(R.id.tv_search_content);
         }
     }
 }

@@ -42,7 +42,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     private Button settlement;
     private CheckBox cbAllSelect;
     private TextView tvTotal;
-    private String totalNumOfShops, totalPriceOfShops;
+    private String totalNumOfShops = "0", totalPriceOfShops = "0.0";
     private List<ShopCartBean> listCart;
 
     public static void open(Context context) {
