@@ -17,9 +17,23 @@ import com.example.thin.view.ShopDetailView;
  * @Desc:
  */
 public class ShopDetailAdapter extends RecyclerView.Adapter {
-    private static final int NAME = 0;
-    private static final int INFO = 1;
-    private static final int IMG = 2;
+    private enum ShopDetailPageType {
+        NAME(0),
+        INFO(1),
+        IMG(2);
+
+        private int value;
+
+        ShopDetailPageType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+    }
+
     private int type;
 
     private HomeDataBean data = new HomeDataBean();
@@ -39,8 +53,9 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        ShopDetailPageType type = ShopDetailPageType.values()[i];
         MyViewHolder myViewHolder = null;
-        switch (i) {
+        switch (type) {
             case NAME:
                 myViewHolder = new MyViewHolder(new ShopDetailName(context));
                 break;
@@ -57,18 +72,18 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (data == null) return;
-        if (i == NAME) {
+        if (i == ShopDetailPageType.NAME.getValue()) {
             ((MyViewHolder) viewHolder).setData(data);
-        } else if (i == INFO) {
+        } else if (i == ShopDetailPageType.INFO.getValue()) {
             ((MyViewHolder) viewHolder).setData(data);
-        } else if (i == IMG) {
+        } else if (i == ShopDetailPageType.IMG.getValue()) {
             ((MyViewHolder) viewHolder).setData(data.url);
         }
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return ShopDetailPageType.values().length;
     }
 
     @Override

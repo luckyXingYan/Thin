@@ -17,9 +17,23 @@ import com.example.thin.view.MallDetailName;
  * @Desc:
  */
 public class GoodsDetailAdapter extends RecyclerView.Adapter {
-    private static final int NAME = 0;
-    private static final int INFO = 1;
-    private static final int IMG = 2;
+    private enum GoodsDetailPageType {
+
+        NAME(0),
+        INFO(1),
+        IMG(2);
+        private int value;
+
+        GoodsDetailPageType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+    }
+
     private int type;
 
     private HomeDataBean data = new HomeDataBean();
@@ -39,8 +53,9 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        GoodsDetailPageType type = GoodsDetailPageType.values()[i];
         MyViewHolder myViewHolder = null;
-        switch (i) {
+        switch (type) {
             case NAME:
                 myViewHolder = new MyViewHolder(new MallDetailName(context));
                 break;
@@ -57,18 +72,18 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (data == null) return;
-        if (i == NAME) {
+        if (i == GoodsDetailPageType.NAME.getValue()) {
             ((MyViewHolder) viewHolder).setData(data);
-        } else if (i == INFO) {
+        } else if (i == GoodsDetailPageType.INFO.getValue()) {
             ((MyViewHolder) viewHolder).setData(data);
-        } else if (i == IMG) {
+        } else if (i == GoodsDetailPageType.IMG.getValue()) {
             ((MyViewHolder) viewHolder).setData(data.url);
         }
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return GoodsDetailPageType.values().length;
     }
 
     @Override

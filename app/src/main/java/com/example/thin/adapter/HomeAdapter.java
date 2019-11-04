@@ -18,10 +18,25 @@ import com.example.thin.view.TopTypeView;
  * @Desc:
  */
 public class HomeAdapter extends RecyclerView.Adapter {
-    private static final int TYPE = 0;
-    private static final int BANNER = 1;
-    private static final int HOT = 2;
-    private static final int FOOT = 3;
+    private enum HomePageType {
+
+        TYPE(0),
+        BANNER(1),
+        HOT(2),
+        FOOT(3);
+
+        private int value;
+
+        HomePageType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+    }
+
     private BannerView bannerView;
 
     private HomeDataBean data = new HomeDataBean();
@@ -46,8 +61,9 @@ public class HomeAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        HomePageType type = HomePageType.values()[i];
         MyViewHolder myViewHolder = null;
-        switch (i) {
+        switch (type) {
             case TYPE:
                 myViewHolder = new MyViewHolder(new TopTypeView(context));
                 break;
@@ -68,20 +84,20 @@ public class HomeAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (data == null) return;
-        if (i == TYPE) {
+        if (i == HomePageType.TYPE.getValue()) {
             ((MyViewHolder) viewHolder).setData(data.url);
-        } else if (i == BANNER) {
+        } else if (i == HomePageType.BANNER.getValue()) {
             ((MyViewHolder) viewHolder).setData(data.url);
-        } else if (i == HOT) {
+        } else if (i == HomePageType.HOT.getValue()) {
             ((MyViewHolder) viewHolder).setData(data.url);
-        } else if (i == FOOT) {
+        } else if (i == HomePageType.FOOT.getValue()) {
             ((MyViewHolder) viewHolder).setData(data.url);
         }
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return HomePageType.values().length;
     }
 
     @Override
