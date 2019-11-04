@@ -105,6 +105,9 @@
         <activity
             android:name=".activity.ZoomImgActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WelcomeThinActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

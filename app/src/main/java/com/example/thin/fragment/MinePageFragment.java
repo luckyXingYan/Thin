@@ -7,6 +7,7 @@ import com.example.thin.R;
 import com.example.thin.activity.CreateAddressActivity;
 import com.example.thin.activity.LoginActivity;
 import com.example.thin.activity.MyOrderActivity;
+import com.example.thin.activity.WelcomeThinActivity;
 import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
@@ -60,7 +61,7 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
         getView(view, R.id.tv_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginActivity.open(getActivity());
+                WelcomeThinActivity.open(getActivity());
             }
         });
     }

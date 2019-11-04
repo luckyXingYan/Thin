@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.thin.R;
-import com.example.thin.activity.LoginActivity;
+import com.example.thin.activity.WelcomeThinActivity;
 
 /**
  * “我的”页面登录弹框
@@ -53,9 +53,7 @@ public class MineLoginView extends RelativeLayout {
         tv_login_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                //判断是不是新用户  跳转注册或是登录
-//                RegisterActivity.open(context);
-                LoginActivity.open(context);
+                WelcomeThinActivity.open(context);
             }
         });
     }

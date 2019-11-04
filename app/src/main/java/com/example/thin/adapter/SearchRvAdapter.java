@@ -40,13 +40,13 @@ public class SearchRvAdapter extends BaseRecyclerAdapter<String, SearchRvAdapter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         myViewHolder.tvSearchContent.setText(getItemData(i));
 
-        this.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+        myViewHolder.tvSearchContent.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, String s, int position) {
-                SearchResultActivity.open(context, getItemData(position));
+            public void onClick(View v) {
+                SearchResultActivity.open(context, getItemData(i));
             }
         });
     }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_marginLeft="@dimen/y40"
+        android:layout_marginTop="@dimen/y160"
+        android:background="@null"
+        android:drawableLeft="@mipmap/phone"
+        android:drawablePadding="@dimen/y20"
+        android:gravity="center_vertical"
+        android:hint="请输入手机号"
+        android:inputType="number"
+        android:maxLength="11"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <include layout="@layout/layout_line" />
+
+    <Button
+        android:id="@+id/btn_register_next"
+        android:layout_width="@dimen/y280"
+        android:layout_height="@dimen/y100"
+        android:layout_marginTop="@dimen/y300"
+        android:layout_marginBottom="@dimen/y20"
+        android:background="@drawable/shape_rectangle_50_corners_green"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+</LinearLayout>

@@ -35,7 +35,7 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
     private RecyclerView recyclerView;
     private HomeTypeDetailAdapter adapter;
     private ImageView back;
-//    private String inputStr;
+    //    private String inputStr;
     private EditText etSearch;
 
     public static void open(Context context) {

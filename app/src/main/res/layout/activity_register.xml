@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_register_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/y30"
@@ -56,6 +57,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/et_sure_pwd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -81,9 +83,11 @@
     <include layout="@layout/layout_line" />
 
     <Button
+        android:id="@+id/btn_register_login"
         android:layout_width="@dimen/y300"
         android:layout_height="@dimen/y100"
         android:layout_marginTop="@dimen/y100"
+        android:layout_marginBottom="@dimen/y20"
         android:background="@drawable/shape_rectangle_50_corners_green"
         android:text="注册并登录"
         android:textColor="@color/white"
