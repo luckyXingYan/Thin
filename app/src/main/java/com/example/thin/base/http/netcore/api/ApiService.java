@@ -4,9 +4,9 @@ import com.example.thin.base.bean.ResultBean;
 import com.example.thin.bean.DetailDataBean;
 import com.example.thin.bean.HomeDataBean;
 import com.example.thin.bean.ProductDataBean;
+import com.example.thin.bean.RegisterLoginBean;
 
 import java.util.List;
-import java.util.Observable;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -39,4 +39,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(ApiRoute.PRODUCT.GET_HOMEPAGE_REDPACKETS_STATUS)
     Call<ResultBean<List<ProductDataBean>>> getProductPageData(@Field(ApiKeys.START) String start, @Field(ApiKeys.COUNT) String count);
+
+    @FormUrlEncoded
+    @POST(ApiRoute.USER.REGISTER)
+    Call<ResultBean<RegisterLoginBean>> register(@Field(ApiKeys.MOBILE) String mobile, @Field(ApiKeys.PASSWORD) String password);
+
+    @FormUrlEncoded
+    @POST(ApiRoute.USER.LOGIN)
+    Call<ResultBean<RegisterLoginBean>> login(@Field(ApiKeys.MOBILE) String mobile, @Field(ApiKeys.PASSWORD) String password);
 }

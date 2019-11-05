@@ -51,7 +51,7 @@ public abstract class BaseGsonCallback<T> implements Callback<ResultBean<T>> {
 //                        onBizFailed(errorCode, errorMsg);
 //                    }
 //                } else {
-                onBizFailed(-10, "服务器返回错误");
+//                    onBizFailed(-10, "服务器返回错误");
 //                }
                 break;
             default:

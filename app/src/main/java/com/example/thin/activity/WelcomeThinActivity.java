@@ -13,6 +13,8 @@ import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.util.Constants;
 import com.example.thin.util.InputVerifyUtil;
+import com.example.thin.util.LocalUser;
+import com.example.thin.util.PreferenceUtil;
 
 
 /**
@@ -61,8 +63,11 @@ public class WelcomeThinActivity extends BaseScrollTitleBarActivity<BasePresente
                 String hintMsg = InputVerifyUtil.checkMobile(phone);
                 if (Constants.INPUT_OK.equals(hintMsg)) {
                     //判断是不是新用户  跳转注册或是登录
+//                    if (LocalUser.getInstance().isLogin()) {//为空，就调取接口访问是不是新用户
                     RegisterActivity.open(this, phone);
-//                LoginActivity.open(this, phone);
+//                    } else {
+//                        LoginActivity.open(this, phone);
+//                    }
                     finish();
                 } else {
                     showToastMsg(hintMsg);

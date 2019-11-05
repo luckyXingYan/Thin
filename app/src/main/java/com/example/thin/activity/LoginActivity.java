@@ -17,6 +17,9 @@ import com.example.thin.R;
 import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
+import com.example.thin.bean.RegisterLoginBean;
+import com.example.thin.iview.ILoginView;
+import com.example.thin.presenter.LoginPresenter;
 import com.example.thin.util.Constants;
 import com.example.thin.util.InputVerifyUtil;
 import com.example.thin.util.LocalUser;
@@ -26,7 +29,7 @@ import com.example.thin.util.LocalUser;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class LoginActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+public class LoginActivity extends BaseScrollTitleBarActivity<LoginPresenter> implements ILoginView, View.OnClickListener {
 
     private Button login;
     private TextView forgetPwd;
@@ -80,8 +83,8 @@ public class LoginActivity extends BaseScrollTitleBarActivity<BasePresenter> imp
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected LoginPresenter createPresenter() {
+        return new LoginPresenter();
     }
 
     @Override
@@ -91,9 +94,7 @@ public class LoginActivity extends BaseScrollTitleBarActivity<BasePresenter> imp
                 pwd = etPwd.getText().toString().trim();
                 String hintMsg = InputVerifyUtil.checkLoginPwd(pwd);
                 if (Constants.INPUT_OK.equals(hintMsg)) {
-                    LocalUser.getInstance().setUserId("111");
-                    LocalUser.getInstance().setUserName("周**");
-                    finish();
+                    presenter.login(this, phone, pwd);
                 } else {
                     showToastMsg(hintMsg);
                 }
@@ -104,5 +105,12 @@ public class LoginActivity extends BaseScrollTitleBarActivity<BasePresenter> imp
             default:
                 break;
         }
+    }
+
+    @Override
+    public void loginSuccess(RegisterLoginBean data) {
+        LocalUser.getInstance().setUserId(phone);
+        LocalUser.getInstance().setToken(data.token);
+        finish();
     }
 }

@@ -3,7 +3,10 @@ package com.example.thin.base.http.callback;
 import android.content.Context;
 import android.support.annotation.Nullable;
 
+import com.example.thin.BuildConfig;
+import com.example.thin.MyApp;
 import com.example.thin.base.bean.ResultBean;
+import com.example.thin.base.util.ToastUtil;
 
 import java.lang.ref.WeakReference;
 
@@ -44,8 +47,8 @@ public abstract class HttpGsonCallback<T> extends BaseGsonCallback<T> {
 
     @Override
     public void onBizFailed(int code, String errorMsg) {
-//        String msg = BuildConfig.DEBUG ? errorMsg + "[" + code + "]" : errorMsg;
-//        ToastUtils.showToast(CommonUtils.getApp(), msg);
+        String msg = BuildConfig.DEBUG ? errorMsg + "[" + code + "]" : errorMsg;
+        ToastUtil.showToastShort(MyApp.getContextObject(), msg);
     }
 
     @Override

@@ -9,19 +9,24 @@ package com.example.thin.base.http.netcore.api;
  */
 public class ApiRoute {
 
+    //http://172.24.132.216:8093/thinbar-octopus/api/user/register/userRegister
+
+    private static final String COMMON_ROOT = "/thinbar-octopus/api";
+
     public final class INDEX {
-        private static final String ROOT = "";
+        private static final String ROOT = COMMON_ROOT + "";
         public static final String JOIN_SMS_CODE = ROOT + "/v2/join/getsmscode"; // 注册获取短信验证码
     }
 
     public final class USER {
-        private static final String ROOT = "/u";
-        public static final String EXCHANGE_USER_COUPON = ROOT + "/exchangeUserCoupon"; // 兑换优惠卷
+        private static final String ROOT = COMMON_ROOT + "/user";
+        public static final String REGISTER = ROOT + "/register/userRegister"; // 注册
+        public static final String LOGIN = ROOT + "/login/userLogin"; // 注册
     }
 
     public final class PRODUCT {
         //#https://douban.uieee.com/v2/movie/top250?start=0&count=10即可。
-        private static final String ROOT = "/v2/movie";
+        private static final String ROOT = COMMON_ROOT + "/v2/movie";
         public static final String GET_HOMEPAGE_REDPACKETS_STATUS = ROOT + "/top250";      //获取首页红包上线状态
     }
 

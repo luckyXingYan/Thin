@@ -20,9 +20,11 @@ public interface ApiKeys {
     // I
     // L
     // M
+    String MOBILE = "mobile";
     // N
     // O
     // P
+    String PASSWORD = "password";
     // R
     // S
     String START = "start";

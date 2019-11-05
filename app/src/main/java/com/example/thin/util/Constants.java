@@ -7,6 +7,7 @@ public class Constants {
     public final static String MY_ORDER_TAB_LAYOUT_TYPE = "MY_ORDER_TAB_LAYOUT_TYPE";
     public final static String USER_ID = "userId";
     public final static String USER_NAME = "userName";
+    public final static String TOKEN = "token";
     public final static String USER_SEX = "userSex";
     public final static String USER_TARGET_WEIGHT = "userTargetWeight";
     public final static String USER_BODY_HEIGHT = "userBodyHeight";

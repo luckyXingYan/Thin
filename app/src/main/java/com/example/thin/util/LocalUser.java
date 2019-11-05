@@ -29,6 +29,10 @@ public class LocalUser implements Serializable {
         PreferenceUtil.getInstance().setString(Constants.USER_NAME, userName);
     }
 
+    public void setToken(String token) {
+        PreferenceUtil.getInstance().setString(Constants.TOKEN, token);
+    }
+
     public void setUserSex(String userSex) {
         PreferenceUtil.getInstance().setString(Constants.USER_SEX, userSex);
     }
@@ -51,6 +55,10 @@ public class LocalUser implements Serializable {
 
     public void getUserName() {
         PreferenceUtil.getInstance().getString(Constants.USER_NAME);
+    }
+
+    public String getToken() {
+        return PreferenceUtil.getInstance().getString(Constants.TOKEN);
     }
 
     public void getUserSex() {

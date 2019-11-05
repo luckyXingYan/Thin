@@ -2,7 +2,6 @@ package com.example.thin.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -10,14 +9,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.base.BaseScrollTitleBarActivity;
-import com.example.thin.base.mvp.BasePresenter;
-import com.example.thin.base.mvp.IBaseView;
+import com.example.thin.bean.RegisterLoginBean;
+import com.example.thin.iview.IRegisterView;
+import com.example.thin.presenter.RegisterPresenter;
 import com.example.thin.util.Constants;
 import com.example.thin.util.InputVerifyUtil;
 import com.example.thin.util.LocalUser;
@@ -27,7 +25,7 @@ import com.example.thin.util.LocalUser;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class RegisterActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+public class RegisterActivity extends BaseScrollTitleBarActivity<RegisterPresenter> implements IRegisterView, View.OnClickListener {
     private TextView tvPhone;
     private String phone, pwd, surePwd;
     private EditText etPwd;
@@ -92,8 +90,8 @@ public class RegisterActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected RegisterPresenter createPresenter() {
+        return new RegisterPresenter();
     }
 
     @Override
@@ -104,10 +102,7 @@ public class RegisterActivity extends BaseScrollTitleBarActivity<BasePresenter> 
                 surePwd = etSurePwd.getText().toString().trim();
                 String hintMsg = InputVerifyUtil.checkRegisterPwd(pwd, surePwd);
                 if (Constants.INPUT_OK.equals(hintMsg)) {
-                    LocalUser.getInstance().setUserId("111");
-                    LocalUser.getInstance().setUserName("周**");
-                    SexSettingActivity.open(this);
-                    finish();
+                    presenter.register(this, phone, pwd);
                 } else {
                     showToastMsg(hintMsg);
                 }
@@ -115,5 +110,13 @@ public class RegisterActivity extends BaseScrollTitleBarActivity<BasePresenter> 
             default:
                 break;
         }
+    }
+
+    @Override
+    public void registerSuccess(RegisterLoginBean data) {
+        LocalUser.getInstance().setUserId(phone);
+        LocalUser.getInstance().setToken(data.token);
+        SexSettingActivity.open(this);
+        finish();
     }
 }
