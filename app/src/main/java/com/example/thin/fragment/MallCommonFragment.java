@@ -71,6 +71,14 @@ public class MallCommonFragment extends BaseFragment<BasePresenter> implements I
                 initData();
             }
         });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if (newState != 0) {
+                    hideKeyboard(recyclerView);
+                }
+            }
+        });
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, String s, int position) {

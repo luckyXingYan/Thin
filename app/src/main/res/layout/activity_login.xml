@@ -36,16 +36,11 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <RelativeLayout
-            android:layout_width="@dimen/y100"
-            android:layout_height="@dimen/y100">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/off_pwd" />
-        </RelativeLayout>
+        <CheckBox
+            android:id="@+id/cb_pwd"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/y100"
+            android:button="@drawable/pwd_show_hide_selector" />
     </LinearLayout>
 
     <include layout="@layout/layout_line" />

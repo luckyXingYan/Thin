@@ -2,19 +2,25 @@ package com.example.thin.base.mvp;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import com.example.thin.R;
 import com.example.thin.base.util.AppManager;
 import com.example.thin.base.util.ToastUtil;
+
 /**
  * 作者： 钟雄辉
  * 时间： 2018/6/27
@@ -59,6 +65,64 @@ public abstract class BaseActivity<P extends BasePresenter> extends MvpBaseActiv
         AppManager.getAppManager().removeActivity(this);
         if (presenter != null) {
             presenter.cancelNetWork();
+        }
+    }
+
+    /**
+     * 实现功能：点击EditText，软键盘出现并且不会隐藏，点击或者触摸EditText以外的其他任何区域，软键盘被隐藏；
+     * <p>
+     * 1、重写dispatchTouchEvent()方法，获取当前触摸事件为DOWN的时候隐藏软键盘
+     *
+     * @param ev
+     * @return
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        //Finger touch screen event
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            // get current focus,Generally it is EditText
+            View view = getCurrentFocus();
+            if (isShouldHideSoftKeyBoard(view, ev)) {
+                hideSoftKeyBoard(view.getWindowToken());
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    /**
+     * Judge what situation hide the soft keyboard,click EditText view should show soft keyboard
+     *
+     * @param event
+     * @return
+     */
+    private boolean isShouldHideSoftKeyBoard(View view, MotionEvent event) {
+        if (view != null && (view instanceof EditText)) {
+            int[] l = {0, 0};
+            view.getLocationInWindow(l);
+            int left = l[0], top = l[1], bottom = top + view.getHeight(), right = left
+                    + view.getWidth();
+            if (event.getX() > left && event.getX() < right
+                    && event.getY() > top && event.getY() < bottom) {
+                // If click the EditText event ,ignore it
+                return false;
+            } else {
+                return true;
+            }
+        }
+        // if the focus is EditText,ignore it;
+        return false;
+    }
+
+    /**
+     * hide soft keyboard
+     *
+     * @param token
+     */
+    private void hideSoftKeyBoard(IBinder token) {
+        if (token != null) {
+            InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(token,
+                    InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 

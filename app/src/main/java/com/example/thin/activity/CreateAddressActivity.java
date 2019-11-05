@@ -2,6 +2,9 @@ package com.example.thin.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.thin.R;
 import com.example.thin.base.BaseScrollTitleBarActivity;
@@ -13,7 +16,8 @@ import com.example.thin.base.mvp.IBaseView;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class CreateAddressActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView {
+public class CreateAddressActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+
     public static void open(Context context) {
         context.startActivity(new Intent(context, CreateAddressActivity.class));
     }
@@ -26,7 +30,6 @@ public class CreateAddressActivity extends BaseScrollTitleBarActivity<BasePresen
     @Override
     protected void initContentView() {
         mTitleBar.setTitle("新建收货地址");
-
     }
 
     @Override
@@ -37,5 +40,13 @@ public class CreateAddressActivity extends BaseScrollTitleBarActivity<BasePresen
     @Override
     protected BasePresenter createPresenter() {
         return null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            default:
+                break;
+        }
     }
 }

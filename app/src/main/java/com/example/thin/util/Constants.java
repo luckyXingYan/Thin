@@ -22,6 +22,8 @@ public class Constants {
     public final static String SEARCH_HOT_HISTORY = "search_hot_history";
     public final static String SEARCH_INPUT_CONTENT = "input_content";
     public final static String PHONE = "phone";
+    public final static String HOME_TOP_TYPE_BEAN = "home_top_type_bean";
+    public final static String INPUT_OK = "OK";
 
 
     public final static int IS_ALL_SELECT = 101;//全选 or 反选

@@ -46,7 +46,7 @@ public class TopTypeView extends BaseHomeLayout<List<String>> {
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<HomTopTypeBean>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, HomTopTypeBean homTopTypeBean, int position) {
-                HomeTypeDetailActivity.open(getContext());
+                HomeTypeDetailActivity.open(getContext(),adapter.getItemData(position));
             }
         });
     }

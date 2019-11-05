@@ -11,6 +11,8 @@ import com.example.thin.R;
 import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
+import com.example.thin.util.Constants;
+import com.example.thin.util.InputVerifyUtil;
 
 
 /**
@@ -38,7 +40,6 @@ public class WelcomeThinActivity extends BaseScrollTitleBarActivity<BasePresente
         etPhone = getView(R.id.et_phone);
         next = getView(R.id.btn_register_next);
         next.setOnClickListener(this);
-
     }
 
     @Override
@@ -51,19 +52,21 @@ public class WelcomeThinActivity extends BaseScrollTitleBarActivity<BasePresente
         return null;
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_register_next://下一步
                 phone = etPhone.getText().toString().trim();
-                if (TextUtils.isEmpty(phone)) {
-                    showToastMsg("请输入手机号");
-                    return;
+                String hintMsg = InputVerifyUtil.checkMobile(phone);
+                if (Constants.INPUT_OK.equals(hintMsg)) {
+                    //判断是不是新用户  跳转注册或是登录
+                    RegisterActivity.open(this, phone);
+//                LoginActivity.open(this, phone);
+                    finish();
+                } else {
+                    showToastMsg(hintMsg);
                 }
-                //判断是不是新用户  跳转注册或是登录
-//                RegisterActivity.open(this, phone);
-                LoginActivity.open(this, phone);
-                finish();
                 break;
             default:
                 break;

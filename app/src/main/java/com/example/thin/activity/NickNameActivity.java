@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.thin.R;
 import com.example.thin.base.BaseScrollTitleBarActivity;
@@ -19,7 +20,6 @@ import com.example.thin.util.LocalUser;
 public class NickNameActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
 
     private Button btnNickNameNext;
-
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, NickNameActivity.class));

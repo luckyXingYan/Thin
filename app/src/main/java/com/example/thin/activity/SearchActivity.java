@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.thin.R;
@@ -29,7 +30,7 @@ import java.util.List;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class SearchActivity extends BaseActivity<BasePresenter> implements IBaseView {
+public class SearchActivity extends BaseActivity<BasePresenter> implements IBaseView, View.OnClickListener {
     private RecyclerView recyclerView;
     private SearchAdapter adapter;
     private TextView tvInputSearch;
@@ -92,5 +93,13 @@ public class SearchActivity extends BaseActivity<BasePresenter> implements IBase
     @Override
     protected BasePresenter createPresenter() {
         return null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            default:
+                break;
+        }
     }
 }

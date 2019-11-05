@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.adapter.HomeTypeDetailAdapter;
@@ -17,11 +18,13 @@ import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
+import com.example.thin.bean.HomTopTypeBean;
 import com.example.thin.refresh.TwinklingRefreshLayout;
 import com.example.thin.util.Constants;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,12 +38,15 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
     private RecyclerView recyclerView;
     private HomeTypeDetailAdapter adapter;
     private ImageView back;
-    //    private String inputStr;
+    private HomTopTypeBean typeBean;
     private EditText etSearch;
+    private TextView tvCommercialArea;
+    private TextView tvType;
 
-    public static void open(Context context) {
+
+    public static void open(Context context, HomTopTypeBean typeBean) {
         Intent intent = new Intent(context, HomeTypeDetailActivity.class);
-//        intent.putExtra(Constants.SEARCH_INPUT_CONTENT, inputStr);
+        intent.putExtra(Constants.HOME_TOP_TYPE_BEAN, (Serializable) typeBean);
         context.startActivity(intent);
     }
 
@@ -51,11 +57,14 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-//        inputStr = getIntent().getStringExtra(Constants.SEARCH_INPUT_CONTENT);
+        typeBean = (HomTopTypeBean) getIntent().getSerializableExtra(Constants.HOME_TOP_TYPE_BEAN);
         refreshLayout = getView(R.id.refresh_layout);
         recyclerView = getView(R.id.rv_home_type);
         etSearch = getView(R.id.et_input_search);
         back = getView(R.id.iv_back);
+        tvCommercialArea = getView(R.id.tv_commercial_area);
+        tvType = getView(R.id.tv_type);
+
         back.setOnClickListener(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -83,6 +92,7 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
             }
         });
 
+        tvType.setText(typeBean.title);
 //        etSearch.setText(inputStr);
 //        etSearch.setSelection(inputStr.length());
     }

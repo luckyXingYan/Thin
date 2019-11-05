@@ -28,7 +28,7 @@ public class NetConfig {
     private void setupHeaders() {
 
         headers.put("Accept-Charset", "UTF-8,*");
-        headers.put("X-GFS-Plantform", "Android");
+        headers.put("equipmentType", "0");//设备类型 0：安卓 1：ios
         headers.put("Content-Type", "application/x-www-form-urlencoded");
 //        headers.put("X-GFS-Client-Version", BuildConfig.VERSION_NAME);
 //        headers.put("X-GFS", "3c4f1a25870f926cacd14b6b1f4e35046149a40ca0f2fb65c2a0511eeaad8957");
