@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 
 import com.example.thin.R;
 import com.example.thin.base.BaseScrollTitleBarActivity;
@@ -18,6 +19,9 @@ import com.example.thin.util.LocalUser;
  */
 public class SexSettingActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
     private Button next;
+    private RadioButton rbMen;
+    private RadioButton rbWomen;
+
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, SexSettingActivity.class));
@@ -32,8 +36,9 @@ public class SexSettingActivity extends BaseScrollTitleBarActivity<BasePresenter
     protected void initContentView() {
         mTitleBar.setTitle("性别");
         next = getView(R.id.btn_sex_next);
+        rbMen = getView(R.id.rb_men);
+        rbWomen = getView(R.id.rb_women);
         next.setOnClickListener(this);
-
     }
 
     @Override
@@ -50,7 +55,11 @@ public class SexSettingActivity extends BaseScrollTitleBarActivity<BasePresenter
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_sex_next://下一步
-                LocalUser.getInstance().setUserSex("男");
+                if (rbMen.isChecked()) {
+                    LocalUser.getInstance().setUserSex("男");
+                } else if (rbWomen.isChecked()) {
+                    LocalUser.getInstance().setUserSex("女");
+                }
                 NickNameActivity.open(this);
                 finish();
                 break;

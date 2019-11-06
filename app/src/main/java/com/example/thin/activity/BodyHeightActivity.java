@@ -23,7 +23,7 @@ public class BodyHeightActivity extends BaseScrollTitleBarActivity<BasePresenter
     private Button btnBodyHeightNext;
     private RulerView simpleRuler;
     private TextView tvBodyHeight;
-
+    private String bodyHeight;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, BodyHeightActivity.class));
@@ -50,7 +50,6 @@ public class BodyHeightActivity extends BaseScrollTitleBarActivity<BasePresenter
 
     }
 
-    //TargetWeightActivity.open(this);
     @Override
     protected BasePresenter createPresenter() {
         return null;
@@ -60,7 +59,8 @@ public class BodyHeightActivity extends BaseScrollTitleBarActivity<BasePresenter
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_body_height_next://下一步
-                LocalUser.getInstance().setUserBodyHeight("175");
+                bodyHeight = tvBodyHeight.getText().toString().trim();
+                LocalUser.getInstance().setUserBodyHeight(bodyHeight);
                 TargetWeightActivity.open(this);
                 finish();
                 break;

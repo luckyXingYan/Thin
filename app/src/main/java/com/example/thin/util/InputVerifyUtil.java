@@ -12,39 +12,63 @@ import android.text.TextUtils;
 public class InputVerifyUtil {
 
     private static final int MOBILE_LENGTH = 11;
+    private static final String EMPTY_FORMAT = "%s不得为空";
+    private static final String WRONG_TIP_FORMAT = "请正确输入%s";
+    private static final String PASSWORD_FORMAT = "%s必须为%d~%d位字符,需包含字母、数字、符号至少两种组合";
+    private static final String NICK_NAME_FORMAT = "%s必须为%d~%d位";
+    private static final String PASSWORD_UNEQUAL = "%s不一致，请重新输入";
+    private static final String OK = "OK";
 
 
     public static String checkMobile(String mobile) {
         if (TextUtils.isEmpty(mobile)) {
-            return "请输入您的手机号";
+            return String.format(EMPTY_FORMAT, "手机号");
         } else if (mobile.length() < MOBILE_LENGTH || mobile.length() > MOBILE_LENGTH) {
-            return "手机号格式有误";
+            return String.format(WRONG_TIP_FORMAT, "手机号");
         } else {
-            return "OK";
+            return OK;
         }
     }
 
     public static String checkRegisterPwd(String pwd, String pwd2) {
         if (TextUtils.isEmpty(pwd)) {
-            return "请输入您的密码";
+            return String.format(EMPTY_FORMAT, "密码");
         } else if (!pwd.matches("(?!^(\\d+|[a-zA-Z]+|[~!@#$%^&*?_.-]+)$)^[\\w~!@#$%^&*?_.-]{8,20}")) {
-            return "8-20位字符，需包含字母、数字、符号至少两种组合";
+            return String.format(PASSWORD_FORMAT, "密码", 8, 20);
         } else if (TextUtils.isEmpty(pwd2)) {
-            return "请输入您的确认密码";
+            return String.format(EMPTY_FORMAT, "确认密码");
         } else if (!TextUtils.equals(pwd, pwd2)) {
-            return "密码不一致，请重新输入";
+            return String.format(PASSWORD_UNEQUAL, "密码");
         } else {
-            return "OK";
+            return OK;
         }
     }
 
     public static String checkLoginPwd(String pwd) {
         if (TextUtils.isEmpty(pwd)) {
-            return "请输入您的密码";
+            return String.format(EMPTY_FORMAT, "密码");
         } else if (!pwd.matches("(?!^(\\d+|[a-zA-Z]+|[~!@#$%^&*?_.-]+)$)^[\\w~!@#$%^&*?_.-]{8,20}")) {
-            return "8-20位字符，需包含字母、数字、符号至少两种组合";
+            return String.format(PASSWORD_FORMAT, "密码", 8, 20);
         } else {
-            return "OK";
+            return OK;
+        }
+    }
+
+    public static String checkNickName(String nickName) {
+        if (TextUtils.isEmpty(nickName)) {
+            return String.format(EMPTY_FORMAT, "昵称");
+        } else if (!nickName.matches("8,20")) {
+            return String.format(NICK_NAME_FORMAT, "昵称", 8, 20);
+        } else {
+            return OK;
+        }
+    }
+
+    public static String checkTargetWeight(String targetWeight) {
+        if (TextUtils.isEmpty(targetWeight)) {
+            return String.format(EMPTY_FORMAT, "目标体重");
+        } else {
+            return OK;
         }
     }
 }

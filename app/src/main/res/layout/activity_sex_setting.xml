@@ -5,17 +5,28 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="@dimen/x200"
-        android:layout_height="@dimen/y240"
-        android:layout_marginTop="@dimen/y70"
-        android:src="@mipmap/head_men" />
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="@dimen/y220"
-        android:layout_height="@dimen/y220"
-        android:layout_marginTop="@dimen/y100"
-        android:src="@mipmap/head_women" />
+        <RadioButton
+            android:id="@+id/rb_men"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y240"
+            android:layout_marginTop="@dimen/y70"
+            android:background="@mipmap/head_men"
+            android:button="@drawable/select_selector"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rb_women"
+            android:layout_width="@dimen/y220"
+            android:layout_height="@dimen/y220"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@mipmap/head_women"
+            android:button="@drawable/select_selector" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/btn_sex_next"

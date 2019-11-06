@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.thin.BuildConfig;
 import com.example.thin.base.http.netcore.LogInterpector;
+import com.example.thin.util.LocalUser;
 import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
@@ -27,14 +28,12 @@ public class NetConfig {
 
     private void setupHeaders() {
 
-        headers.put("Accept-Charset", "UTF-8,*");
         headers.put("equipmentType", "0");//设备类型 0：安卓 1：ios
+        headers.put("token", LocalUser.getInstance().getToken());//token
+//        headers.put("requestTimestamp", LocalUser.getInstance().getToken());//时间戳
+
         headers.put("Content-Type", "application/x-www-form-urlencoded");
-//        headers.put("X-GFS-Client-Version", BuildConfig.VERSION_NAME);
-//        headers.put("X-GFS", "3c4f1a25870f926cacd14b6b1f4e35046149a40ca0f2fb65c2a0511eeaad8957");
-//        headers.put("SKV", BuildConfig.SKV);
-//        headers.put("CHANNEL", ChannelUtils.getChannel(CommonUtils.getApp()));
-//        headers.put("distinct-id", SensorsManager.getNickNameId());
+        headers.put("Accept-Charset", "UTF-8,*");
 
     }
 

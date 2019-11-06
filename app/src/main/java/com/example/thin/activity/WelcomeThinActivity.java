@@ -2,7 +2,6 @@ package com.example.thin.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +12,6 @@ import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.util.Constants;
 import com.example.thin.util.InputVerifyUtil;
-import com.example.thin.util.LocalUser;
-import com.example.thin.util.PreferenceUtil;
 
 
 /**
@@ -66,7 +63,7 @@ public class WelcomeThinActivity extends BaseScrollTitleBarActivity<BasePresente
 //                    if (LocalUser.getInstance().isLogin()) {//为空，就调取接口访问是不是新用户
                     RegisterActivity.open(this, phone);
 //                    } else {
-//                        LoginActivity.open(this, phone);
+//                    LoginActivity.open(this, phone);
 //                    }
                     finish();
                 } else {

@@ -50,7 +50,7 @@ public class WelcomeJoinActivity extends BaseActivity<BasePresenter> implements 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_start_evaluating://开始评测
-                FollowPositionActivity.open(this);
+                WelcomeJoinActivity.open(this);
                 finish();
                 break;
         }
