@@ -12,6 +12,7 @@ import com.example.thin.activity.GoodsDetailActivity;
 import com.example.thin.activity.ShopDetailActivity;
 import com.example.thin.adapter.HotAdapter;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
+import com.example.thin.bean.HotBean;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
  * @Date: 2019/10/21
  * @Desc:
  */
-public class HotView extends BaseHomeLayout<List<String>> {
+public class HotView extends BaseHomeLayout<List<HotBean>> {
     private RecyclerView recyclerView;
     private HotAdapter adapter;
 
@@ -42,16 +43,16 @@ public class HotView extends BaseHomeLayout<List<String>> {
         adapter = new HotAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<HotBean>() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, String s, int position) {
+            public void onItemClick(ViewGroup parent, View view, HotBean bean, int position) {
                 ShopDetailActivity.open(getContext());
             }
         });
     }
 
     @Override
-    public void setData(List<String> data) {
+    public void setData(List<HotBean> data) {
         adapter.setData(data);
     }
 }

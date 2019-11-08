@@ -9,6 +9,8 @@ package com.example.thin.base.http.netcore.api;
  */
 public interface ApiKeys {
 
+    //keyWord=测试&isHot=1&pageNo=1&pageSize=10&groupId=1
+
     // A
     // B
     // C
@@ -18,17 +20,24 @@ public interface ApiKeys {
     // E
     // F
     // G
+    String GROUP_ID = "groupId";
     //H
     String HEIGHT = "height";
     // I
+    String IS_HOT = "isHot";
+    //J
+    //K
+    String KEY_WORD = "keyWord";
     // L
     // M
     String MOBILE = "mobile";
     // N
-    String NICK_NAME = "nickName";
+    String NICK_NAME = "nickname";
     // O
     // P
     String PASSWORD = "password";
+    String PAGENUM = "pageNo";
+    String PAGESIZE = "pageSize";
     // R
     // S
     String START = "start";

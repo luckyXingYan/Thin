@@ -5,12 +5,16 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.example.thin.bean.HomeDataBean;
+import com.example.thin.bean.BannerBean;
+import com.example.thin.bean.HotBean;
 import com.example.thin.view.BannerView;
 import com.example.thin.view.BaseHomeLayout;
 import com.example.thin.view.HomeFootView;
 import com.example.thin.view.HotView;
 import com.example.thin.view.TopTypeView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author: xingyan
@@ -39,16 +43,23 @@ public class HomeAdapter extends RecyclerView.Adapter {
 
     private BannerView bannerView;
 
-    private HomeDataBean data = new HomeDataBean();
+    private List<HotBean> data;
+    private BannerBean data2 = new BannerBean();
 
     private Context context;
 
     public HomeAdapter(Context context) {
         this.context = context;
+        data = new ArrayList<>();
     }
 
-    public void setData(HomeDataBean data) {
+    public void setData(List<HotBean> data) {
         this.data = data;
+        notifyDataSetChanged();
+    }
+
+    public void setData2(BannerBean data) {
+        this.data2 = data;
         notifyDataSetChanged();
     }
 
@@ -85,13 +96,13 @@ public class HomeAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (data == null) return;
         if (i == HomePageType.TYPE.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data.url);
+            ((MyViewHolder) viewHolder).setData(data2.url);
         } else if (i == HomePageType.BANNER.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data.url);
+            ((MyViewHolder) viewHolder).setData(data2.url);
         } else if (i == HomePageType.HOT.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data.url);
+            ((MyViewHolder) viewHolder).setData(data);
         } else if (i == HomePageType.FOOT.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data.url);
+            ((MyViewHolder) viewHolder).setData(data2.url);
         }
     }
 

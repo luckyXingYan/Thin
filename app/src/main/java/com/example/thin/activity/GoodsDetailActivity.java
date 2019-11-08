@@ -3,7 +3,6 @@ package com.example.thin.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,12 +12,13 @@ import android.widget.RelativeLayout;
 
 import com.example.thin.R;
 import com.example.thin.adapter.BannerHolder;
-import com.example.thin.adapter.BannerRadiusHolder;
 import com.example.thin.adapter.GoodsDetailAdapter;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.HomeDataBean;
+import com.example.thin.bean.BannerBean;
+import com.example.thin.bean.HotBean;
+import com.example.thin.view.BannerView;
 import com.ms.banner.Banner;
 import com.ms.banner.BannerConfig;
 import com.ms.banner.Transformer;
@@ -65,7 +65,7 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
 
     @Override
     protected void initData() {
-        HomeDataBean bean = new HomeDataBean();
+        BannerBean bean = new BannerBean();
         bean.title = "eee";
         bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");

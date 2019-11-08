@@ -15,7 +15,8 @@ import com.example.thin.adapter.ShopDetailAdapter;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.HomeDataBean;
+import com.example.thin.bean.BannerBean;
+import com.example.thin.bean.HotBean;
 import com.ms.banner.Banner;
 import com.ms.banner.BannerConfig;
 import com.ms.banner.Transformer;
@@ -62,7 +63,7 @@ public class ShopDetailOrderActivity extends BaseActivity<BasePresenter> impleme
 
     @Override
     protected void initData() {
-        HomeDataBean bean = new HomeDataBean();
+        BannerBean bean = new BannerBean();
         bean.title = "eee";
         bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");

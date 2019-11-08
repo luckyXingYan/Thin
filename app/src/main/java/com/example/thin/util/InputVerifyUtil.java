@@ -57,9 +57,11 @@ public class InputVerifyUtil {
     public static String checkNickName(String nickName) {
         if (TextUtils.isEmpty(nickName)) {
             return String.format(EMPTY_FORMAT, "昵称");
-        } else if (!nickName.matches("8,20")) {
-            return String.format(NICK_NAME_FORMAT, "昵称", 8, 20);
-        } else {
+        }
+//        else if (!nickName.matches("8,20")) {
+//            return String.format(NICK_NAME_FORMAT, "昵称", 8, 20);
+//        }
+        else {
             return OK;
         }
     }

@@ -61,9 +61,9 @@ public class WelcomeThinActivity extends BaseScrollTitleBarActivity<BasePresente
                 if (Constants.INPUT_OK.equals(hintMsg)) {
                     //判断是不是新用户  跳转注册或是登录
 //                    if (LocalUser.getInstance().isLogin()) {//为空，就调取接口访问是不是新用户
-                    RegisterActivity.open(this, phone);
+//                    RegisterActivity.open(this, phone);
 //                    } else {
-//                    LoginActivity.open(this, phone);
+                    LoginActivity.open(this, phone);
 //                    }
                     finish();
                 } else {

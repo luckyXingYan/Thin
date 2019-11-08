@@ -12,7 +12,7 @@ import java.util.List;
  * @Desc:
  */
 public class ProductPageModel extends BaseModel {
-    public void getProductPageData(String start, String count, HttpGsonCallback<List<ProductDataBean>> callback) {
-        invoke(apiService.getProductPageData(start, count), callback);
-    }
+//    public void getProductPageData(String start, String count, HttpGsonCallback<List<ProductDataBean>> callback) {
+//        invoke(apiService.getProductPageData(start, count), callback);
+//    }
 }

@@ -16,8 +16,8 @@ import com.example.thin.model.RegisterLoginModel;
 public class EvaluatePresenter extends BasePresenter<IEvaluateView> {
     private RegisterLoginModel model;
 
-    public void evaluate(Context context, String nickName, String sex, String height, String targetWeight, String concernPosition) {
-        model.evaluate(nickName, sex, height, targetWeight, concernPosition, new HttpGsonCallback<RegisterLoginBean>(context) {
+    public void evaluate(Context context, String nickname, String sex, String height, String targetWeight, String concernPosition) {
+        model.evaluate(nickname, sex, height, targetWeight, concernPosition, new HttpGsonCallback<RegisterLoginBean>(context) {
             @Override
             public void onSuccess(RegisterLoginBean data) {
                 if (isViewAttached()) {

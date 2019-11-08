@@ -7,14 +7,14 @@ import android.widget.RelativeLayout;
 
 import com.example.thin.R;
 import com.example.thin.activity.ShopDetailActivity;
-import com.example.thin.bean.HomeDataBean;
+import com.example.thin.bean.HotBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/22
  * @Desc:
  */
-public class MallDetailName extends BaseHomeLayout<HomeDataBean> implements View.OnClickListener {
+public class MallDetailName extends BaseHomeLayout<HotBean> implements View.OnClickListener {
     private RelativeLayout shopDetail;
 
     public MallDetailName(Context context) {
@@ -35,7 +35,7 @@ public class MallDetailName extends BaseHomeLayout<HomeDataBean> implements View
     }
 
     @Override
-    public void setData(HomeDataBean data) {
+    public void setData(HotBean data) {
 
     }
 

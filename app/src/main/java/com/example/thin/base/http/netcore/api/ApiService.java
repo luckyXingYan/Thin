@@ -1,9 +1,7 @@
 package com.example.thin.base.http.netcore.api;
 
 import com.example.thin.base.bean.ResultBean;
-import com.example.thin.bean.DetailDataBean;
-import com.example.thin.bean.HomeDataBean;
-import com.example.thin.bean.ProductDataBean;
+import com.example.thin.bean.HotBean;
 import com.example.thin.bean.RegisterLoginBean;
 
 import java.util.List;
@@ -11,7 +9,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * <br>包名：com.netcore
@@ -22,23 +22,9 @@ import retrofit2.http.POST;
  */
 public interface ApiService {
 
-    // 获取首页红包状态
-    //#https://douban.uieee.com/v2/movie/top250?start=0&count=10即可。
-    @FormUrlEncoded
-    @POST(ApiRoute.PRODUCT.GET_HOMEPAGE_REDPACKETS_STATUS)
-    Call<ResultBean<List<HomeDataBean>>> getHomePageData(@Field(ApiKeys.START) String start, @Field(ApiKeys.COUNT) String count);
-
-    @FormUrlEncoded
-    @POST(ApiRoute.PRODUCT.GET_HOMEPAGE_REDPACKETS_STATUS)
-    Call<ResultBean<List<DetailDataBean>>> getDetailData(@Field(ApiKeys.START) String start, @Field(ApiKeys.COUNT) String count);
-
-    @FormUrlEncoded
-    @POST(ApiRoute.PRODUCT.GET_HOMEPAGE_REDPACKETS_STATUS)
-    Call<ResultBean<List<DetailDataBean>>> getInfoData(@Field(ApiKeys.START) String start, @Field(ApiKeys.COUNT) String count);
-
-    @FormUrlEncoded
-    @POST(ApiRoute.PRODUCT.GET_HOMEPAGE_REDPACKETS_STATUS)
-    Call<ResultBean<List<ProductDataBean>>> getProductPageData(@Field(ApiKeys.START) String start, @Field(ApiKeys.COUNT) String count);
+    //http://172.24.132.216:8093/thinbar-octopus/shop/query?keyWord=测试&isHot=1&pageNo=1&pageSize=10&groupId=1
+    @GET(ApiRoute.INDEX.HOME_HOT)
+    Call<ResultBean<List<HotBean>>> getHot(@Query(ApiKeys.KEY_WORD) String keyWord, @Query(ApiKeys.IS_HOT) String isHot, @Query(ApiKeys.GROUP_ID) String groupId, @Query(ApiKeys.PAGENUM) String pageNo, @Query(ApiKeys.PAGESIZE) String pageSize);
 
     @FormUrlEncoded
     @POST(ApiRoute.USER.REGISTER)
@@ -50,7 +36,7 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST(ApiRoute.USER.EVALUATE)
-    Call<ResultBean<RegisterLoginBean>> evaluate(@Field(ApiKeys.NICK_NAME) String nickName, @Field(ApiKeys.SEX) String sex,
+    Call<ResultBean<RegisterLoginBean>> evaluate(@Field(ApiKeys.NICK_NAME) String nickname, @Field(ApiKeys.SEX) String sex,
                                                  @Field(ApiKeys.HEIGHT) String height, @Field(ApiKeys.TARGET_WEIGHT) String targetWeight,
                                                  @Field(ApiKeys.CONCERN_POSITION) String concernPosition);
 }

@@ -20,37 +20,37 @@ public class DetailPresenter extends BasePresenter<IDetailView> {
 
     //模拟 详情
     public void getDetailData(String start, String count, Context context) {
-        model.getDetailData(start, count, new HttpGsonCallback<List<DetailDataBean>>(context) {
-
-            @Override
-            public void onSuccess(List<DetailDataBean> data) {
-                if (isViewAttached()) {
-                    getView().updateDetailData(data);
-                }
-            }
-
-            @Override
-            public void onBizFailed(int code, String errorMsg) {
-                super.onBizFailed(code, errorMsg);
-            }
-        });
+//        model.getDetailData(start, count, new HttpGsonCallback<List<DetailDataBean>>(context) {
+//
+//            @Override
+//            public void onSuccess(List<DetailDataBean> data) {
+//                if (isViewAttached()) {
+//                    getView().updateDetailData(data);
+//                }
+//            }
+//
+//            @Override
+//            public void onBizFailed(int code, String errorMsg) {
+//                super.onBizFailed(code, errorMsg);
+//            }
+//        });
     }
 
     public void getInfoData(String start, String count, Context context) {
-        model.getInfoData(start, count, new HttpGsonCallback<List<DetailDataBean>>(context) {
-
-            @Override
-            public void onSuccess(List<DetailDataBean> data) {
-                if (isViewAttached()) {
-                    getView().updateInfoData(data);
-                }
-            }
-
-            @Override
-            public void onBizFailed(int code, String errorMsg) {
-                super.onBizFailed(code, errorMsg);
-            }
-        });
+//        model.getInfoData(start, count, new HttpGsonCallback<List<DetailDataBean>>(context) {
+//
+//            @Override
+//            public void onSuccess(List<DetailDataBean> data) {
+//                if (isViewAttached()) {
+//                    getView().updateInfoData(data);
+//                }
+//            }
+//
+//            @Override
+//            public void onBizFailed(int code, String errorMsg) {
+//                super.onBizFailed(code, errorMsg);
+//            }
+//        });
     }
 
     @Override

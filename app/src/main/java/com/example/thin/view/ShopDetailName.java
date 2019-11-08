@@ -3,18 +3,16 @@ package com.example.thin.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import com.example.thin.R;
-import com.example.thin.activity.ShopDetailActivity;
-import com.example.thin.bean.HomeDataBean;
+import com.example.thin.bean.HotBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/22
  * @Desc:
  */
-public class ShopDetailName extends BaseHomeLayout<HomeDataBean> implements View.OnClickListener {
+public class ShopDetailName extends BaseHomeLayout<HotBean> implements View.OnClickListener {
 
     public ShopDetailName(Context context) {
         this(context, null);
@@ -32,7 +30,7 @@ public class ShopDetailName extends BaseHomeLayout<HomeDataBean> implements View
     }
 
     @Override
-    public void setData(HomeDataBean data) {
+    public void setData(HotBean data) {
 
     }
 

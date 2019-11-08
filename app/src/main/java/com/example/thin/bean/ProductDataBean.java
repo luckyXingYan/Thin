@@ -14,7 +14,7 @@ public class ProductDataBean extends BaseBean {
 
     @Override
     public String toString() {
-        return "HomeDataBean{" +
+        return "HotBean{" +
                 "title=" + title +
                 ", collect_count=" + collect_count +
                 ", original_title=" + original_title +

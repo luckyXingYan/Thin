@@ -18,7 +18,7 @@ public class RegisterLoginModel extends BaseModel {
         invoke(apiService.login(mobile, password), callback);
     }
 
-    public void evaluate(String nickName, String sex, String height, String targetWeight, String concernPosition, HttpGsonCallback<RegisterLoginBean> callback) {
-        invoke(apiService.evaluate(nickName, sex, height, targetWeight, concernPosition), callback);
+    public void evaluate(String nickname, String sex, String height, String targetWeight, String concernPosition, HttpGsonCallback<RegisterLoginBean> callback) {
+        invoke(apiService.evaluate(nickname, sex, height, targetWeight, concernPosition), callback);
     }
 }

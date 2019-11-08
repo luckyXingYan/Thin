@@ -10,14 +10,14 @@ import com.example.thin.R;
 import com.example.thin.activity.SearchActivity;
 import com.example.thin.adapter.HomeAdapter;
 import com.example.thin.base.mvp.BaseFragment;
-import com.example.thin.bean.HomeDataBean;
+import com.example.thin.bean.BannerBean;
+import com.example.thin.bean.HotBean;
 import com.example.thin.iview.IHomePageView;
 import com.example.thin.presenter.HomePagePresenter;
 import com.example.thin.refresh.TwinklingRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +31,7 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     private HomeAdapter adapter;
     private TwinklingRefreshLayout refreshLayout;
     private TextView search;
+    private String keyWord, isHot = "1", groupId, pageNo = "1", pageSize = "10";//是否热门 1：是（非必填）
 
     public static HomePageFragment newInstance() {
         return new HomePageFragment();
@@ -67,11 +68,9 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
 
     @Override
     protected void initData() {
-//        if (presenter != null) {
-//            presenter.getHomePageData("0", "1", getActivity());
-//            presenter.getBannerData("0", "1", getActivity());
-//        }
-        HomeDataBean bean = new HomeDataBean();
+        presenter.getHot(keyWord, isHot, groupId, pageNo, pageSize, getActivity());
+
+        BannerBean bean = new BannerBean();
         bean.title = "eee";
         bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
@@ -82,18 +81,17 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
         bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
 
-        adapter.setData(bean);
+        adapter.setData2(bean);
         refreshLayout.finishRefresh();
     }
 
     @Override
-    public void updateHomeData(List<HomeDataBean> data) {
-//        Log.e(TAG, "updateHomeData：" + data.toString());
+    public void updateHot(List<HotBean> data) {
+        adapter.setData(data);
     }
 
     @Override
-    public void updateBannerData(List<HomeDataBean> data) {
-//        Log.e(TAG, "updateBannerData：" + data.toString());
+    public void updateBannerData(List<HotBean> data) {
     }
 
     @Override

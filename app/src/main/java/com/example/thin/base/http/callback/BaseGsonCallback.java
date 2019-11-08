@@ -2,7 +2,10 @@ package com.example.thin.base.http.callback;
 
 import android.util.Log;
 
+import com.example.thin.BuildConfig;
+import com.example.thin.MyApp;
 import com.example.thin.base.bean.ResultBean;
+import com.example.thin.base.util.ToastUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,7 +41,7 @@ public abstract class BaseGsonCallback<T> implements Callback<ResultBean<T>> {
                 T data = model.getData();
                 onSuccess(data);
                 break;
-            case ResultBean.STATE_FAILURE://{"code":"4017","message":"用户已存在","data":""}
+            case ResultBean.STATE_FAILURE:
 //                ResultBean.ErrorObject error = model.getErrorObj();
 //                if (error != null) {
 //                    int errorCode = error.getCode();
@@ -83,6 +86,7 @@ public abstract class BaseGsonCallback<T> implements Callback<ResultBean<T>> {
     }
 
     public abstract void onSuccess(T data);
+
 
     public abstract void onBizFailed(int code, String errorMsg);
 
