@@ -54,11 +54,11 @@ public class SexSettingActivity extends BaseScrollTitleBarActivity<BasePresenter
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_sex_next://下一步
+            case R.id.btn_sex_next://下一步  （ 0：女 1：男）
                 if (rbMen.isChecked()) {
-                    LocalUser.getInstance().setUserSex("男");
+                    LocalUser.getInstance().setUserSex("1");
                 } else if (rbWomen.isChecked()) {
-                    LocalUser.getInstance().setUserSex("女");
+                    LocalUser.getInstance().setUserSex("0");
                 }
                 NickNameActivity.open(this);
                 finish();

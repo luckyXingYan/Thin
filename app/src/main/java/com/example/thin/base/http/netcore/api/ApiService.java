@@ -47,4 +47,10 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(ApiRoute.USER.LOGIN)
     Call<ResultBean<RegisterLoginBean>> login(@Field(ApiKeys.MOBILE) String mobile, @Field(ApiKeys.PASSWORD) String password);
+
+    @FormUrlEncoded
+    @POST(ApiRoute.USER.EVALUATE)
+    Call<ResultBean<RegisterLoginBean>> evaluate(@Field(ApiKeys.NICK_NAME) String nickName, @Field(ApiKeys.SEX) String sex,
+                                                 @Field(ApiKeys.HEIGHT) String height, @Field(ApiKeys.TARGET_WEIGHT) String targetWeight,
+                                                 @Field(ApiKeys.CONCERN_POSITION) String concernPosition);
 }

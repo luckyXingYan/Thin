@@ -13,6 +13,7 @@ import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.base.util.ToastUtil;
+import com.example.thin.util.LocalUser;
 
 /**
  * @Author: xingyan
@@ -27,6 +28,7 @@ public class FollowPositionActivity extends BaseScrollTitleBarActivity<BasePrese
     private CheckBox cbAbdomen;
     private CheckBox cbHips;
     private CheckBox cbLeg;
+    private StringBuilder followPosition;
 
 
     public static void open(Context context) {
@@ -57,7 +59,7 @@ public class FollowPositionActivity extends BaseScrollTitleBarActivity<BasePrese
 
     @Override
     protected void initData() {
-
+        followPosition = new StringBuilder();
     }
 
     @Override
@@ -90,6 +92,26 @@ public class FollowPositionActivity extends BaseScrollTitleBarActivity<BasePrese
                         + "  cbAbdomen = " + cbAbdomen.isChecked()
                         + "  cbHips = " + cbHips.isChecked()
                         + "  cbLeg = " + cbLeg.isChecked());
+
+                //1手臂 2胸部 3臂部 4腹部 5腿部
+
+                if (cbArm.isChecked()) {
+                    followPosition.append(1 + ",");
+                }
+                if (cbChest.isChecked()) {
+                    followPosition.append(2 + ",");
+                }
+                if (cbHips.isChecked()) {
+                    followPosition.append(3 + ",");
+                }
+                if (cbAbdomen.isChecked()) {
+                    followPosition.append(4 + ",");
+                }
+                if (cbLeg.isChecked()) {
+                    followPosition.append(5);
+                }
+
+                LocalUser.getInstance().setFollowPosition(followPosition.toString());
                 WelcomeJoinActivity.open(this);
                 finish();
                 break;

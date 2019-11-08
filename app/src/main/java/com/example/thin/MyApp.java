@@ -22,12 +22,12 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
+        // 初始化 SharedPreferences
+        PreferenceUtil.getInstance().init(this);
         // 初始化网络框架
         NetEngine.init(NetConfig.create(this));
         //初始化内存泄露检测器
         initLeakCanary();
-        // 初始化 SharedPreferences
-        PreferenceUtil.getInstance().init(this);
         //此处作用是监听前后台切换的变化
         registerActivityLifecycleCallbacks(new SwitchFrontBackgroundCallbacks());
     }

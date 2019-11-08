@@ -8,6 +8,7 @@ package com.example.thin.base.bean;
 public class ResultBean<T> {
     public static final int STATE_SUCCESS = 0000;
     public static final int STATE_FAILURE = 3000;
+    public static final int REGISTER_FAILURE = 4017;
     private int code;//模拟成功
     private T data;
     private String message;

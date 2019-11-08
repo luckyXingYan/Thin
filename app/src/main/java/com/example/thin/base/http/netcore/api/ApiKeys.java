@@ -13,21 +13,28 @@ public interface ApiKeys {
     // B
     // C
     String COUNT = "count";
+    String CONCERN_POSITION = "concernPosition";
     // D
     // E
     // F
     // G
+    //H
+    String HEIGHT = "height";
     // I
     // L
     // M
     String MOBILE = "mobile";
     // N
+    String NICK_NAME = "nickName";
     // O
     // P
     String PASSWORD = "password";
     // R
     // S
     String START = "start";
+    String SEX = "sex";
+    //T
+    String TARGET_WEIGHT = "targetWeight";
     // P
     // T
     // U

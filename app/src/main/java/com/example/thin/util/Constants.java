@@ -18,6 +18,7 @@ public class Constants {
     public final static String CHECK_BOX_GOODS = "checkBoxGoods";
     public final static String CHECK_BOX_SHOP_CART = "checkBoxShopCart";
     public final static String TV_NUM = "tv_num";
+    public final static String FOLLOW_POSITION = "followPosition";
 
     public final static String SEARCH_HISTORY = "search_history";
     public final static String SEARCH_HOT_HISTORY = "search_hot_history";

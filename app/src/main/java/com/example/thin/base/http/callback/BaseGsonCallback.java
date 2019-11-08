@@ -38,7 +38,7 @@ public abstract class BaseGsonCallback<T> implements Callback<ResultBean<T>> {
                 T data = model.getData();
                 onSuccess(data);
                 break;
-            case ResultBean.STATE_FAILURE:
+            case ResultBean.STATE_FAILURE://{"code":"4017","message":"用户已存在","data":""}
 //                ResultBean.ErrorObject error = model.getErrorObj();
 //                if (error != null) {
 //                    int errorCode = error.getCode();
@@ -53,6 +53,10 @@ public abstract class BaseGsonCallback<T> implements Callback<ResultBean<T>> {
 //                } else {
 //                    onBizFailed(-10, "服务器返回错误");
 //                }
+                onBizFailed(state, model.getMessage());
+                break;
+            case ResultBean.REGISTER_FAILURE://注册用户已存在
+                onBizFailed(state, model.getMessage());
                 break;
             default:
                 onBizFailed(-10, "网络请求失败");

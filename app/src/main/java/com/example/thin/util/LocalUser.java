@@ -37,36 +37,49 @@ public class LocalUser implements Serializable {
         PreferenceUtil.getInstance().setString(Constants.USER_SEX, userSex);
     }
 
-    public void setUserTargetWeight(String userTargetWeight) {
-        PreferenceUtil.getInstance().setString(Constants.USER_TARGET_WEIGHT, userTargetWeight);
-    }
-
     public void setUserBodyHeight(String userBodyHeight) {
         PreferenceUtil.getInstance().setString(Constants.USER_BODY_HEIGHT, userBodyHeight);
+    }
+
+    public void setUserTargetWeight(String userTargetWeight) {
+        PreferenceUtil.getInstance().setString(Constants.USER_TARGET_WEIGHT, userTargetWeight);
     }
 
     public void setUserNickName(String userNickName) {
         PreferenceUtil.getInstance().setString(Constants.USER_NICK_NAME, userNickName);
     }
 
-    public void getUserId() {
-        PreferenceUtil.getInstance().getString(Constants.USER_ID);
+    public void setFollowPosition(String userNickName) {
+        PreferenceUtil.getInstance().setString(Constants.FOLLOW_POSITION, userNickName);
     }
 
-    public void getUserName() {
-        PreferenceUtil.getInstance().getString(Constants.USER_NAME);
+    public String getUserId() {
+        return PreferenceUtil.getInstance().getString(Constants.USER_ID);
+    }
+
+    public String getUserNickName() {
+        return PreferenceUtil.getInstance().getString(Constants.USER_NAME);
     }
 
     public String getToken() {
         return PreferenceUtil.getInstance().getString(Constants.TOKEN);
     }
 
-    public void getUserSex() {
-        PreferenceUtil.getInstance().getString(Constants.USER_SEX);
+    public String getUserSex() {
+        return PreferenceUtil.getInstance().getString(Constants.USER_SEX);
     }
 
-    public void getUserTargetWeight() {
-        PreferenceUtil.getInstance().getString(Constants.USER_TARGET_WEIGHT);
+    public String getFollowPosition() {
+        return PreferenceUtil.getInstance().getString(Constants.FOLLOW_POSITION);
+    }
+
+    public String getUserBodyHeight() {
+        return PreferenceUtil.getInstance().getString(Constants.USER_BODY_HEIGHT);
+    }
+
+
+    public String getUserTargetWeight() {
+        return PreferenceUtil.getInstance().getString(Constants.USER_TARGET_WEIGHT);
     }
 
     /**
