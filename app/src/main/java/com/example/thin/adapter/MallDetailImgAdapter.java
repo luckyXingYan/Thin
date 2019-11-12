@@ -5,17 +5,19 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.thin.R;
 import com.example.thin.activity.ZoomImgActivity;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
+import com.example.thin.bean.ImgListBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/17
  * @Desc:
  */
-public class MallDetailImgAdapter extends BaseRecyclerAdapter<String, MallDetailImgAdapter.MyViewHolder> {
+public class MallDetailImgAdapter extends BaseRecyclerAdapter<ImgListBean, MallDetailImgAdapter.MyViewHolder> {
 
     private Context context;
 
@@ -41,7 +43,9 @@ public class MallDetailImgAdapter extends BaseRecyclerAdapter<String, MallDetail
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-//        Glide.with(context).load(getItemData(i)).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.img);
+        ImgListBean data = getItemData(i);
+        if (data == null) return;
+        Glide.with(context).load(data.imgUrl).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.img);
         myViewHolder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

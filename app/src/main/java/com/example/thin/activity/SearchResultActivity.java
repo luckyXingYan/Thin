@@ -79,7 +79,7 @@ public class SearchResultActivity extends BaseActivity<BasePresenter> implements
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, String s, int position) {
-                GoodsDetailActivity.open(SearchResultActivity.this);
+                GoodsDetailActivity.open(SearchResultActivity.this,"");
             }
         });
 

@@ -18,7 +18,7 @@ import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.HomTopTypeBean;
+import com.example.thin.bean.TypeBean;
 import com.example.thin.refresh.TwinklingRefreshLayout;
 import com.example.thin.util.Constants;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -38,13 +38,13 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
     private RecyclerView recyclerView;
     private HomeTypeDetailAdapter adapter;
     private ImageView back;
-    private HomTopTypeBean typeBean;
+    private TypeBean typeBean;
     private EditText etSearch;
     private TextView tvCommercialArea;
     private TextView tvType;
 
 
-    public static void open(Context context, HomTopTypeBean typeBean) {
+    public static void open(Context context, TypeBean typeBean) {
         Intent intent = new Intent(context, HomeTypeDetailActivity.class);
         intent.putExtra(Constants.HOME_TOP_TYPE_BEAN, (Serializable) typeBean);
         context.startActivity(intent);
@@ -57,7 +57,7 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        typeBean = (HomTopTypeBean) getIntent().getSerializableExtra(Constants.HOME_TOP_TYPE_BEAN);
+        typeBean = (TypeBean) getIntent().getSerializableExtra(Constants.HOME_TOP_TYPE_BEAN);
         refreshLayout = getView(R.id.refresh_layout);
         recyclerView = getView(R.id.rv_home_type);
         etSearch = getView(R.id.et_input_search);
@@ -88,11 +88,11 @@ public class HomeTypeDetailActivity extends BaseActivity<BasePresenter> implemen
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, String s, int position) {
-                ShopDetailActivity.open(HomeTypeDetailActivity.this);
+                ShopDetailActivity.open(HomeTypeDetailActivity.this, "");
             }
         });
 
-        tvType.setText(typeBean.title);
+        tvType.setText(typeBean.name);
 //        etSearch.setText(inputStr);
 //        etSearch.setSelection(inputStr.length());
     }

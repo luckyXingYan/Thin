@@ -4,9 +4,9 @@ import com.example.thin.base.mvp.IBaseView;
 
 /**
  * @Author: xingyan
- * @Date: 2019/11/7
+ * @Date: 2019/11/12
  * @Desc:
  */
-public interface IEvaluateView extends IBaseView {
-    void onEvaluateSuccess();
+public interface IUpdateAddressView extends IBaseView {
+    void updateData();
 }

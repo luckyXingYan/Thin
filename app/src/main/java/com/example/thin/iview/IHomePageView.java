@@ -1,7 +1,8 @@
 package com.example.thin.iview;
 
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.HotBean;
+import com.example.thin.bean.ShopBean;
+import com.example.thin.bean.TypeBean;
 
 import java.util.List;
 
@@ -11,7 +12,8 @@ import java.util.List;
  * @Desc:
  */
 public interface IHomePageView extends IBaseView {
-    void updateHot(List<HotBean> data);
+    void updateData(List<TypeBean> data);
+    void updateHot(List<ShopBean> data);
 
-    void updateBannerData(List<HotBean> data);
+    void updateBannerData(List<ShopBean> data);
 }

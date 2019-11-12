@@ -84,7 +84,8 @@
             android:textColor="@color/color_38"
             android:textSize="14sp" />
 
-        <EditText
+        <TextView
+            android:id="@+id/tv_area"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/y10"
@@ -107,6 +108,7 @@
         android:textSize="14sp" />
 
     <EditText
+        android:id="@+id/et_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x30"
@@ -118,4 +120,17 @@
         android:textSize="12sp" />
 
     <include layout="@layout/layout_line" />
+
+    <Button
+        android:id="@+id/btn_save_address"
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y100"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y200"
+        android:layout_marginBottom="@dimen/y20"
+        android:background="@drawable/shape_rectangle_50_corners_green"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 </LinearLayout>

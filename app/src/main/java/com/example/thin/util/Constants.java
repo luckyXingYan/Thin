@@ -4,6 +4,19 @@ package com.example.thin.util;
  * Created by chengyuchun on 2016/5/4 0004.
  */
 public class Constants {
+    /**
+     * 读sd卡权限码
+     */
+    public static final int READ_EXTERNAL_STORAGE_CODE = 0x01;
+    /**
+     * 打电话
+     */
+    public static final int CALL_PHONE_CODE = 0x02;
+    /**
+     * 拍照并读写sd卡权限
+     */
+    public static final int CAMERA_WRITE_EXTERNAL_STORAGE_CODE = 0x04;
+
     public final static String MY_ORDER_TAB_LAYOUT_TYPE = "MY_ORDER_TAB_LAYOUT_TYPE";
     public final static String USER_ID = "userId";
     public final static String USER_NAME = "userName";
@@ -26,10 +39,16 @@ public class Constants {
     public final static String PHONE = "phone";
     public final static String HOME_TOP_TYPE_BEAN = "home_top_type_bean";
     public final static String INPUT_OK = "OK";
+    public final static String SHOP_ID = "shopId";
+    public final static String PRO_ID = "proId";
+
+
 
 
     public final static int IS_ALL_SELECT = 101;//全选 or 反选
     public final static int TOTAL_PRICE_NUM = 102;//获取选中的 商品的 总价格 和 数量
     public final static int GOODS_ALL_SELECT = 103;//商品是否全选了
     public final static int GET_SELECT = 104;//获取选中的所有 店铺 和 商品
+
+    public final static int GET_AREA = 201;
 }

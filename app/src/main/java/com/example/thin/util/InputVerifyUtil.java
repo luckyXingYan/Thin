@@ -73,4 +73,22 @@ public class InputVerifyUtil {
             return OK;
         }
     }
+
+    public static String checkUpdateAddress(String deliveryName, String deliveryTelephone, String area, String detailedAddress) {
+        if (TextUtils.isEmpty(deliveryName)) {
+            return String.format(EMPTY_FORMAT, "收件人");
+        }
+        if (TextUtils.isEmpty(deliveryTelephone)) {
+            return String.format(EMPTY_FORMAT, "手机号");
+        } else if (deliveryTelephone.length() < MOBILE_LENGTH || deliveryTelephone.length() > MOBILE_LENGTH) {
+            return String.format(WRONG_TIP_FORMAT, "手机号");
+        }
+        if (TextUtils.isEmpty(area)) {
+            return String.format(EMPTY_FORMAT, "所在地区");
+        }
+        if (TextUtils.isEmpty(detailedAddress)) {
+            return String.format(EMPTY_FORMAT, "详细地址");
+        }
+        return OK;
+    }
 }

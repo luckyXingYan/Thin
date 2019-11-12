@@ -11,7 +11,7 @@ import java.util.List;
 public class OrderDataHelper {
     /**
      * List<Object>有三种数据类型：
-     * 1、ShopBean 表示每个订单的头部信息（订单号、订单状态、店铺名称）
+     * 1、ShopBean2 表示每个订单的头部信息（订单号、订单状态、店铺名称）
      * 2、goodList 表示订单中的商品
      *
      * @param resultList
@@ -22,8 +22,8 @@ public class OrderDataHelper {
         List<Object> dataList = new ArrayList<>();
         //遍历每一张大订单
         for (ShopCartBean orderListBean : resultList) {
-            //将店铺信息 存储到 ShopBean 实体
-            ShopBean orderHeadInfo = new ShopBean();
+            //将店铺信息 存储到 ShopBean2 实体
+            ShopBean2 orderHeadInfo = new ShopBean2();
             orderHeadInfo.id = orderListBean.id;
             orderHeadInfo.title = orderListBean.title;
 
@@ -42,7 +42,7 @@ public class OrderDataHelper {
 
     /**
      * List<Object>有三种数据类型：
-     * 1、ShopBean 表示每个订单的头部信息（订单号、订单状态、店铺名称）
+     * 1、ShopBean2 表示每个订单的头部信息（订单号、订单状态、店铺名称）
      * 2、goodList 表示订单中的商品
      * 3、orderBottomBean 表示订单的支付信息（金额、订单状态）
      *
@@ -53,8 +53,8 @@ public class OrderDataHelper {
         List<Object> dataList = new ArrayList<>();
         //遍历每一张大订单
         for (ShopCartBean orderListBean : resultList) {
-            //将店铺信息 存储到 ShopBean 实体
-            ShopBean orderHeadInfo = new ShopBean();
+            //将店铺信息 存储到 ShopBean2 实体
+            ShopBean2 orderHeadInfo = new ShopBean2();
             orderHeadInfo.id = orderListBean.id;
             orderHeadInfo.title = orderListBean.title;
 

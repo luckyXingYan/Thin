@@ -1,7 +1,6 @@
 package com.example.thin.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,17 +10,14 @@ import com.bumptech.glide.Glide;
 import com.example.thin.R;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
-import com.example.thin.bean.HomTopTypeBean;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.thin.bean.TypeBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/17
  * @Desc:
  */
-public class TypeAdapter extends BaseRecyclerAdapter<HomTopTypeBean, TypeAdapter.MyViewHolder> {
+public class TypeAdapter extends BaseRecyclerAdapter<TypeBean, TypeAdapter.MyViewHolder> {
     private Context context;
 
     public TypeAdapter(Context context) {
@@ -46,8 +42,10 @@ public class TypeAdapter extends BaseRecyclerAdapter<HomTopTypeBean, TypeAdapter
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.type.setText(getItemData(i).title);
-        Glide.with(context).load(getItemData(i).img).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivType);
+        TypeBean bean = getItemData(i);
+        if (bean == null) return;
+        myViewHolder.type.setText(bean.name);
+        Glide.with(context).load(R.mipmap.liposuction).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivType);
     }
 
     protected class MyViewHolder extends BaseViewHolder {

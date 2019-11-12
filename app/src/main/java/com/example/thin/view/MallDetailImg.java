@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.thin.R;
 import com.example.thin.adapter.MallDetailImgAdapter;
+import com.example.thin.bean.ImgListBean;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class MallDetailImg extends BaseHomeLayout<List<String>> {
+public class MallDetailImg extends BaseHomeLayout<List<ImgListBean>> {
     private RecyclerView recyclerView;
     private MallDetailImgAdapter adapter;
 
@@ -34,7 +35,7 @@ public class MallDetailImg extends BaseHomeLayout<List<String>> {
     }
 
     @Override
-    public void setData(List<String> data) {
+    public void setData(List<ImgListBean> data) {
         adapter.setData(data);
     }
 }

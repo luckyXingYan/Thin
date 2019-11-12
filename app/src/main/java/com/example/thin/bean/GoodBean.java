@@ -14,4 +14,6 @@ public class GoodBean implements Serializable {
     public String num;
     public String shopId;
     public boolean isSelect;
+
+
 }

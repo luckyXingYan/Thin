@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 
 import com.example.thin.R;
 import com.example.thin.activity.GoodsDetailActivity;
-import com.example.thin.adapter.HotAdapter;
 import com.example.thin.adapter.MallAdapter;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
+import com.example.thin.bean.GoodsBean;
 
 import java.util.List;
 
@@ -20,15 +20,15 @@ import java.util.List;
  * @Date: 2019/10/21
  * @Desc:
  */
-public class ShopDetailView extends BaseHomeLayout<List<String>> {
+public class GoodsItemView extends BaseHomeLayout<List<GoodsBean>> {
     private RecyclerView recyclerView;
     private MallAdapter adapter;
 
-    public ShopDetailView(Context context) {
+    public GoodsItemView(Context context) {
         this(context, null);
     }
 
-    public ShopDetailView(Context context, AttributeSet attrs) {
+    public GoodsItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -42,16 +42,16 @@ public class ShopDetailView extends BaseHomeLayout<List<String>> {
         adapter = new MallAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<GoodsBean>() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, String s, int position) {
-                GoodsDetailActivity.open(getContext());
+            public void onItemClick(ViewGroup parent, View view, GoodsBean bean, int position) {
+                GoodsDetailActivity.open(getContext(),adapter.getItemData(position).pid);
             }
         });
     }
 
     @Override
-    public void setData(List<String> data) {
+    public void setData(List<GoodsBean> data) {
         adapter.setData(data);
     }
 }

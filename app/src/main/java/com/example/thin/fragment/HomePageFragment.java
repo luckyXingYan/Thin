@@ -11,7 +11,8 @@ import com.example.thin.activity.SearchActivity;
 import com.example.thin.adapter.HomeAdapter;
 import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.bean.BannerBean;
-import com.example.thin.bean.HotBean;
+import com.example.thin.bean.ShopBean;
+import com.example.thin.bean.TypeBean;
 import com.example.thin.iview.IHomePageView;
 import com.example.thin.presenter.HomePagePresenter;
 import com.example.thin.refresh.TwinklingRefreshLayout;
@@ -68,7 +69,8 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
 
     @Override
     protected void initData() {
-        presenter.getHot(keyWord, isHot, groupId, pageNo, pageSize, getActivity());
+        presenter.getTypeList(getActivity());
+        presenter.getHot("大力丸", isHot, groupId, pageNo, pageSize, getActivity());
 
         BannerBean bean = new BannerBean();
         bean.title = "eee";
@@ -86,12 +88,17 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     }
 
     @Override
-    public void updateHot(List<HotBean> data) {
+    public void updateData(List<TypeBean> data) {
+        adapter.setTypeData(data);
+    }
+
+    @Override
+    public void updateHot(List<ShopBean> data) {
         adapter.setData(data);
     }
 
     @Override
-    public void updateBannerData(List<HotBean> data) {
+    public void updateBannerData(List<ShopBean> data) {
     }
 
     @Override

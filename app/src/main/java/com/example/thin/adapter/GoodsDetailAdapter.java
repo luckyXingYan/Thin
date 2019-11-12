@@ -5,8 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.example.thin.bean.BannerBean;
-import com.example.thin.bean.HotBean;
+import com.example.thin.bean.GoodsBean;
 import com.example.thin.view.BaseHomeLayout;
 import com.example.thin.view.MallDetailImg;
 import com.example.thin.view.MallDetailInfo;
@@ -37,7 +36,7 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
 
     private int type;
 
-    private BannerBean data = new BannerBean();
+    private GoodsBean data;
 
     private Context context;
 
@@ -46,7 +45,7 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
         this.type = type;
     }
 
-    public void setData(BannerBean data) {
+    public void setData(GoodsBean data) {
         this.data = data;
         notifyDataSetChanged();
     }
@@ -78,7 +77,7 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
         } else if (i == GoodsDetailPageType.INFO.getValue()) {
             ((MyViewHolder) viewHolder).setData(data);
         } else if (i == GoodsDetailPageType.IMG.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data.url);
+            ((MyViewHolder) viewHolder).setData(data.rotationCharts);
         }
     }
 

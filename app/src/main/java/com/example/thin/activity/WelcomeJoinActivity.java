@@ -8,11 +8,8 @@ import android.widget.Button;
 
 import com.example.thin.R;
 import com.example.thin.base.mvp.BaseActivity;
-import com.example.thin.base.mvp.BasePresenter;
-import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.iview.IEvaluateView;
+import com.example.thin.iview.ICommonView;
 import com.example.thin.presenter.EvaluatePresenter;
-import com.example.thin.util.Constants;
 import com.example.thin.util.LocalUser;
 
 /**
@@ -20,7 +17,7 @@ import com.example.thin.util.LocalUser;
  * @Date: 2019/10/28
  * @Desc:
  */
-public class WelcomeJoinActivity extends BaseActivity<EvaluatePresenter> implements IEvaluateView, View.OnClickListener {
+public class WelcomeJoinActivity extends BaseActivity<EvaluatePresenter> implements ICommonView, View.OnClickListener {
     private Button btnEvaluating;
 
     public static void open(Context context) {
@@ -62,7 +59,7 @@ public class WelcomeJoinActivity extends BaseActivity<EvaluatePresenter> impleme
     }
 
     @Override
-    public void onEvaluateSuccess() {
+    public void onSuccess() {
         finish();
     }
 }

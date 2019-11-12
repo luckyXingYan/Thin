@@ -5,14 +5,14 @@ import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.activity.MyOrderActivity;
-import com.example.thin.bean.ShopBean;
+import com.example.thin.bean.ShopBean2;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/23
  * @Desc:
  */
-public class ShopView extends BaseHomeLayout<ShopBean> {
+public class ShopView extends BaseHomeLayout<ShopBean2> {
     private TextView sendType;
 
     public ShopView(Context context) {
@@ -30,7 +30,7 @@ public class ShopView extends BaseHomeLayout<ShopBean> {
     }
 
     @Override
-    public void setData(ShopBean data) {
+    public void setData(ShopBean2 data) {
 
     }
 }

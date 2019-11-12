@@ -14,11 +14,11 @@ import com.example.thin.R;
 import com.example.thin.adapter.BannerHolder;
 import com.example.thin.adapter.GoodsDetailAdapter;
 import com.example.thin.base.mvp.BaseActivity;
-import com.example.thin.base.mvp.BasePresenter;
-import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.bean.BannerBean;
-import com.example.thin.bean.HotBean;
-import com.example.thin.view.BannerView;
+import com.example.thin.bean.GoodsBean;
+import com.example.thin.iview.IGoodsDetailView;
+import com.example.thin.presenter.GoodsDetailPresenter;
+import com.example.thin.util.Constants;
 import com.ms.banner.Banner;
 import com.ms.banner.BannerConfig;
 import com.ms.banner.Transformer;
@@ -28,7 +28,7 @@ import com.ms.banner.Transformer;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> implements IGoodsDetailView, View.OnClickListener {
     private RecyclerView recyclerView;
     private GoodsDetailAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
@@ -36,9 +36,12 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
     private RelativeLayout rlShopCart;
     private EditText content;
     private Banner banner;
+    private String proId;
 
-    public static void open(Context context) {
-        context.startActivity(new Intent(context, GoodsDetailActivity.class));
+    public static void open(Context context, String proId) {
+        Intent intent = new Intent(context, GoodsDetailActivity.class);
+        intent.putExtra(Constants.PRO_ID, proId);
+        context.startActivity(intent);
     }
 
     @Override
@@ -48,6 +51,7 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        proId = getIntent().getStringExtra(Constants.PRO_ID);
         recyclerView = getView(R.id.rv_mall_detail);
         banner = getView(R.id.banner_goods_detail);
         back = getView(R.id.iv_back);
@@ -76,20 +80,19 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
         bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
 
-        adapter.setData(bean);
-
-
         banner.setAutoPlay(true)
                 .setOffscreenPageLimit(bean.url.size())
                 .setPages(bean.url, new BannerHolder())
                 .setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
                 .setBannerAnimation(Transformer.Default)
                 .start();
+
+        presenter.getGoodsDetail(this, proId);
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected GoodsDetailPresenter createPresenter() {
+        return new GoodsDetailPresenter();
     }
 
     @Override
@@ -116,5 +119,10 @@ public class GoodsDetailActivity extends BaseActivity<BasePresenter> implements 
     public void onStop() {
         super.onStop();
         banner.stopAutoPlay();
+    }
+
+    @Override
+    public void updateData(GoodsBean data) {
+        adapter.setData(data);
     }
 }

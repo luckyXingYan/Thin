@@ -16,7 +16,12 @@ public interface ApiKeys {
     // C
     String COUNT = "count";
     String CONCERN_POSITION = "concernPosition";
+    String CITY_ID = "cityId";
+    String COUNTY_ID = "countyId";
     // D
+    String DELIVERY_NAME = "deliveryName";
+    String DELIVERY_TELEPHONE = "deliveryTelephone";
+    String DETAILED_ADDRESS = "detailedAddress";
     // E
     // F
     // G
@@ -25,6 +30,7 @@ public interface ApiKeys {
     String HEIGHT = "height";
     // I
     String IS_HOT = "isHot";
+    String ID = "id";
     //J
     //K
     String KEY_WORD = "keyWord";
@@ -38,6 +44,7 @@ public interface ApiKeys {
     String PASSWORD = "password";
     String PAGENUM = "pageNo";
     String PAGESIZE = "pageSize";
+    String PROVINCE_ID = "provinceId";
     // R
     // S
     String START = "start";

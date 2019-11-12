@@ -6,14 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.example.thin.bean.BannerBean;
-import com.example.thin.bean.HotBean;
+import com.example.thin.bean.ShopBean;
+import com.example.thin.bean.TypeBean;
 import com.example.thin.view.BannerView;
 import com.example.thin.view.BaseHomeLayout;
 import com.example.thin.view.HomeFootView;
 import com.example.thin.view.HotView;
 import com.example.thin.view.TopTypeView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,17 +43,21 @@ public class HomeAdapter extends RecyclerView.Adapter {
 
     private BannerView bannerView;
 
-    private List<HotBean> data;
+    private List<TypeBean> dataType;
+    private List<ShopBean> data;
     private BannerBean data2 = new BannerBean();
 
     private Context context;
 
     public HomeAdapter(Context context) {
         this.context = context;
-        data = new ArrayList<>();
     }
 
-    public void setData(List<HotBean> data) {
+    public void setTypeData(List<TypeBean> dataType) {
+        this.dataType = dataType;
+        notifyDataSetChanged();
+    }
+    public void setData(List<ShopBean> data) {
         this.data = data;
         notifyDataSetChanged();
     }
@@ -96,7 +100,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (data == null) return;
         if (i == HomePageType.TYPE.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data2.url);
+            ((MyViewHolder) viewHolder).setData(dataType);
         } else if (i == HomePageType.BANNER.getValue()) {
             ((MyViewHolder) viewHolder).setData(data2.url);
         } else if (i == HomePageType.HOT.getValue()) {

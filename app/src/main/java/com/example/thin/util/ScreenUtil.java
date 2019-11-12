@@ -1,6 +1,8 @@
 package com.example.thin.util;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
 import java.lang.ref.WeakReference;
 
@@ -18,4 +20,12 @@ public class ScreenUtil {
         final float scale = contextWeakReference.get().getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
+    public static DisplayMetrics displayMetrics(Context context) {
+        DisplayMetrics dm = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(dm);
+        return dm;
+    }
+
 }

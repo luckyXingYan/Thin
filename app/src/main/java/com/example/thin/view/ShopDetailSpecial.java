@@ -3,14 +3,14 @@ package com.example.thin.view;
 import android.content.Context;
 
 import com.example.thin.R;
-import com.example.thin.bean.HotBean;
+import com.example.thin.bean.ShopBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/22
  * @Desc:
  */
-public class ShopDetailSpecial extends BaseHomeLayout<HotBean> {
+public class ShopDetailSpecial extends BaseHomeLayout<ShopBean> {
     public ShopDetailSpecial(Context context) {
         super(context);
     }
@@ -21,7 +21,7 @@ public class ShopDetailSpecial extends BaseHomeLayout<HotBean> {
     }
 
     @Override
-    public void setData(HotBean data) {
+    public void setData(ShopBean data) {
 
     }
 }

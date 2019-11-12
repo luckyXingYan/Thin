@@ -10,9 +10,8 @@ import com.bumptech.glide.Glide;
 import com.example.thin.R;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
-import com.example.thin.bean.HotBean;
-import com.example.thin.bean.HotGoodsBean;
-import com.example.thin.bean.HotShopBean;
+import com.example.thin.bean.ShopBean;
+import com.example.thin.bean.GoodsBean;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ import java.util.List;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class HotAdapter extends BaseRecyclerAdapter<HotBean, HotAdapter.MyViewHolder> {
+public class HotAdapter extends BaseRecyclerAdapter<ShopBean, HotAdapter.MyViewHolder> {
 
     private Context context;
 
@@ -47,16 +46,28 @@ public class HotAdapter extends BaseRecyclerAdapter<HotBean, HotAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        HotShopBean hotShopBean = getItemData(i).hotShopBean;
-        Glide.with(context).load(hotShopBean.shopLogo).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivShop);
-        myViewHolder.title.setText(hotShopBean.shopName);
-        myViewHolder.averageConsume.setText("平均消费：" + hotShopBean.averageConsumption);
-        List<HotGoodsBean> hotGoodsBeanList = getItemData(i).hotGoodsBeans;
-        if (hotGoodsBeanList.size() >= 0) {
-            myViewHolder.proPrice.setText(hotGoodsBeanList.get(0).productPrice);
-            myViewHolder.proName.setText(hotGoodsBeanList.get(0).productName);
+        ShopBean hotBean = getItemData(i);
+        Glide.with(context).load(hotBean.shopLogo).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivShop);
+        myViewHolder.title.setText(hotBean.shopName);
+        myViewHolder.averageConsume.setText("平均消费：" + hotBean.averageConsumption);
+        List<GoodsBean> hotGoodsBeanList = getItemData(i).list;
+        if (hotGoodsBeanList.size() > 0) {
+            if (hotGoodsBeanList.size() == 1) {
+                myViewHolder.proPriceTwo.setVisibility(View.GONE);
+                myViewHolder.proNameTwo.setVisibility(View.GONE);
+                myViewHolder.proPrice.setText(hotGoodsBeanList.get(0).productPrice);
+                myViewHolder.proName.setText(hotGoodsBeanList.get(0).productName);
+                return;
+            }
+            myViewHolder.proPriceTwo.setVisibility(View.VISIBLE);
+            myViewHolder.proNameTwo.setVisibility(View.VISIBLE);
             myViewHolder.proPriceTwo.setText(hotGoodsBeanList.get(1).productPrice);
             myViewHolder.proNameTwo.setText(hotGoodsBeanList.get(1).productName);
+        } else {
+            myViewHolder.proPrice.setVisibility(View.GONE);
+            myViewHolder.proName.setVisibility(View.GONE);
+            myViewHolder.proPriceTwo.setVisibility(View.GONE);
+            myViewHolder.proNameTwo.setVisibility(View.GONE);
         }
     }
 

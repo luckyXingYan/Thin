@@ -5,7 +5,7 @@ import android.content.Context;
 import com.example.thin.base.http.callback.HttpGsonCallback;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.bean.RegisterLoginBean;
-import com.example.thin.iview.IEvaluateView;
+import com.example.thin.iview.ICommonView;
 import com.example.thin.model.RegisterLoginModel;
 
 /**
@@ -13,7 +13,7 @@ import com.example.thin.model.RegisterLoginModel;
  * @Date: 2019/11/7
  * @Desc:
  */
-public class EvaluatePresenter extends BasePresenter<IEvaluateView> {
+public class EvaluatePresenter extends BasePresenter<ICommonView> {
     private RegisterLoginModel model;
 
     public void evaluate(Context context, String nickname, String sex, String height, String targetWeight, String concernPosition) {
@@ -21,7 +21,7 @@ public class EvaluatePresenter extends BasePresenter<IEvaluateView> {
             @Override
             public void onSuccess(RegisterLoginBean data) {
                 if (isViewAttached()) {
-                    getView().onEvaluateSuccess();
+                    getView().onSuccess();
                 }
             }
         });

@@ -1,8 +1,11 @@
 package com.example.thin.base.http.netcore.api;
 
 import com.example.thin.base.bean.ResultBean;
-import com.example.thin.bean.HotBean;
+import com.example.thin.bean.GoodsBean;
+import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.RegisterLoginBean;
+import com.example.thin.bean.TypeBean;
+import com.example.thin.bean.UpdateAddressBean;
 
 import java.util.List;
 
@@ -24,7 +27,10 @@ public interface ApiService {
 
     //http://172.24.132.216:8093/thinbar-octopus/shop/query?keyWord=测试&isHot=1&pageNo=1&pageSize=10&groupId=1
     @GET(ApiRoute.INDEX.HOME_HOT)
-    Call<ResultBean<List<HotBean>>> getHot(@Query(ApiKeys.KEY_WORD) String keyWord, @Query(ApiKeys.IS_HOT) String isHot, @Query(ApiKeys.GROUP_ID) String groupId, @Query(ApiKeys.PAGENUM) String pageNo, @Query(ApiKeys.PAGESIZE) String pageSize);
+    Call<ResultBean<List<ShopBean>>> getHot(@Query(ApiKeys.KEY_WORD) String keyWord, @Query(ApiKeys.IS_HOT) String isHot, @Query(ApiKeys.GROUP_ID) String groupId, @Query(ApiKeys.PAGENUM) String pageNo, @Query(ApiKeys.PAGESIZE) String pageSize);
+
+    @POST(ApiRoute.PRODUCT.TYPE_LIST)
+    Call<ResultBean<List<TypeBean>>> getTypeList();
 
     @FormUrlEncoded
     @POST(ApiRoute.USER.REGISTER)
@@ -39,4 +45,18 @@ public interface ApiService {
     Call<ResultBean<RegisterLoginBean>> evaluate(@Field(ApiKeys.NICK_NAME) String nickname, @Field(ApiKeys.SEX) String sex,
                                                  @Field(ApiKeys.HEIGHT) String height, @Field(ApiKeys.TARGET_WEIGHT) String targetWeight,
                                                  @Field(ApiKeys.CONCERN_POSITION) String concernPosition);
+
+    @GET(ApiRoute.INDEX.SHOP_DETAIL)
+    Call<ResultBean<ShopBean>> shopDetail(@Query(ApiKeys.ID) String id);
+
+    @GET(ApiRoute.PRODUCT.PRO_DETAIL)
+    Call<ResultBean<GoodsBean>> goodsDetail(@Query(ApiKeys.ID) String id);
+
+    @FormUrlEncoded
+    @POST(ApiRoute.ADDRESS.ADD_ADDRESS)
+    Call<ResultBean<UpdateAddressBean>> addAddress(@Field(ApiKeys.DELIVERY_NAME) String deliveryName, @Field(ApiKeys.DELIVERY_TELEPHONE) String deliveryTelephone,
+                                                   @Field(ApiKeys.PROVINCE_ID) String provinceId,
+                                                   @Field(ApiKeys.CITY_ID) String cityId, @Field(ApiKeys.COUNTY_ID) String countyId,
+                                                   @Field(ApiKeys.DETAILED_ADDRESS) String detailedAddress);
+
 }

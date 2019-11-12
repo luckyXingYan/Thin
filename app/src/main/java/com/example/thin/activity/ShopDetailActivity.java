@@ -13,10 +13,11 @@ import com.example.thin.R;
 import com.example.thin.adapter.BannerHolder;
 import com.example.thin.adapter.ShopDetailAdapter;
 import com.example.thin.base.mvp.BaseActivity;
-import com.example.thin.base.mvp.BasePresenter;
-import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.bean.BannerBean;
-import com.example.thin.bean.HotBean;
+import com.example.thin.bean.ShopBean;
+import com.example.thin.iview.IShopDetailView;
+import com.example.thin.presenter.ShopDetailPresenter;
+import com.example.thin.util.Constants;
 import com.ms.banner.Banner;
 import com.ms.banner.BannerConfig;
 import com.ms.banner.Transformer;
@@ -26,16 +27,19 @@ import com.ms.banner.Transformer;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class ShopDetailActivity extends BaseActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+public class ShopDetailActivity extends BaseActivity<ShopDetailPresenter> implements IShopDetailView, View.OnClickListener {
     private RecyclerView recyclerView;
     private ShopDetailAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
     private EditText content;
     private ImageView back;
     private Banner banner;
+    private String shopId;
 
-    public static void open(Context context) {
-        context.startActivity(new Intent(context, ShopDetailActivity.class));
+    public static void open(Context context, String shopId) {
+        Intent intent = new Intent(context, ShopDetailActivity.class);
+        intent.putExtra(Constants.SHOP_ID, shopId);
+        context.startActivity(intent);
     }
 
 
@@ -46,6 +50,7 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        shopId = getIntent().getStringExtra(Constants.SHOP_ID);
         banner = getView(R.id.banner_shop_detail);
         back = getView(R.id.iv_back);
         content = getView(R.id.et_input_search);
@@ -55,7 +60,7 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new ShopDetailAdapter(this, 0);
+        adapter = new ShopDetailAdapter(this);
         recyclerView.setAdapter(adapter);
 
         back.setOnClickListener(this);
@@ -74,19 +79,18 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
         bean.url.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
         bean.url.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
 
-        adapter.setData(bean);
-
         banner.setAutoPlay(true)
                 .setOffscreenPageLimit(bean.url.size())
                 .setPages(bean.url, new BannerHolder())
                 .setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
                 .setBannerAnimation(Transformer.Default)
                 .start();
+        presenter.getShopDetail(this, shopId);
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected ShopDetailPresenter createPresenter() {
+        return new ShopDetailPresenter();
     }
 
     @Override
@@ -110,5 +114,10 @@ public class ShopDetailActivity extends BaseActivity<BasePresenter> implements I
     public void onStop() {
         super.onStop();
         banner.stopAutoPlay();
+    }
+
+    @Override
+    public void updateData(ShopBean data) {
+        adapter.setData(data);
     }
 }

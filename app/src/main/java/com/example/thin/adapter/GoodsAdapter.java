@@ -83,7 +83,7 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
         myViewHolder.rlGoodsDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GoodsDetailActivity.open(context);
+                GoodsDetailActivity.open(context,"");
             }
         });
         //长按删除

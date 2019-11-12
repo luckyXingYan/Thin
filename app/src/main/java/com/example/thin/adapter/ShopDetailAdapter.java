@@ -5,12 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.example.thin.bean.BannerBean;
-import com.example.thin.bean.HotBean;
+import com.example.thin.bean.ShopBean;
 import com.example.thin.view.BaseHomeLayout;
 import com.example.thin.view.ShopDetailName;
 import com.example.thin.view.ShopDetailSpecial;
-import com.example.thin.view.ShopDetailView;
+import com.example.thin.view.GoodsItemView;
+
+import java.util.List;
 
 /**
  * @Author: xingyan
@@ -35,18 +36,15 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
 
     }
 
-    private int type;
-
-    private BannerBean data = new BannerBean();
+    private ShopBean data;
 
     private Context context;
 
-    public ShopDetailAdapter(Context context, int type) {
+    public ShopDetailAdapter(Context context) {
         this.context = context;
-        this.type = type;
     }
 
-    public void setData(BannerBean data) {
+    public void setData(ShopBean data) {
         this.data = data;
         notifyDataSetChanged();
     }
@@ -64,7 +62,7 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
                 myViewHolder = new MyViewHolder(new ShopDetailSpecial(context));
                 break;
             case IMG:
-                myViewHolder = new MyViewHolder(new ShopDetailView(context));
+                myViewHolder = new MyViewHolder(new GoodsItemView(context));
                 break;
         }
         return myViewHolder;
@@ -76,9 +74,9 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
         if (i == ShopDetailPageType.NAME.getValue()) {
             ((MyViewHolder) viewHolder).setData(data);
         } else if (i == ShopDetailPageType.INFO.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data);
+            ((MyViewHolder) viewHolder).setData(null);
         } else if (i == ShopDetailPageType.IMG.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data.url);
+            ((MyViewHolder) viewHolder).setData(data.list);
         }
     }
 

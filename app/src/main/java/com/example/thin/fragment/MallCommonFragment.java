@@ -13,6 +13,7 @@ import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.mvp.BaseFragment;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
+import com.example.thin.bean.GoodsBean;
 import com.example.thin.refresh.TwinklingRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -79,10 +80,10 @@ public class MallCommonFragment extends BaseFragment<BasePresenter> implements I
                 }
             }
         });
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<GoodsBean>() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, String s, int position) {
-                GoodsDetailActivity.open(getActivity());
+            public void onItemClick(ViewGroup parent, View view, GoodsBean bean, int position) {
+                GoodsDetailActivity.open(getActivity(),"");
             }
         });
 
@@ -97,7 +98,7 @@ public class MallCommonFragment extends BaseFragment<BasePresenter> implements I
         data.add("https://img.pc841.com/2018/0922/20180922111049508.jpg");
         data.add("https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg");
 
-        adapter.setData(data);
+//        adapter.setData(data);
 
         refreshLayout.finishRefresh();
         refreshLayout.finishLoadMore();
