@@ -5,9 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.SearchGvView;
-import com.example.thin.view.SearchView;
+import com.example.thin.view.BaseLayout;
+import com.example.thin.view.SearchLayout;
+import com.example.thin.view.SearchItemLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,16 +58,16 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         MyViewHolder myViewHolder = null;
         switch (type) {
             case RECENT_SEARCH:
-                myViewHolder = new MyViewHolder(new SearchView(context, 0));
+                myViewHolder = new MyViewHolder(new SearchItemLayout(context, 0));
                 break;
             case RECENT_SEARCH_GV:
-                myViewHolder = new MyViewHolder(new SearchGvView(context, 0));
+                myViewHolder = new MyViewHolder(new SearchLayout(context, 0));
                 break;
             case HOT_SEARCH:
-                myViewHolder = new MyViewHolder(new SearchView(context, 1));
+                myViewHolder = new MyViewHolder(new SearchItemLayout(context, 1));
                 break;
             case HOT_SEARCH_GV:
-                myViewHolder = new MyViewHolder(new SearchGvView(context, 1));
+                myViewHolder = new MyViewHolder(new SearchLayout(context, 1));
                 break;
         }
         return myViewHolder;
@@ -98,9 +98,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     }
 
     protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseHomeLayout itemView;
+        private BaseLayout itemView;
 
-        public MyViewHolder(@NonNull BaseHomeLayout itemView) {
+        public MyViewHolder(@NonNull BaseLayout itemView) {
             super(itemView);
             this.itemView = itemView;
         }

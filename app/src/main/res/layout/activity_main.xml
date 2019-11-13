@@ -17,7 +17,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.thin.view.MainBottomTabView
+    <com.example.thin.view.MainBottomTabLayout
         android:id="@+id/mainBottomTabView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

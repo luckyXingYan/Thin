@@ -1,4 +1,4 @@
-package com.example.thin.view;
+package com.example.thin.widget.ruler;
 
 import android.content.Context;
 import android.content.res.TypedArray;

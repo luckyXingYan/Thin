@@ -8,8 +8,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import com.example.thin.R;
-import com.example.thin.activity.CashierActivity;
-import com.example.thin.activity.CreateAddressActivity;
 import com.example.thin.activity.PublishActivity;
 
 /**
@@ -17,17 +15,17 @@ import com.example.thin.activity.PublishActivity;
  * @Date: 2019/8/2
  * @Desc:
  */
-public class MainBottomTabView extends RelativeLayout implements View.OnClickListener {
+public class MainBottomTabLayout extends RelativeLayout implements View.OnClickListener {
 
     private RadioGroup mTabRadioGroup;
     private int index;
     private ImageView publish;
 
-    public MainBottomTabView(Context context) {
+    public MainBottomTabLayout(Context context) {
         this(context, null);
     }
 
-    public MainBottomTabView(Context context, AttributeSet attrs) {
+    public MainBottomTabLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }

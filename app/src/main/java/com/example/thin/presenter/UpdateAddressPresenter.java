@@ -71,6 +71,17 @@ public class UpdateAddressPresenter extends BasePresenter<IUpdateAddressView> {
         });
     }
 
+    public void updateAddress(Context context, String id, String deliveryName, String deliveryTelephone, String provinceId, String cityId, String countyId, String detailedAddress) {
+        model.updateAddress(id, deliveryName, deliveryTelephone, provinceId, cityId, countyId, detailedAddress, new HttpGsonCallback<UpdateAddressBean>(context) {
+            @Override
+            public void onSuccess(UpdateAddressBean data) {
+                if (isViewAttached()) {
+                    getView().updateData();
+                }
+            }
+        });
+    }
+
     public String toStringTemp(InputStream is) {
         return toStringOk(is, "utf-8");
     }

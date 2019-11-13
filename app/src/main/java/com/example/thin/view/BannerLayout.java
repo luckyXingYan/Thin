@@ -17,14 +17,14 @@ import java.util.List;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class BannerView extends BaseHomeLayout<List<String>> {
+public class BannerLayout extends BaseLayout<List<String>> {
     private Banner banner;
 
-    public BannerView(Context context) {
+    public BannerLayout(Context context) {
         this(context, null);
     }
 
-    public BannerView(Context context, AttributeSet attrs) {
+    public BannerLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

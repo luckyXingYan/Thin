@@ -1,4 +1,4 @@
-package com.example.thin.view;
+package com.example.thin.widget.zoom;
 
 import android.content.Context;
 import android.graphics.Matrix;

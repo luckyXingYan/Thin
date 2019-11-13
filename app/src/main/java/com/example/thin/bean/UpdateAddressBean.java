@@ -1,11 +1,13 @@
 package com.example.thin.bean;
 
+import java.io.Serializable;
+
 /**
  * @Author: xingyan
  * @Date: 2019/11/12
  * @Desc:
  */
-public class UpdateAddressBean {
+public class UpdateAddressBean implements Serializable {
 
     /**
      * id : id

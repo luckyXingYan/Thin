@@ -10,13 +10,13 @@ import com.example.thin.R;
  * @Date: 2019/10/21
  * @Desc:
  */
-public class HomeFootView extends BaseHomeLayout {
+public class EmptyFootLayout extends BaseLayout {
 
-    public HomeFootView(Context context) {
+    public EmptyFootLayout(Context context) {
         this(context, null);
     }
 
-    public HomeFootView(Context context, AttributeSet attrs) {
+    public EmptyFootLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

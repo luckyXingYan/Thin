@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import com.example.thin.bean.GoodBean;
 import com.example.thin.bean.ShopBean2;
 import com.example.thin.bean.OrderBottomBean;
-import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.ShopView;
-import com.example.thin.view.OrderBottomView;
-import com.example.thin.view.OrderGoodsView;
+import com.example.thin.view.BaseLayout;
+import com.example.thin.view.OrderShopLayout;
+import com.example.thin.view.OrderItemBottomLayout;
+import com.example.thin.view.OrderGoodsItemLayout;
 
 import java.util.List;
 
@@ -54,13 +54,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
-                myViewHolder = new MyViewHolder(new ShopView(context));
+                myViewHolder = new MyViewHolder(new OrderShopLayout(context));
                 break;
             case GOODS:
-                myViewHolder = new MyViewHolder(new OrderGoodsView(context));
+                myViewHolder = new MyViewHolder(new OrderGoodsItemLayout(context));
                 break;
             case FOOT:
-                myViewHolder = new MyViewHolder(new OrderBottomView(context));
+                myViewHolder = new MyViewHolder(new OrderItemBottomLayout(context));
                 break;
         }
         return myViewHolder;
@@ -84,9 +84,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     }
 
     protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseHomeLayout itemView;
+        private BaseLayout itemView;
 
-        public MyViewHolder(@NonNull BaseHomeLayout itemView) {
+        public MyViewHolder(@NonNull BaseLayout itemView) {
             super(itemView);
             this.itemView = itemView;
         }

@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 
 import com.example.thin.bean.ShopBean2;
 import com.example.thin.bean.GoodBean;
-import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.ShopView;
-import com.example.thin.view.SubmitOrderGoodsView;
+import com.example.thin.view.BaseLayout;
+import com.example.thin.view.OrderShopLayout;
+import com.example.thin.view.SubmitOrderGoodsItemLayout;
 
 import java.util.List;
 
@@ -49,10 +49,10 @@ public class SubmitOrderAdapter extends RecyclerView.Adapter<SubmitOrderAdapter.
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
-                myViewHolder = new MyViewHolder(new ShopView(context));
+                myViewHolder = new MyViewHolder(new OrderShopLayout(context));
                 break;
             case GOODS:
-                myViewHolder = new MyViewHolder(new SubmitOrderGoodsView(context));
+                myViewHolder = new MyViewHolder(new SubmitOrderGoodsItemLayout(context));
                 break;
         }
         return myViewHolder;
@@ -74,9 +74,9 @@ public class SubmitOrderAdapter extends RecyclerView.Adapter<SubmitOrderAdapter.
     }
 
     protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseHomeLayout itemView;
+        private BaseLayout itemView;
 
-        public MyViewHolder(@NonNull BaseHomeLayout itemView) {
+        public MyViewHolder(@NonNull BaseLayout itemView) {
             super(itemView);
             this.itemView = itemView;
         }

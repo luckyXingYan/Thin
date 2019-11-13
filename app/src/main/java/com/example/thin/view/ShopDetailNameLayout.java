@@ -13,15 +13,15 @@ import com.example.thin.bean.ShopBean;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class ShopDetailName extends BaseHomeLayout<ShopBean> implements View.OnClickListener {
+public class ShopDetailNameLayout extends BaseLayout<ShopBean> implements View.OnClickListener {
 
     private TextView shopName, address, telephone;
 
-    public ShopDetailName(Context context) {
+    public ShopDetailNameLayout(Context context) {
         this(context, null);
     }
 
-    public ShopDetailName(Context context, AttributeSet attrs) {
+    public ShopDetailNameLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

@@ -17,18 +17,18 @@ import java.util.List;
  * @Date: 2019/10/21
  * @Desc:
  */
-public class SearchGvView extends BaseHomeLayout<String> {
+public class SearchLayout extends BaseLayout<String> {
     private RecyclerView recyclerView;
     private SearchRvAdapter adapter;
     private List<String> historyList;
     private int type;
 
-    public SearchGvView(Context context, int type) {
+    public SearchLayout(Context context, int type) {
         this(context, null);
         this.type = type;
     }
 
-    public SearchGvView(Context context, AttributeSet attrs) {
+    public SearchLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

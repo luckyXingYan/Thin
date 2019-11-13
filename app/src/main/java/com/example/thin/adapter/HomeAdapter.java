@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import com.example.thin.bean.BannerBean;
 import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.TypeBean;
-import com.example.thin.view.BannerView;
-import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.HomeFootView;
-import com.example.thin.view.HotView;
-import com.example.thin.view.TopTypeView;
+import com.example.thin.view.BannerLayout;
+import com.example.thin.view.BaseLayout;
+import com.example.thin.view.EmptyFootLayout;
+import com.example.thin.view.HotItemLayout;
+import com.example.thin.view.HomeTypeLayout;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
 
     }
 
-    private BannerView bannerView;
+    private BannerLayout bannerView;
 
     private List<TypeBean> dataType;
     private List<ShopBean> data;
@@ -80,17 +80,17 @@ public class HomeAdapter extends RecyclerView.Adapter {
         MyViewHolder myViewHolder = null;
         switch (type) {
             case TYPE:
-                myViewHolder = new MyViewHolder(new TopTypeView(context));
+                myViewHolder = new MyViewHolder(new HomeTypeLayout(context));
                 break;
             case BANNER:
-                bannerView = new BannerView(context);
+                bannerView = new BannerLayout(context);
                 myViewHolder = new MyViewHolder(bannerView);
                 break;
             case HOT:
-                myViewHolder = new MyViewHolder(new HotView(context));
+                myViewHolder = new MyViewHolder(new HotItemLayout(context));
                 break;
             case FOOT:
-                myViewHolder = new MyViewHolder(new HomeFootView(context));
+                myViewHolder = new MyViewHolder(new EmptyFootLayout(context));
                 break;
         }
         return myViewHolder;
@@ -121,9 +121,9 @@ public class HomeAdapter extends RecyclerView.Adapter {
     }
 
     protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseHomeLayout itemView;
+        private BaseLayout itemView;
 
-        public MyViewHolder(@NonNull BaseHomeLayout itemView) {
+        public MyViewHolder(@NonNull BaseLayout itemView) {
             super(itemView);
             this.itemView = itemView;
         }

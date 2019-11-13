@@ -10,9 +10,9 @@ import com.example.thin.bean.GoodBean;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class SubmitOrderGoodsView extends BaseHomeLayout<GoodBean> {
+public class SubmitOrderGoodsItemLayout extends BaseLayout<GoodBean> {
 
-    public SubmitOrderGoodsView(Context context) {
+    public SubmitOrderGoodsItemLayout(Context context) {
         super(context);
     }
 

@@ -10,8 +10,8 @@ import com.example.thin.bean.ShopBean;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class ShopDetailSpecial extends BaseHomeLayout<ShopBean> {
-    public ShopDetailSpecial(Context context) {
+public class ShopDetailInfoLayout extends BaseLayout<ShopBean> {
+    public ShopDetailInfoLayout(Context context) {
         super(context);
     }
 

@@ -5,17 +5,16 @@ import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.bean.GoodsBean;
-import com.example.thin.bean.ShopBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/22
  * @Desc:
  */
-public class MallDetailInfo extends BaseHomeLayout<GoodsBean> {
+public class GoodsDetailInfoLayout extends BaseLayout<GoodsBean> {
     private TextView content;
 
-    public MallDetailInfo(Context context) {
+    public GoodsDetailInfoLayout(Context context) {
         super(context);
     }
 

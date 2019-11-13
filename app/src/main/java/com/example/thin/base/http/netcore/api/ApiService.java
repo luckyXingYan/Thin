@@ -57,6 +57,11 @@ public interface ApiService {
     Call<ResultBean<UpdateAddressBean>> addAddress(@Field(ApiKeys.DELIVERY_NAME) String deliveryName, @Field(ApiKeys.DELIVERY_TELEPHONE) String deliveryTelephone,
                                                    @Field(ApiKeys.PROVINCE_ID) String provinceId,
                                                    @Field(ApiKeys.CITY_ID) String cityId, @Field(ApiKeys.COUNTY_ID) String countyId,
+                                                   @Field(ApiKeys.DETAILED_ADDRESS) String detailedAddress); @FormUrlEncoded
+    @POST(ApiRoute.ADDRESS.UPDATE_ADDRESS)
+    Call<ResultBean<UpdateAddressBean>> updateAddress(@Field(ApiKeys.ID) String id, @Field(ApiKeys.DELIVERY_NAME) String deliveryName, @Field(ApiKeys.DELIVERY_TELEPHONE) String deliveryTelephone,
+                                                   @Field(ApiKeys.PROVINCE_ID) String provinceId,
+                                                   @Field(ApiKeys.CITY_ID) String cityId, @Field(ApiKeys.COUNTY_ID) String countyId,
                                                    @Field(ApiKeys.DETAILED_ADDRESS) String detailedAddress);
 
 }

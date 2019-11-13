@@ -12,12 +12,12 @@ import com.example.thin.activity.SeeCouponCodeActivity;
  * @Date: 2019/10/21
  * @Desc:
  */
-public class OrderBottomView extends BaseHomeLayout implements View.OnClickListener {
+public class OrderItemBottomLayout extends BaseLayout implements View.OnClickListener {
     private Button btnOne;
     private Button btnTwo;
 
 
-    public OrderBottomView(Context context) {
+    public OrderItemBottomLayout(Context context) {
         super(context);
     }
 

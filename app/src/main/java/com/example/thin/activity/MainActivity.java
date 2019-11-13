@@ -13,7 +13,7 @@ import com.example.thin.fragment.HomePageFragment;
 import com.example.thin.fragment.ProductPageFragment;
 import com.example.thin.fragment.MinePageFragment;
 import com.example.thin.fragment.MallPageFragment;
-import com.example.thin.view.MainBottomTabView;
+import com.example.thin.view.MainBottomTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity<BasePresenter<IBaseView>> {
 
     private static final String TAG = "MainActivity";
     private List<Fragment> mFrags = new ArrayList<>();
-    private MainBottomTabView mainBottomTabView;
+    private MainBottomTabLayout mainBottomTabView;
     private Fragment currentFragment;
     private FragmentManager manager;
     private HomePageFragment homePageFragment;
@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity<BasePresenter<IBaseView>> {
         //默认显示第一个
         showFragment(mFrags.get(0));
 
-        mainBottomTabView.setSelectFragmentInterface(new MainBottomTabView.SelectFragmentLinstener() {
+        mainBottomTabView.setSelectFragmentInterface(new MainBottomTabLayout.SelectFragmentLinstener() {
             @Override
             public void selectFragment(int index) {
                 //切换tab

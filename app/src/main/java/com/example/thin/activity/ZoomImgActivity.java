@@ -3,14 +3,12 @@ package com.example.thin.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.RelativeLayout;
 
 import com.example.thin.R;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.view.ZoomImageView;
+import com.example.thin.widget.zoom.ZoomImageView;
 
 /**
  * @Author: xingyan

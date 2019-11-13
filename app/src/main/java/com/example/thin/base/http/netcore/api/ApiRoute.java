@@ -37,10 +37,12 @@ public class ApiRoute {
         public static final String TYPE_LIST = ROOT + "/api/productClassIfyQuery";
         public static final String PRO_DETAIL = ROOT + "/detail";
     }
+
     public final class ADDRESS {
         private static final String ROOT = COMMON_ROOT + "/api/address";
 
         public static final String ADD_ADDRESS = ROOT + "/addressList";
+        public static final String UPDATE_ADDRESS = ROOT + "/updateAddress";
     }
 
 }

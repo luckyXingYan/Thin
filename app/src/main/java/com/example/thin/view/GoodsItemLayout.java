@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.thin.R;
-import com.example.thin.activity.ShopDetailActivity;
-import com.example.thin.adapter.HotAdapter;
+import com.example.thin.activity.GoodsDetailActivity;
+import com.example.thin.adapter.MallAdapter;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
-import com.example.thin.bean.ShopBean;
+import com.example.thin.bean.GoodsBean;
 
 import java.util.List;
 
@@ -20,38 +20,38 @@ import java.util.List;
  * @Date: 2019/10/21
  * @Desc:
  */
-public class HotView extends BaseHomeLayout<List<ShopBean>> {
+public class GoodsItemLayout extends BaseLayout<List<GoodsBean>> {
     private RecyclerView recyclerView;
-    private HotAdapter adapter;
+    private MallAdapter adapter;
 
-    public HotView(Context context) {
+    public GoodsItemLayout(Context context) {
         this(context, null);
     }
 
-    public HotView(Context context, AttributeSet attrs) {
+    public GoodsItemLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     protected void init() {
-        inflate(getContext(), R.layout.layout_home_hot, this);
+        inflate(getContext(), R.layout.layout_shop_detail, this);
         recyclerView = findViewById(R.id.rv_home_hot);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
-        adapter = new HotAdapter(getContext());
+        adapter = new MallAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<ShopBean>() {
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<GoodsBean>() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, ShopBean bean, int position) {
-                ShopDetailActivity.open(getContext(),adapter.getItemData(position).id);
+            public void onItemClick(ViewGroup parent, View view, GoodsBean bean, int position) {
+                GoodsDetailActivity.open(getContext(),adapter.getItemData(position).pid);
             }
         });
     }
 
     @Override
-    public void setData(List<ShopBean> data) {
+    public void setData(List<GoodsBean> data) {
         adapter.setData(data);
     }
 }

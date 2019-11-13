@@ -7,14 +7,14 @@ import android.widget.LinearLayout;
 /**
  * @Author: xingyan
  * @Date: 2019/10/17
- * @Desc: 首页view的抽象类
+ * @Desc: view的抽象类
  */
-public abstract class BaseHomeLayout<T> extends LinearLayout {
-    public BaseHomeLayout(Context context) {
+public abstract class BaseLayout<T> extends LinearLayout {
+    public BaseLayout(Context context) {
         this(context, null);
     }
 
-    public BaseHomeLayout(Context context, AttributeSet attrs) {
+    public BaseLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }

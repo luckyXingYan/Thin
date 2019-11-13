@@ -170,7 +170,7 @@
         <include layout="@layout/layout_line" />
     </LinearLayout>
 
-    <com.example.thin.view.MineLoginView
+    <com.example.thin.view.MineLoginLayout
         android:id="@+id/lv_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

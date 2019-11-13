@@ -1,4 +1,4 @@
-package com.example.thin.view;
+package com.example.thin.widget;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;

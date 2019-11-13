@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 import com.example.thin.R;
 import com.example.thin.base.mvp.BaseActivity;
 import com.example.thin.base.mvp.BasePresenter;
-import com.example.thin.view.TitleBar;
+import com.example.thin.widget.TitleBar;
 
 public abstract class BaseTitleBarActivity<P extends BasePresenter> extends BaseActivity<P> {
 

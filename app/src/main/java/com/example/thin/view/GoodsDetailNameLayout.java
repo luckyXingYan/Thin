@@ -9,23 +9,22 @@ import android.widget.TextView;
 import com.example.thin.R;
 import com.example.thin.activity.ShopDetailActivity;
 import com.example.thin.bean.GoodsBean;
-import com.example.thin.bean.ShopBean;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/22
  * @Desc:
  */
-public class MallDetailName extends BaseHomeLayout<GoodsBean> implements View.OnClickListener {
+public class GoodsDetailNameLayout extends BaseLayout<GoodsBean> implements View.OnClickListener {
     private RelativeLayout shopDetail;
     private TextView proName, price, sales, freight;
     private String shopId;
 
-    public MallDetailName(Context context) {
+    public GoodsDetailNameLayout(Context context) {
         this(context, null);
     }
 
-    public MallDetailName(Context context, AttributeSet attrs) {
+    public GoodsDetailNameLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

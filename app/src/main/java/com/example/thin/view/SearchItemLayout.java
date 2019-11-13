@@ -11,13 +11,13 @@ import com.example.thin.R;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class SearchView extends BaseHomeLayout<String> {
+public class SearchItemLayout extends BaseLayout<String> {
     private int type;
     private TextView tvSearchTitle;
     private ImageView ivSearchHot;
 
 
-    public SearchView(Context context, int type) {
+    public SearchItemLayout(Context context, int type) {
         super(context);
         this.type = type;
     }

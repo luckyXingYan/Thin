@@ -102,7 +102,7 @@ public class SubmitOrderActivity extends BaseScrollTitleBarActivity<BasePresente
                 CashierActivity.open(this, totalPriceOfShops);
                 break;
             case R.id.tv_new_address://新建收货地址
-                CreateAddressActivity.open(this);
+                CreateAddressActivity.open(this,null);
                 break;
             default:
                 break;

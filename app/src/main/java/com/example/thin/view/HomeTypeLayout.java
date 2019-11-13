@@ -20,16 +20,16 @@ import java.util.List;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class TopTypeView extends BaseHomeLayout<List<TypeBean>> {
+public class HomeTypeLayout extends BaseLayout<List<TypeBean>> {
     private RecyclerView recyclerView;
     private TypeAdapter adapter;
 //    private List<TypeBean> types = new ArrayList<>();
 
-    public TopTypeView(Context context) {
+    public HomeTypeLayout(Context context) {
         this(context, null);
     }
 
-    public TopTypeView(Context context, AttributeSet attrs) {
+    public HomeTypeLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

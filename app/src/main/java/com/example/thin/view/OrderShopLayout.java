@@ -12,10 +12,10 @@ import com.example.thin.bean.ShopBean2;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class ShopView extends BaseHomeLayout<ShopBean2> {
+public class OrderShopLayout extends BaseLayout<ShopBean2> {
     private TextView sendType;
 
-    public ShopView(Context context) {
+    public OrderShopLayout(Context context) {
         super(context);
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="NoScrollViewPager">
+    <declare-styleable name="NoScrollVPLayout">
         <attr name="isHorizontalScroll" format="boolean" />
     </declare-styleable>
 

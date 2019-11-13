@@ -12,7 +12,7 @@ import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.util.LocalUser;
-import com.example.thin.view.RulerView;
+import com.example.thin.widget.ruler.RulerView;
 
 /**
  * @Author: xingyan

@@ -1,4 +1,4 @@
-package com.example.thin.view;
+package com.example.thin.util;
 
 import android.app.Activity;
 import android.app.Dialog;

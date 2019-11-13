@@ -15,18 +15,18 @@ import com.example.thin.R;
  * @Date: 2019/8/2
  * @Desc:
  */
-public class NoScrollViewPager extends ViewPager {
+public class NoScrollVPLayout extends ViewPager {
     private boolean isHorizontalScroll;
 
-    public NoScrollViewPager(@NonNull Context context) {
+    public NoScrollVPLayout(@NonNull Context context) {
         this(context, null);
     }
 
-    public NoScrollViewPager(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public NoScrollVPLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.NoScrollViewPager);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.NoScrollVPLayout);
         //默认 viewPager 是横向滑动
-        isHorizontalScroll = typedArray.getBoolean(R.styleable.NoScrollViewPager_isHorizontalScroll, true);
+        isHorizontalScroll = typedArray.getBoolean(R.styleable.NoScrollVPLayout_isHorizontalScroll, true);
     }
 
     /**

@@ -6,10 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.example.thin.bean.GoodsBean;
-import com.example.thin.view.BaseHomeLayout;
-import com.example.thin.view.MallDetailImg;
-import com.example.thin.view.MallDetailInfo;
-import com.example.thin.view.MallDetailName;
+import com.example.thin.view.BaseLayout;
+import com.example.thin.view.GoodsDetailImgItemLayout;
+import com.example.thin.view.GoodsDetailInfoLayout;
+import com.example.thin.view.GoodsDetailNameLayout;
 
 /**
  * @Author: xingyan
@@ -57,13 +57,13 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
         MyViewHolder myViewHolder = null;
         switch (type) {
             case NAME:
-                myViewHolder = new MyViewHolder(new MallDetailName(context));
+                myViewHolder = new MyViewHolder(new GoodsDetailNameLayout(context));
                 break;
             case INFO:
-                myViewHolder = new MyViewHolder(new MallDetailInfo(context));
+                myViewHolder = new MyViewHolder(new GoodsDetailInfoLayout(context));
                 break;
             case IMG:
-                myViewHolder = new MyViewHolder(new MallDetailImg(context));
+                myViewHolder = new MyViewHolder(new GoodsDetailImgItemLayout(context));
                 break;
         }
         return myViewHolder;
@@ -92,9 +92,9 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
     }
 
     protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseHomeLayout itemView;
+        private BaseLayout itemView;
 
-        public MyViewHolder(@NonNull BaseHomeLayout itemView) {
+        public MyViewHolder(@NonNull BaseLayout itemView) {
             super(itemView);
             this.itemView = itemView;
         }

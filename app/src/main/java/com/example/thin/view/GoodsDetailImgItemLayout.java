@@ -15,11 +15,11 @@ import java.util.List;
  * @Date: 2019/10/22
  * @Desc:
  */
-public class MallDetailImg extends BaseHomeLayout<List<ImgListBean>> {
+public class GoodsDetailImgItemLayout extends BaseLayout<List<ImgListBean>> {
     private RecyclerView recyclerView;
     private MallDetailImgAdapter adapter;
 
-    public MallDetailImg(Context context) {
+    public GoodsDetailImgItemLayout(Context context) {
         super(context);
     }
 

@@ -18,6 +18,7 @@ import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.bean.ShopCartBean;
 import com.example.thin.bean.TotalPriceNumBean;
+import com.example.thin.bean.UpdateAddressBean;
 import com.example.thin.iview.IUpdateAddressView;
 import com.example.thin.presenter.UpdateAddressPresenter;
 import com.example.thin.util.Constants;
@@ -47,9 +48,12 @@ public class CreateAddressActivity extends BaseScrollTitleBarActivity<UpdateAddr
     private String cityName = "";//城市名字
     private String countyName = "";//县名字
     private String addressTempStr;
+    private UpdateAddressBean addressBean;
 
-    public static void open(Context context) {
-        context.startActivity(new Intent(context, CreateAddressActivity.class));
+    public static void open(Context context, UpdateAddressBean addressBean) {
+        Intent intent = new Intent(context, CreateAddressActivity.class);
+        intent.putExtra(Constants.ADDRESS_ID, addressBean);
+        context.startActivity(intent);
     }
 
     @Override
@@ -59,6 +63,7 @@ public class CreateAddressActivity extends BaseScrollTitleBarActivity<UpdateAddr
 
     @Override
     protected void initContentView() {
+        addressBean = (UpdateAddressBean) getIntent().getSerializableExtra(Constants.ADDRESS_ID);
         mTitleBar.setTitle("新建收货地址");
         save = getView(R.id.btn_save_address);
         consignee = getView(R.id.et_consignee);
@@ -72,6 +77,8 @@ public class CreateAddressActivity extends BaseScrollTitleBarActivity<UpdateAddr
     @Override
     protected void initData() {
         presenter.getArea(this);
+        if (addressBean != null) {
+        }
 
     }
 
@@ -98,7 +105,11 @@ public class CreateAddressActivity extends BaseScrollTitleBarActivity<UpdateAddr
 
                 String hintMsg = InputVerifyUtil.checkUpdateAddress(deliveryName, deliveryTelephone, areaStr, detailedAddress);
                 if (Constants.INPUT_OK.equals(hintMsg)) {
-                    presenter.addAddress(this, deliveryName, deliveryTelephone, provinceId, cityId, countyId, detailedAddress);
+                    if (addressBean != null) {
+                        presenter.updateAddress(this, addressBean.id, deliveryName, deliveryTelephone, provinceId, cityId, countyId, detailedAddress);
+                    } else {
+                        presenter.addAddress(this, deliveryName, deliveryTelephone, provinceId, cityId, countyId, detailedAddress);
+                    }
                 } else {
                     showToastMsg(hintMsg);
                 }

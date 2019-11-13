@@ -16,7 +16,7 @@ import com.example.thin.activity.WelcomeThinActivity;
  * Created by liuwei
  * on 2018/9/20.
  */
-public class MineLoginView extends RelativeLayout {
+public class MineLoginLayout extends RelativeLayout {
     Context context;
     private View view;
     private TextView tv_login_btn;
@@ -26,17 +26,17 @@ public class MineLoginView extends RelativeLayout {
     private FocusRelativeLayout rv_bg;
     private ValueAnimator valueAnimator1;
 
-    public MineLoginView(Context context) {
+    public MineLoginLayout(Context context) {
         this(context, null);
         this.context = context;
     }
 
-    public MineLoginView(Context context, AttributeSet attrs) {
+    public MineLoginLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
         this.context = context;
     }
 
-    public MineLoginView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MineLoginLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
         init();
@@ -63,11 +63,11 @@ public class MineLoginView extends RelativeLayout {
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                MineLoginView.this.setVisibility(View.VISIBLE);
+                MineLoginLayout.this.setVisibility(View.VISIBLE);
                 float animatedValue = (float) animation.getAnimatedValue();
-                LayoutParams layoutParams = (LayoutParams) MineLoginView.this.getLayoutParams();
+                LayoutParams layoutParams = (LayoutParams) MineLoginLayout.this.getLayoutParams();
                 layoutParams.setMargins(0, 0, 0, (int) (viewHeight * animatedValue));
-                MineLoginView.this.setLayoutParams(layoutParams);
+                MineLoginLayout.this.setLayoutParams(layoutParams);
             }
         });
         valueAnimator.setDuration(600);
@@ -88,7 +88,7 @@ public class MineLoginView extends RelativeLayout {
     }
 
     public void dismiss() {
-        MineLoginView.this.setVisibility(View.GONE);
+        MineLoginLayout.this.setVisibility(View.GONE);
         if (valueAnimator != null) {
             valueAnimator.cancel();
             valueAnimator = null;

@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.activity.CreateAddressActivity;
-import com.example.thin.activity.LoginActivity;
 import com.example.thin.activity.MyOrderActivity;
 import com.example.thin.activity.WelcomeThinActivity;
 import com.example.thin.base.mvp.BaseFragment;
@@ -13,7 +12,7 @@ import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.presenter.MinePagePresenter;
 import com.example.thin.util.LocalUser;
-import com.example.thin.view.MineLoginView;
+import com.example.thin.view.MineLoginLayout;
 
 /**
  * @Author: xingyan
@@ -28,7 +27,7 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
     private TextView tvWaitSend;
     private TextView tvWaitGet;
     private TextView tvFinish;
-    private MineLoginView mineLoginView;
+    private MineLoginLayout mineLoginLayout;
 
 
     public static MinePageFragment newInstance() {
@@ -43,7 +42,7 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
     @Override
     protected void initView(View view) {
         myOrder = getView(view, R.id.tv_my_order);
-        mineLoginView = getView(view, R.id.lv_login);
+        mineLoginLayout = getView(view, R.id.lv_login);
         addressManager = getView(view, R.id.tv_my_address);
         tvWaitPay = getView(view, R.id.tv_wait_pay);
         tvUnuse = getView(view, R.id.tv_unuse);
@@ -71,12 +70,12 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
         super.onHiddenChanged(hidden);
         if (!hidden) {
             if (LocalUser.getInstance().isLogin()) {
-                mineLoginView.dismiss();
+                mineLoginLayout.dismiss();
             } else {
-                mineLoginView.show();
+                mineLoginLayout.show();
             }
         } else {
-            mineLoginView.dismiss();
+            mineLoginLayout.dismiss();
         }
     }
 
@@ -84,16 +83,16 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
     public void onResume() {
         super.onResume();
         if (LocalUser.getInstance().isLogin()) {
-            mineLoginView.dismiss();
+            mineLoginLayout.dismiss();
         } else {
-            mineLoginView.show();
+            mineLoginLayout.show();
         }
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        mineLoginView.dismiss();
+        mineLoginLayout.dismiss();
     }
 
     /**
@@ -115,7 +114,7 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
     protected void initData() {
 
         if (!LocalUser.getInstance().isLogin()) {
-            mineLoginView.show();
+            mineLoginLayout.show();
             return;
         }
 
@@ -149,7 +148,7 @@ public class MinePageFragment extends BaseFragment<BasePresenter> implements IBa
                 MyOrderActivity.open(getActivity(), 0);
                 break;
             case R.id.tv_my_address://地址管理
-                CreateAddressActivity.open(getActivity());
+                CreateAddressActivity.open(getActivity(), null);
                 break;
             default:
                 break;

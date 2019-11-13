@@ -47,7 +47,7 @@
         </LinearLayout>
 
 
-        <com.example.thin.view.RulerView
+        <com.example.thin.widget.ruler.RulerView
             android:id="@+id/simple_ruler"
             android:layout_width="@dimen/x200"
             android:layout_height="@dimen/y750"

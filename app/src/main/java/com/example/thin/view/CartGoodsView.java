@@ -15,7 +15,7 @@ import com.example.thin.bean.GoodBean;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class CartGoodsView extends BaseHomeLayout<GoodBean> implements View.OnClickListener {
+public class CartGoodsView extends BaseLayout<GoodBean> implements View.OnClickListener {
     private LinearLayout item;
     private GoodBean data;
     private CheckBox checkBox;
