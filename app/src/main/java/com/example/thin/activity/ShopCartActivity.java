@@ -14,12 +14,12 @@ import android.widget.TextView;
 import com.example.thin.R;
 import com.example.thin.adapter.ShopCartAdapter;
 import com.example.thin.base.BaseScrollTitleBarActivity;
-import com.example.thin.base.mvp.BasePresenter;
-import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.GoodBean;
-import com.example.thin.bean.ShopCartBean;
+import com.example.thin.bean.CartBean;
+import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.TotalPriceNumBean;
 import com.example.thin.eventbus.TotalPriceEvent;
+import com.example.thin.iview.IShopCartView;
+import com.example.thin.presenter.ShopCartPresenter;
 import com.example.thin.util.Constants;
 
 import org.greenrobot.eventbus.EventBus;
@@ -27,7 +27,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +34,7 @@ import java.util.List;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> implements IBaseView, View.OnClickListener {
+public class ShopCartActivity extends BaseScrollTitleBarActivity<ShopCartPresenter> implements IShopCartView, View.OnClickListener {
 
     private RecyclerView recyclerView;
     private ShopCartAdapter adapter;
@@ -43,7 +42,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     private CheckBox cbAllSelect;
     private TextView tvTotal;
     private String totalNumOfShops = "0", totalPriceOfShops = "0.0";
-    private List<ShopCartBean> listCart;
+    private List<ShopBean> listCart;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, ShopCartActivity.class));
@@ -79,57 +78,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
 
     @Override
     protected void initData() {
-        listCart = new ArrayList<>();
-        List<ShopCartBean> data = new ArrayList<>();
-
-        ShopCartBean cartListBean1 = new ShopCartBean();
-
-        cartListBean1.id = "11";
-        cartListBean1.title = "店铺1";
-
-
-        GoodBean info1 = new GoodBean();
-        info1.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
-        info1.id = "1";
-        info1.shopId = "11";
-        info1.price = "1";
-        info1.num = "1";
-        cartListBean1.goods.add(info1);
-        GoodBean info2 = new GoodBean();
-        info2.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
-        info2.id = "2";
-        info2.shopId = "11";
-        info2.price = "2";
-        info2.num = "2";
-        cartListBean1.goods.add(info2);
-
-        data.add(cartListBean1);
-
-
-        ShopCartBean cartListBean2 = new ShopCartBean();
-
-        cartListBean2.id = "22";
-        cartListBean2.title = "店铺2";
-
-        GoodBean info3 = new GoodBean();
-        info3.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
-        info3.id = "3";
-        info3.shopId = "22";
-        info3.price = "3";
-        info3.num = "3";
-        cartListBean2.goods.add(info3);
-
-        GoodBean info4 = new GoodBean();
-        info4.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
-        info4.id = "4";
-        info4.shopId = "22";
-        info4.price = "4";
-        info4.num = "4";
-        cartListBean2.goods.add(info4);
-
-        data.add(cartListBean2);
-
-        adapter.setData(data);
+        presenter.getCartList(this);
     }
 
     /**
@@ -144,8 +93,8 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected ShopCartPresenter createPresenter() {
+        return new ShopCartPresenter();
     }
 
     @Override
@@ -172,6 +121,13 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         adapter.removeCallbacks();
+    }
+
+    @Override
+    public void updateCartList(CartBean data) {
+        listCart = data.cartShopVos;
+        adapter.setData(data.cartShopVos);
+
     }
 
     public static class MyHandler extends Handler {
@@ -202,7 +158,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<BasePresenter> 
                     activity.cbAllSelect.setChecked(isAllSelect);
                     break;
                 case Constants.GET_SELECT:
-                    activity.listCart = (List<ShopCartBean>) msg.obj;
+                    activity.listCart = (List<ShopBean>) msg.obj;
                     SubmitOrderActivity.open(activity, activity.listCart, activity.totalNumOfShops, activity.totalPriceOfShops);
                     break;
                 default:

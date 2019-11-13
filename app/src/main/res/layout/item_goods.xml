@@ -66,9 +66,10 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tv_goods_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="9999"
+                    android:text="0"
                     android:textColor="@color/color_E4382B"
                     android:textSize="24sp"
                     android:textStyle="bold" />

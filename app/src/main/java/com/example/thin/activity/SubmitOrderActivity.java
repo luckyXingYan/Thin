@@ -14,7 +14,7 @@ import com.example.thin.adapter.SubmitOrderAdapter;
 import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
-import com.example.thin.bean.ShopCartBean;
+import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.OrderDataHelper;
 import com.example.thin.util.Constants;
 
@@ -34,10 +34,10 @@ public class SubmitOrderActivity extends BaseScrollTitleBarActivity<BasePresente
     private Button btnSettlement;
     private TextView tvNewAddress, tvTotalPrice;
     private String totalNumOfShops, totalPriceOfShops;
-    private List<ShopCartBean> listCart;
+    private List<ShopBean> listCart;
 
 
-    public static void open(Context context, List<ShopCartBean> listCart, String totalNumOfShops, String totalPriceOfShops) {
+    public static void open(Context context, List<ShopBean> listCart, String totalNumOfShops, String totalPriceOfShops) {
         Intent intent = new Intent(context, SubmitOrderActivity.class);
         intent.putExtra(Constants.LIST_CART, (Serializable) listCart);
         intent.putExtra(Constants.TOTAL_NUM_OF_SHOPS, totalNumOfShops);
@@ -57,7 +57,7 @@ public class SubmitOrderActivity extends BaseScrollTitleBarActivity<BasePresente
 
     @Override
     protected void initContentView() {
-        listCart = (List<ShopCartBean>) getIntent().getSerializableExtra(Constants.LIST_CART);
+        listCart = (List<ShopBean>) getIntent().getSerializableExtra(Constants.LIST_CART);
         totalNumOfShops = getIntent().getStringExtra(Constants.TOTAL_NUM_OF_SHOPS);
         totalPriceOfShops = getIntent().getStringExtra(Constants.TOTAL_PRICE_OF_SHOPS);
         mTitleBar.setTitle("订单信息");

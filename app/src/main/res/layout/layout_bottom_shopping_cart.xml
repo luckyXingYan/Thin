@@ -24,6 +24,7 @@
     <include layout="@layout/layout_weight" />
 
     <Button
+        android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/y60"
         android:background="@drawable/shape_rectangle_5_corners_white_stroke_gray"
@@ -32,6 +33,7 @@
         android:textSize="12sp" />
 
     <Button
+        android:id="@+id/btn_shop"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/y60"
         android:layout_marginLeft="@dimen/y60"

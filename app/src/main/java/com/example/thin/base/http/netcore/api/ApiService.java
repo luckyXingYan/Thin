@@ -1,6 +1,8 @@
 package com.example.thin.base.http.netcore.api;
 
 import com.example.thin.base.bean.ResultBean;
+import com.example.thin.bean.CartBean;
+import com.example.thin.bean.CommonBean;
 import com.example.thin.bean.GoodsBean;
 import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.RegisterLoginBean;
@@ -57,11 +59,20 @@ public interface ApiService {
     Call<ResultBean<UpdateAddressBean>> addAddress(@Field(ApiKeys.DELIVERY_NAME) String deliveryName, @Field(ApiKeys.DELIVERY_TELEPHONE) String deliveryTelephone,
                                                    @Field(ApiKeys.PROVINCE_ID) String provinceId,
                                                    @Field(ApiKeys.CITY_ID) String cityId, @Field(ApiKeys.COUNTY_ID) String countyId,
-                                                   @Field(ApiKeys.DETAILED_ADDRESS) String detailedAddress); @FormUrlEncoded
+                                                   @Field(ApiKeys.DETAILED_ADDRESS) String detailedAddress);
+
+    @FormUrlEncoded
     @POST(ApiRoute.ADDRESS.UPDATE_ADDRESS)
     Call<ResultBean<UpdateAddressBean>> updateAddress(@Field(ApiKeys.ID) String id, @Field(ApiKeys.DELIVERY_NAME) String deliveryName, @Field(ApiKeys.DELIVERY_TELEPHONE) String deliveryTelephone,
-                                                   @Field(ApiKeys.PROVINCE_ID) String provinceId,
-                                                   @Field(ApiKeys.CITY_ID) String cityId, @Field(ApiKeys.COUNTY_ID) String countyId,
-                                                   @Field(ApiKeys.DETAILED_ADDRESS) String detailedAddress);
+                                                      @Field(ApiKeys.PROVINCE_ID) String provinceId,
+                                                      @Field(ApiKeys.CITY_ID) String cityId, @Field(ApiKeys.COUNTY_ID) String countyId,
+                                                      @Field(ApiKeys.DETAILED_ADDRESS) String detailedAddress);
+
+    @FormUrlEncoded
+    @POST(ApiRoute.USER.ADD_CART)
+    Call<ResultBean<CommonBean>> addCart(@Field(ApiKeys.PRODUCT_ID) String productId, @Field(ApiKeys.COUNT) String count);
+
+    @POST(ApiRoute.USER.CART_LIST)
+    Call<ResultBean<CartBean>> cartList();
 
 }

@@ -8,14 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.thin.R;
 import com.example.thin.activity.ShopCartActivity;
 import com.example.thin.activity.ShopDetailOrderActivity;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
+import com.example.thin.bean.GoodsBean;
+import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.GoodBean;
-import com.example.thin.bean.ShopCartBean;
+import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.TotalPriceNumBean;
 import com.example.thin.util.Constants;
 
@@ -27,7 +30,7 @@ import java.util.List;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartAdapter.MyViewHolder> {
+public class ShopCartAdapter extends BaseRecyclerAdapter<ShopBean, ShopCartAdapter.MyViewHolder> {
     private Context context;
     private GoodsAdapter adapter;
     private ShopCartActivity.MyHandler myHandler;
@@ -59,13 +62,17 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartA
         adapter = new GoodsAdapter(context);
         myViewHolder.rvGoodsCart.setAdapter(adapter);
 
-        adapter.setData(getItemData(i).goods);
+        final ShopBean data = getItemData(i);
+        if (data == null) return;
+
+        myViewHolder.shopName.setText(data.shopName);
+        adapter.setData(data.cartProductVos);
 
         adapter.setDeleteShopItemListener(new GoodsAdapter.DeleteShopItemListener() {
             @Override
             public void deleteShopItem() {
-                if (getItemData(i).goods.size() == 0) {
-                    getData().remove(getItemData(i));
+                if (data.cartProductVos.size() == 0) {
+                    getData().remove(data);
                     notifyDataSetChanged();
                 }
             }
@@ -109,8 +116,8 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartA
             @Override
             public void run() {
                 //子线程耗时循环店铺
-                for (final ShopCartBean bean : getData()) {
-                    adapter.setAllSelectData(bean.goods);
+                for (final ShopBean bean : getData()) {
+                    adapter.setAllSelectData(bean.cartProductVos);
                     //通知主线程更新商品
                     //myHandler.sendEmptyMessage(100);
                 }
@@ -124,8 +131,8 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartA
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (final ShopCartBean bean : getData()) {
-                    adapter.setNoSelectData(bean.goods);
+                for (final ShopBean bean : getData()) {
+                    adapter.setNoSelectData(bean.cartProductVos);
                 }
                 myHandler.sendEmptyMessage(Constants.IS_ALL_SELECT);
             }
@@ -144,8 +151,8 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartA
             public void run() {
                 Message message = Message.obtain();
                 message.what = Constants.GOODS_ALL_SELECT;
-                for (ShopCartBean bean : getData()) {
-                    for (GoodBean goodsBean : bean.goods) {
+                for (ShopBean bean : getData()) {
+                    for (GoodsBean goodsBean : bean.cartProductVos) {
                         if (!goodsBean.isSelect) {
                             message.obj = false;
                             myHandler.sendMessage(message);
@@ -181,19 +188,19 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartA
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<ShopCartBean> shopBeans = new ArrayList<>();
-                for (ShopCartBean listBean : getData()) {
-                    ShopCartBean cartListBean = new ShopCartBean();
-                    for (GoodBean goodBean : listBean.goods) {
+                List<ShopBean> shopBeans = new ArrayList<>();
+                for (ShopBean listBean : getData()) {
+                    ShopBean cartListBean = new ShopBean();
+                    for (GoodsBean goodBean : listBean.cartProductVos) {
                         if (goodBean.isSelect) {
-                            if (cartListBean.id != listBean.id) {
-                                cartListBean.title = listBean.title;
-                                cartListBean.id = listBean.id;
+                            if (cartListBean.shopId != listBean.shopId) {
+                                cartListBean.shopName = listBean.shopName;
+                                cartListBean.shopId = listBean.shopId;
                             }
-                            cartListBean.goods.add(goodBean);
+                            cartListBean.cartProductVos.add(goodBean);
                         }
                     }
-                    if (cartListBean.goods != null && cartListBean.goods.size() > 0) {
+                    if (cartListBean.cartProductVos != null && cartListBean.cartProductVos.size() > 0) {
                         shopBeans.add(cartListBean);
                     }
                 }
@@ -218,14 +225,14 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartA
             public void run() {
                 totalPriceOfShops = 0;
                 totalNumOfShops = 0;
-                for (ShopCartBean bean : getData()) {
+                for (ShopBean bean : getData()) {
                     totalPriceOfPerShop = 0;
-                    for (int i = 0; i < bean.goods.size(); i++) {
-                        if (bean.goods.get(i).isSelect) {
-                            String num = bean.goods.get(i).num;
+                    for (int i = 0; i < bean.cartProductVos.size(); i++) {
+                        if (bean.cartProductVos.get(i).isSelect) {
+                            String num = bean.cartProductVos.get(i).count;
                             numOfPerShop = Integer.valueOf(num);
                             totalNumOfShops += numOfPerShop;
-                            String priceOfGood = bean.goods.get(i).price;//选中的每个商品的价格
+                            String priceOfGood = bean.cartProductVos.get(i).unitPrice;//选中的每个商品的价格
                             totalPriceOfPerShop += numOfPerShop * Double.valueOf(priceOfGood);
                         }
                     }
@@ -252,11 +259,13 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopCartBean, ShopCartA
 
         private RecyclerView rvGoodsCart;
         private RelativeLayout rlShop;
+        private TextView shopName;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             rvGoodsCart = itemView.findViewById(R.id.rv_goods_cart);
             rlShop = itemView.findViewById(R.id.rl_shop);
+            shopName = itemView.findViewById(R.id.tv_shop_name);
         }
     }
 }

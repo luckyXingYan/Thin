@@ -4,11 +4,8 @@ import android.content.Context;
 import android.os.Message;
 
 import com.example.thin.activity.CreateAddressActivity;
-import com.example.thin.activity.ShopCartActivity;
 import com.example.thin.base.http.callback.HttpGsonCallback;
 import com.example.thin.base.mvp.BasePresenter;
-import com.example.thin.bean.GoodBean;
-import com.example.thin.bean.ShopCartBean;
 import com.example.thin.bean.UpdateAddressBean;
 import com.example.thin.iview.IUpdateAddressView;
 import com.example.thin.model.MinePageModel;

@@ -41,6 +41,7 @@ public class Constants {
     public final static String INPUT_OK = "OK";
     public final static String SHOP_ID = "shopId";
     public final static String PRO_ID = "proId";
+    public final static String COUNT = "count";
     public final static String ADDRESS_ID = "addressId";
 
 

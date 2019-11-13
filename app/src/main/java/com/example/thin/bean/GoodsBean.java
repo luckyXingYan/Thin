@@ -15,18 +15,29 @@ public class GoodsBean {
      * productName ; 保健
      * productPrice ; 100.0
      */
-
+    public boolean isSelect;
 
     public String pid;
+    public String productId;
+
     public String productName;
-    public String productPrice;
-    public String productCover;
+
+    public String productPrice;//商品列表、详情单价
+    public String unitPrice;//购物车商品单价
+
+
+    public String productCover;//商品列表、详情图片
+    public String imgUrl;//购物车商品图片
+
+    public String groupId;//商品列表、详情店铺id
+    public String shopId;//购物车店铺id
+
+
+    public String count;
 
     public String productType;
-    public String groupId;
     public String classifyName;
     public String productClassify;
-    public String shopId;
     public String shopName;
 
     public String isfeature;
@@ -42,6 +53,7 @@ public class GoodsBean {
     public String status;
     public String remake;
     public String content;
+    public String freightPrice;
     public List<ImgListBean> rotationCharts;
 
 }

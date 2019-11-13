@@ -12,7 +12,7 @@ import com.example.thin.base.mvp.BasePresenter;
 import com.example.thin.base.mvp.IBaseView;
 import com.example.thin.bean.OrderBottomBean;
 import com.example.thin.bean.OrderDataHelper;
-import com.example.thin.bean.ShopCartBean;
+import com.example.thin.bean.CartBean;
 import com.example.thin.bean.GoodBean;
 import com.example.thin.refresh.TwinklingRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -70,28 +70,28 @@ public class OrderCommonFragment extends BaseFragment<BasePresenter> implements 
 
     @Override
     protected void initData() {
-        List<ShopCartBean> data = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            ShopCartBean bean = new ShopCartBean();
-            bean.title = "店铺" + i;
-
-            GoodBean info = new GoodBean();
-            info.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
-            info.id = "1";
-            bean.goods.add(info);
-
-            GoodBean info2 = new GoodBean();
-            info.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
-            info.id = "2";
-            bean.goods.add(info2);
-
-            OrderBottomBean orderBottomBean = new OrderBottomBean();
-            orderBottomBean.title = "物流";
-            bean.orderBottomBean = orderBottomBean;
-
-            data.add(bean);
-        }
-        adapter.setData(OrderDataHelper.getMyOrderList(data));
+//        List<CartBean> data = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            CartBean bean = new CartBean();
+//            bean.name = "店铺" + i;
+//
+//            GoodBean info = new GoodBean();
+//            info.title = "https://img.52z.com/upload/news/image/20180621/20180621055734_59936.jpg";
+//            info.id = "1";
+//            bean.goods.add(info);
+//
+//            GoodBean info2 = new GoodBean();
+//            info.title = "https://img.pc841.com/2018/0922/20180922111049508.jpg";
+//            info.id = "2";
+//            bean.goods.add(info2);
+//
+//            OrderBottomBean orderBottomBean = new OrderBottomBean();
+//            orderBottomBean.title = "物流";
+//            bean.orderBottomBean = orderBottomBean;
+//
+//            data.add(bean);
+//        }
+//        adapter.setData(OrderDataHelper.getMyOrderList(data));
 
         refreshLayout.finishRefresh();
         refreshLayout.finishLoadMore();

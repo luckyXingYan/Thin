@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.example.thin.bean.ShopBean2;
+import com.example.thin.bean.ShopTempBean;
 import com.example.thin.bean.GoodBean;
 import com.example.thin.view.BaseLayout;
 import com.example.thin.view.OrderShopLayout;
@@ -35,7 +35,7 @@ public class SubmitOrderAdapter extends RecyclerView.Adapter<SubmitOrderAdapter.
 
     @Override
     public int getItemViewType(int position) {
-        if (data.get(position) instanceof ShopBean2) {
+        if (data.get(position) instanceof ShopTempBean) {
             return SHOP;
         } else if (data.get(position) instanceof GoodBean) {
             return GOODS;

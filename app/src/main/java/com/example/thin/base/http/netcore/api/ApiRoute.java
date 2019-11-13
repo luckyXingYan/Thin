@@ -29,6 +29,8 @@ public class ApiRoute {
         public static final String REGISTER = ROOT + "/register/userRegister";
         public static final String LOGIN = ROOT + "/login/userLogin";
         public static final String EVALUATE = ROOT + "/evaluating/userEvaluating";
+        public static final String ADD_CART = ROOT + "/cart/addCart";
+        public static final String CART_LIST = ROOT + "/cart/getAllCart";
     }
 
     public final class PRODUCT {
@@ -37,6 +39,7 @@ public class ApiRoute {
         public static final String TYPE_LIST = ROOT + "/api/productClassIfyQuery";
         public static final String PRO_DETAIL = ROOT + "/detail";
     }
+
 
     public final class ADDRESS {
         private static final String ROOT = COMMON_ROOT + "/api/address";

@@ -22,11 +22,13 @@ public class ShopBean extends BaseBean implements Serializable {
      */
 
     public String id;
+    public String shopId;
     public String shopName;
     public String telephone;
     public String averageConsumption;
     public String shopLogo;
     public String shopStatus;
     public String address;
-    public List<GoodsBean> list = new ArrayList<>();
+    public List<GoodsBean> list;
+    public List<GoodsBean> cartProductVos;
 }

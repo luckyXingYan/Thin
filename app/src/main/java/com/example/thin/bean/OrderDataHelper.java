@@ -11,28 +11,28 @@ import java.util.List;
 public class OrderDataHelper {
     /**
      * List<Object>有三种数据类型：
-     * 1、ShopBean2 表示每个订单的头部信息（订单号、订单状态、店铺名称）
+     * 1、ShopTempBean 表示每个订单的头部信息（订单号、订单状态、店铺名称）
      * 2、goodList 表示订单中的商品
      *
      * @param resultList
      * @return
      */
-    public static List<Object> getSubmitOrderList(List<ShopCartBean> resultList) {
+    public static List<Object> getSubmitOrderList(List<ShopBean> resultList) {
 
         List<Object> dataList = new ArrayList<>();
         //遍历每一张大订单
-        for (ShopCartBean orderListBean : resultList) {
-            //将店铺信息 存储到 ShopBean2 实体
-            ShopBean2 orderHeadInfo = new ShopBean2();
-            orderHeadInfo.id = orderListBean.id;
-            orderHeadInfo.title = orderListBean.title;
+        for (ShopBean orderListBean : resultList) {
+            //将店铺信息 存储到 ShopTempBean 实体
+            ShopTempBean orderHeadInfo = new ShopTempBean();
+            orderHeadInfo.shopId = orderListBean.shopId;
+            orderHeadInfo.shopName = orderListBean.shopName;
 
             //将商品存储到 goodList 中
-            List<GoodBean> goodList = orderListBean.goods;
+            List<GoodsBean> goodList = orderListBean.cartProductVos;
 
             dataList.add(orderHeadInfo);
             if (goodList != null) {
-                for (GoodBean goodBean : goodList) {
+                for (GoodsBean goodBean : goodList) {
                     dataList.add(goodBean);
                 }
             }
@@ -42,35 +42,35 @@ public class OrderDataHelper {
 
     /**
      * List<Object>有三种数据类型：
-     * 1、ShopBean2 表示每个订单的头部信息（订单号、订单状态、店铺名称）
+     * 1、ShopTempBean 表示每个订单的头部信息（订单号、订单状态、店铺名称）
      * 2、goodList 表示订单中的商品
      * 3、orderBottomBean 表示订单的支付信息（金额、订单状态）
      *
      * @param resultList
      * @return
      */
-    public static List<Object> getMyOrderList(List<ShopCartBean> resultList) {
+    public static List<Object> getMyOrderList(List<ShopBean> resultList) {
         List<Object> dataList = new ArrayList<>();
         //遍历每一张大订单
-        for (ShopCartBean orderListBean : resultList) {
-            //将店铺信息 存储到 ShopBean2 实体
-            ShopBean2 orderHeadInfo = new ShopBean2();
-            orderHeadInfo.id = orderListBean.id;
-            orderHeadInfo.title = orderListBean.title;
+        for (ShopBean orderListBean : resultList) {
+            //将店铺信息 存储到 ShopTempBean 实体
+            ShopTempBean orderHeadInfo = new ShopTempBean();
+            orderHeadInfo.shopId = orderListBean.shopId;
+            orderHeadInfo.shopName = orderListBean.shopName;
 
             //将商品存储到 goodList 中
-            List<GoodBean> goodList = orderListBean.goods;
+            List<GoodsBean> goodList = orderListBean.cartProductVos;
 
             //item底部物流存储到 footBean 中
-            OrderBottomBean orderBottomBean = orderListBean.orderBottomBean;
+            String shopStatus = orderListBean.shopStatus;
 
             dataList.add(orderHeadInfo);
             if (goodList != null) {
-                for (GoodBean goodBean : goodList) {
+                for (GoodsBean goodBean : goodList) {
                     dataList.add(goodBean);
                 }
             }
-            dataList.add(orderBottomBean);
+            dataList.add(shopStatus);
         }
         return dataList;
     }

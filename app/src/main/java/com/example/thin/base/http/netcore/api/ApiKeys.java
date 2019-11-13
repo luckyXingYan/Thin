@@ -45,6 +45,7 @@ public interface ApiKeys {
     String PAGENUM = "pageNo";
     String PAGESIZE = "pageSize";
     String PROVINCE_ID = "provinceId";
+    String PRODUCT_ID = "productId";
     // R
     // S
     String START = "start";

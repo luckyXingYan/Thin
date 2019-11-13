@@ -10,4 +10,5 @@ import com.example.thin.bean.GoodsBean;
  */
 public interface IGoodsDetailView extends IBaseView {
     void updateData(GoodsBean data);
+    void addCart();
 }

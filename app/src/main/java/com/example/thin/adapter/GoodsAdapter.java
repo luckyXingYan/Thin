@@ -10,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.thin.R;
 import com.example.thin.activity.GoodsDetailActivity;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
-import com.example.thin.bean.GoodBean;
+import com.example.thin.bean.GoodsBean;
+import com.example.thin.bean.GoodsBean;
 import com.example.thin.eventbus.TotalPriceEvent;
 import com.example.thin.util.Constants;
 
@@ -27,7 +29,7 @@ import java.util.List;
  * @Date: 2019/10/30
  * @Desc:
  */
-public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyViewHolder> {
+public class GoodsAdapter extends BaseRecyclerAdapter<GoodsBean, GoodsAdapter.MyViewHolder> {
     private Context context;
 
 
@@ -55,7 +57,7 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
                     //通知更新合计总价（重新遍历集合计算总价）
                     EventBus.getDefault().post(TotalPriceEvent.getInstance());
                 } else if (Constants.TV_NUM.equals(payloadStr)) {
-                    holder.tvNum.setText(getItemData(position).num);
+                    holder.tvNum.setText(getItemData(position).count);
                 }
             }
 
@@ -65,16 +67,21 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
-        myViewHolder.checkBox.setChecked(getItemData(i).isSelect);
-        myViewHolder.tvNum.setText(getItemData(i).num);
+        final GoodsBean data = getItemData(i);
+        if (data == null) return;
+        myViewHolder.checkBox.setChecked(data.isSelect);
+        Glide.with(context).load(data.imgUrl).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivIcon);
+        myViewHolder.name.setText(data.productName);
+        myViewHolder.price.setText(data.unitPrice);
+        myViewHolder.tvNum.setText(data.count);
         //选中
         myViewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!getItemData(i).isSelect) {
-                    getItemData(i).isSelect = true;
+                if (!data.isSelect) {
+                    data.isSelect = true;
                 } else {
-                    getItemData(i).isSelect = false;
+                    data.isSelect = false;
                 }
                 notifyItemChanged(i, Constants.CHECK_BOX_GOODS);//只更新item布局中的checkBox
             }
@@ -83,7 +90,7 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
         myViewHolder.rlGoodsDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GoodsDetailActivity.open(context,"");
+                GoodsDetailActivity.open(context, "");
             }
         });
         //长按删除
@@ -95,7 +102,7 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
                             @Override
                             public void onClick(final DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                getData().remove(getItemData(i));
+                                getData().remove(data);
                                 notifyDataSetChanged();
                                 if (getItemCount() == 0) {
                                     if (deleteShopItemListener != null) {
@@ -118,11 +125,11 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
         myViewHolder.ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int num = Integer.parseInt(getItemData(i).num);
-                if (num == 10) {
+                int count = Integer.parseInt(data.count);
+                if (count == 10) {
                     return;
                 }
-                getItemData(i).num = ++num + "";
+                data.count = ++count + "";
 
                 notifyItemChanged(i, Constants.TV_NUM);//只更新item布局中的checkBox
                 if (myViewHolder.checkBox.isChecked()) {
@@ -135,11 +142,11 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
         myViewHolder.ivSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int num = Integer.parseInt(getItemData(i).num);
-                if (num == 1) {
+                int count = Integer.parseInt(data.count);
+                if (count == 1) {
                     return;
                 }
-                getItemData(i).num = --num + "";
+                data.count = --count + "";
 
                 notifyItemChanged(i, Constants.TV_NUM);//只更新item布局中的checkBox
                 if (myViewHolder.checkBox.isChecked()) {
@@ -151,13 +158,13 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
 
     }
 
-    public void setAllSelectData(final List<GoodBean> goods) {
+    public void setAllSelectData(final List<GoodsBean> goods) {
         for (int i = 0; i < goods.size(); i++) {
             goods.get(i).isSelect = true;
         }
     }
 
-    public void setNoSelectData(final List<GoodBean> goods) {
+    public void setNoSelectData(final List<GoodsBean> goods) {
         for (int i = 0; i < goods.size(); i++) {
             goods.get(i).isSelect = false;
         }
@@ -175,15 +182,17 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodBean, GoodsAdapter.MyV
 
     protected class MyViewHolder extends BaseViewHolder {
         private CheckBox checkBox;
-        private ImageView ivSub;
-        private TextView tvNum;
+        private ImageView ivIcon, ivSub;
+        private TextView tvNum, name, price;
         private ImageView ivAdd;
         private RelativeLayout rlGoodsDetail;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.cb_cart_shop);
-
+            ivIcon = itemView.findViewById(R.id.iv_cart);
+            name = itemView.findViewById(R.id.iv_cart_goods_name);
+            price = itemView.findViewById(R.id.tv_goods_price);
             ivSub = itemView.findViewById(R.id.iv_sub);
             tvNum = itemView.findViewById(R.id.tv_num);
             ivAdd = itemView.findViewById(R.id.iv_add);
