@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.thin.base.adapter.MyViewHolder;
 import com.example.thin.bean.ShopTempBean;
 import com.example.thin.bean.GoodBean;
 import com.example.thin.view.BaseLayout;
@@ -18,7 +19,7 @@ import java.util.List;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class SubmitOrderAdapter extends RecyclerView.Adapter<SubmitOrderAdapter.MyViewHolder> {
+public class SubmitOrderAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private Context context;
     private static final int SHOP = 0;
     private static final int GOODS = 1;
@@ -72,18 +73,4 @@ public class SubmitOrderAdapter extends RecyclerView.Adapter<SubmitOrderAdapter.
     public int getItemCount() {
         return data == null ? 0 : data.size();
     }
-
-    protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseLayout itemView;
-
-        public MyViewHolder(@NonNull BaseLayout itemView) {
-            super(itemView);
-            this.itemView = itemView;
-        }
-
-        public void setData(T data) {
-            itemView.setData(data);
-        }
-    }
-
 }

@@ -37,7 +37,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/y20"
                 android:layout_toRightOf="@id/cb_cart_shop"
-                android:src="@mipmap/home_icon_shangpinxiangqing" />
+                android:src="@drawable/shape_rectangle_2_corners_white_stroke_gray" />
 
             <LinearLayout
                 android:layout_width="match_parent"

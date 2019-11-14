@@ -1,57 +1,54 @@
 package com.example.thin.view;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.thin.R;
 import com.example.thin.activity.GoodsDetailActivity;
-import com.example.thin.adapter.MallAdapter;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.bean.GoodsBean;
 
-import java.util.List;
-
 /**
  * @Author: xingyan
- * @Date: 2019/10/21
+ * @Date: 2019/11/14
  * @Desc:
  */
-public class GoodsItemLayout extends BaseLayout<List<GoodsBean>> {
-    private RecyclerView recyclerView;
-    private MallAdapter adapter;
+public class GoodsItemLayout extends BaseLayout<GoodsBean> {
+    private Context context;
+    private ImageView img;
+    private TextView title, price;
+    private RelativeLayout root;
 
     public GoodsItemLayout(Context context) {
-        this(context, null);
-    }
-
-    public GoodsItemLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        super(context);
+        this.context = context;
     }
 
     @Override
     protected void init() {
-        inflate(getContext(), R.layout.layout_shop_detail, this);
-        recyclerView = findViewById(R.id.rv_home_hot);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        inflate(getContext(), R.layout.item_mall_goods, this);
+        img = findViewById(R.id.iv_hot_img);
+        title = findViewById(R.id.tv_title);
+        price = findViewById(R.id.tv_price);
+        root = findViewById(R.id.rl_root);
 
-        adapter = new MallAdapter(getContext());
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<GoodsBean>() {
+        root.setOnClickListener(new OnClickListener() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, GoodsBean bean, int position) {
-                GoodsDetailActivity.open(getContext(),adapter.getItemData(position).pid);
+            public void onClick(View v) {
+                GoodsDetailActivity.open(context, "");
             }
         });
     }
 
     @Override
-    public void setData(List<GoodsBean> data) {
-        adapter.setData(data);
+    public void setData(GoodsBean data) {
+        Glide.with(context).load(data.productCover).placeholder(R.drawable.shape_rectangle_2_corners_white_stroke_gray).error(R.drawable.shape_rectangle_2_corners_white_stroke_gray).into(img);
+        title.setText(data.productName);
+        price.setText(data.productPrice);
     }
 }

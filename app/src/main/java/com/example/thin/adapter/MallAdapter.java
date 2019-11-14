@@ -2,40 +2,34 @@ package com.example.thin.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
-import com.example.thin.R;
-import com.example.thin.base.adapter.BaseRecyclerAdapter;
-import com.example.thin.base.adapter.BaseViewHolder;
+import com.example.thin.base.adapter.MyViewHolder;
 import com.example.thin.bean.GoodsBean;
+import com.example.thin.view.EmptyFootLayout;
+import com.example.thin.view.GoodsItemLayout;
+
+import java.util.List;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/17
  * @Desc:
  */
-public class MallAdapter extends BaseRecyclerAdapter<GoodsBean, MallAdapter.MyViewHolder> {
+public class MallAdapter extends RecyclerView.Adapter<MyViewHolder<GoodsBean>> {
 
     private Context context;
-//    private static final int TYPE_FOOTER_VIEW = 1;
+    private static final int TYPE_FOOTER_VIEW = 1;
+    private List<GoodsBean> data;
 
     public MallAdapter(Context context) {
-        super(context);
         this.context = context;
     }
 
-    @Override
-    public int getItemLayout(int viewType) {
-//        if (viewType == TYPE_FOOTER_VIEW) {
-//            /*这里返回的是FooterView*/
-//            return R.layout.layout_home_foot;
-//        } else {
-        /*这里返回的是普通的View*/
-        return R.layout.item_mall_goods;
-//        }
+    public void setData(List<GoodsBean> data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     /**
@@ -50,40 +44,39 @@ public class MallAdapter extends BaseRecyclerAdapter<GoodsBean, MallAdapter.MyVi
     }
 
     @Override
-    public int getViewType(int position) {
-//        /*当position是最后一个的时候，也就是比list的数量多一个的时候，则表示FooterView*/
-//        if (position == getItemCount() - 1) {
-//            return TYPE_FOOTER_VIEW;
-//        }
+    public int getItemViewType(int position) {
+        /*当position是最后一个的时候，也就是比list的数量多一个的时候，则表示FooterView*/
+        if (position == getItemCount() - 1) {
+            return TYPE_FOOTER_VIEW;
+        }
         return 0;
     }
 
     @Override
-    public MyViewHolder getViewHolder(View view, int viewType) {
-        return new MyViewHolder(view);
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+        if (data == null) return;
+        if (myViewHolder.getItemViewType() == TYPE_FOOTER_VIEW) {
+            myViewHolder.setData(data);
+        } else {
+            myViewHolder.setData(data);
+        }
+    }
+
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        /*当position是最后一个的时候，也就是比list的数量多一个的时候，则表示FooterView*/
+        MyViewHolder myViewHolder = null;
+        if (i == getItemCount() - 1) {
+            myViewHolder = new MyViewHolder(new EmptyFootLayout(context));
+        } else {
+            myViewHolder = new MyViewHolder(new GoodsItemLayout(context));
+        }
+        return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-//        if (myViewHolder.getItemViewType() == 0) {
-        GoodsBean data = getItemData(i);
-        if (data == null) return;
-        Glide.with(context).load(data.productCover).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.img);
-        myViewHolder.title.setText(data.productName);
-        myViewHolder.price.setText(data.productPrice);
-//        }
-    }
-
-    protected class MyViewHolder extends BaseViewHolder {
-
-        private ImageView img;
-        private TextView title, price;
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            img = itemView.findViewById(R.id.iv_hot_img);
-            title = itemView.findViewById(R.id.tv_title);
-            price = itemView.findViewById(R.id.tv_price);
-        }
+    public int getItemCount() {
+        return data == null ? 0 : data.size() + 1;
     }
 }

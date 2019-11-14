@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.thin.R;
-import com.example.thin.adapter.ShopCartAdapter;
+import com.example.thin.adapter.CartAdapter;
 import com.example.thin.base.BaseScrollTitleBarActivity;
 import com.example.thin.bean.CartBean;
 import com.example.thin.bean.ShopBean;
@@ -37,7 +37,7 @@ import java.util.List;
 public class ShopCartActivity extends BaseScrollTitleBarActivity<ShopCartPresenter> implements IShopCartView, View.OnClickListener {
 
     private RecyclerView recyclerView;
-    private ShopCartAdapter adapter;
+    private CartAdapter adapter;
     private Button settlement;
     private CheckBox cbAllSelect;
     private TextView tvTotal;
@@ -69,7 +69,7 @@ public class ShopCartActivity extends BaseScrollTitleBarActivity<ShopCartPresent
         tvTotal = getView(R.id.tv_total);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ShopCartAdapter(this);
+        adapter = new CartAdapter(this);
         recyclerView.setAdapter(adapter);
 
         settlement.setOnClickListener(this);

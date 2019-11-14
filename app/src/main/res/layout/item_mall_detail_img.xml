@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/y20"
-        android:background="@mipmap/default_bg"
+        android:background="@drawable/shape_rectangle_2_corners_white_stroke_gray"
         android:scaleType="centerCrop" />
 
 </RelativeLayout>

@@ -20,7 +20,7 @@ public class BannerHolder implements BannerViewHolder<String> {
     public View createView(Context context, int position, String data) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_banner_layout, null);
         ImageView banner = view.findViewById(R.id.iv_bg);
-        Glide.with(context).load(data).placeholder(R.color.color_e7).error(R.mipmap.ic_launcher).into(banner);
+        Glide.with(context).load(data).placeholder(R.color.color_e7).error(R.drawable.shape_rectangle_2_corners_white_stroke_gray).into(banner);
         return view;
     }
 }

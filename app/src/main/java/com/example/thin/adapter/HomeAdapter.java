@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.thin.base.adapter.MyViewHolder;
 import com.example.thin.bean.BannerBean;
 import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.TypeBean;
@@ -21,7 +22,7 @@ import java.util.List;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class HomeAdapter extends RecyclerView.Adapter {
+public class HomeAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private enum HomePageType {
 
         TYPE(0),
@@ -57,6 +58,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
         this.dataType = dataType;
         notifyDataSetChanged();
     }
+
     public void setData(List<ShopBean> data) {
         this.data = data;
         notifyDataSetChanged();
@@ -75,7 +77,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         HomePageType type = HomePageType.values()[i];
         MyViewHolder myViewHolder = null;
         switch (type) {
@@ -97,18 +99,19 @@ public class HomeAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         if (data == null) return;
         if (i == HomePageType.TYPE.getValue()) {
-            ((MyViewHolder) viewHolder).setData(dataType);
+            myViewHolder.setData(dataType);
         } else if (i == HomePageType.BANNER.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data2.url);
+            myViewHolder.setData(data2.url);
         } else if (i == HomePageType.HOT.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data);
+            myViewHolder.setData(data);
         } else if (i == HomePageType.FOOT.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data2.url);
+            myViewHolder.setData(data2.url);
         }
     }
+
 
     @Override
     public int getItemCount() {
@@ -118,18 +121,5 @@ public class HomeAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         return position;
-    }
-
-    protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseLayout itemView;
-
-        public MyViewHolder(@NonNull BaseLayout itemView) {
-            super(itemView);
-            this.itemView = itemView;
-        }
-
-        public void setData(T data) {
-            itemView.setData(data);
-        }
     }
 }

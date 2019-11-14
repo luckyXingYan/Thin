@@ -10,6 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@mipmap/default_bg" />
+        android:src="@drawable/shape_rectangle_2_corners_white_stroke_gray" />
 
 </RelativeLayout>

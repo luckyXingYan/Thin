@@ -47,7 +47,7 @@ public class HotAdapter extends BaseRecyclerAdapter<ShopBean, HotAdapter.MyViewH
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         ShopBean hotBean = getItemData(i);
-        Glide.with(context).load(hotBean.shopLogo).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivShop);
+        Glide.with(context).load(hotBean.shopLogo).placeholder(R.drawable.shape_rectangle_2_corners_white_stroke_gray).error(R.drawable.shape_rectangle_2_corners_white_stroke_gray).into(myViewHolder.ivShop);
         myViewHolder.title.setText(hotBean.shopName);
         myViewHolder.averageConsume.setText("平均消费：" + hotBean.averageConsumption);
         List<GoodsBean> hotGoodsBeanList = getItemData(i).list;

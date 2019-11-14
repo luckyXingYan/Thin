@@ -17,8 +17,6 @@ import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
 import com.example.thin.bean.GoodsBean;
 import com.example.thin.bean.ShopBean;
-import com.example.thin.bean.GoodBean;
-import com.example.thin.bean.ShopBean;
 import com.example.thin.bean.TotalPriceNumBean;
 import com.example.thin.util.Constants;
 
@@ -30,12 +28,12 @@ import java.util.List;
  * @Date: 2019/10/23
  * @Desc:
  */
-public class ShopCartAdapter extends BaseRecyclerAdapter<ShopBean, ShopCartAdapter.MyViewHolder> {
+public class CartAdapter extends BaseRecyclerAdapter<ShopBean, CartAdapter.MyViewHolder> {
     private Context context;
-    private GoodsAdapter adapter;
+    private CartGoodsAdapter adapter;
     private ShopCartActivity.MyHandler myHandler;
 
-    public ShopCartAdapter(Context context) {
+    public CartAdapter(Context context) {
         super(context);
         this.context = context;
         myHandler = new ShopCartActivity.MyHandler(((ShopCartActivity) context));
@@ -59,7 +57,7 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopBean, ShopCartAdapt
          * 因为删除时改变了rv的宽高，所以不用考虑 直接 notifyDataSetChanged 更新即可
          */
         myViewHolder.rvGoodsCart.setHasFixedSize(true);
-        adapter = new GoodsAdapter(context);
+        adapter = new CartGoodsAdapter(context);
         myViewHolder.rvGoodsCart.setAdapter(adapter);
 
         final ShopBean data = getItemData(i);
@@ -68,7 +66,7 @@ public class ShopCartAdapter extends BaseRecyclerAdapter<ShopBean, ShopCartAdapt
         myViewHolder.shopName.setText(data.shopName);
         adapter.setData(data.cartProductVos);
 
-        adapter.setDeleteShopItemListener(new GoodsAdapter.DeleteShopItemListener() {
+        adapter.setDeleteShopItemListener(new CartGoodsAdapter.DeleteShopItemListener() {
             @Override
             public void deleteShopItem() {
                 if (data.cartProductVos.size() == 0) {

@@ -12,7 +12,7 @@
         android:layout_height="@dimen/y197"
         android:layout_marginRight="@dimen/y10"
         android:scaleType="centerCrop"
-        android:src="@mipmap/home_icon_shangpinxiangqing" />
+        android:src="@drawable/shape_rectangle_2_corners_white_stroke_gray" />
 
     <TextView
         android:id="@+id/tv_title"

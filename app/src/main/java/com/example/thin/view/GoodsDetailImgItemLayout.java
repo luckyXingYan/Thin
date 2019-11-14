@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.thin.R;
-import com.example.thin.adapter.MallDetailImgAdapter;
+import com.example.thin.adapter.GoodsDetailImgAdapter;
 import com.example.thin.bean.ImgListBean;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GoodsDetailImgItemLayout extends BaseLayout<List<ImgListBean>> {
     private RecyclerView recyclerView;
-    private MallDetailImgAdapter adapter;
+    private GoodsDetailImgAdapter adapter;
 
     public GoodsDetailImgItemLayout(Context context) {
         super(context);
@@ -29,7 +29,7 @@ public class GoodsDetailImgItemLayout extends BaseLayout<List<ImgListBean>> {
         recyclerView = findViewById(R.id.rv_mall_detail);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new MallDetailImgAdapter(getContext());
+        adapter = new GoodsDetailImgAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
     }

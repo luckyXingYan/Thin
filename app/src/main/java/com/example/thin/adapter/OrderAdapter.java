@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.thin.base.adapter.MyViewHolder;
 import com.example.thin.bean.GoodBean;
 import com.example.thin.bean.ShopTempBean;
 import com.example.thin.bean.OrderBottomBean;
@@ -20,7 +21,7 @@ import java.util.List;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder> {
+public class OrderAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private Context context;
     private static final int SHOP = 0;
     private static final int GOODS = 1;
@@ -50,7 +51,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
     @NonNull
     @Override
-    public OrderAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         MyViewHolder myViewHolder = null;
         switch (i) {
             case SHOP:
@@ -81,18 +82,5 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     @Override
     public int getItemCount() {
         return data == null ? 0 : data.size();
-    }
-
-    protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseLayout itemView;
-
-        public MyViewHolder(@NonNull BaseLayout itemView) {
-            super(itemView);
-            this.itemView = itemView;
-        }
-
-        public void setData(T data) {
-            itemView.setData(data);
-        }
     }
 }

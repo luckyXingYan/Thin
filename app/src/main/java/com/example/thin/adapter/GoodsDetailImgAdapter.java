@@ -17,11 +17,11 @@ import com.example.thin.bean.ImgListBean;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class MallDetailImgAdapter extends BaseRecyclerAdapter<ImgListBean, MallDetailImgAdapter.MyViewHolder> {
+public class GoodsDetailImgAdapter extends BaseRecyclerAdapter<ImgListBean, GoodsDetailImgAdapter.MyViewHolder> {
 
     private Context context;
 
-    public MallDetailImgAdapter(Context context) {
+    public GoodsDetailImgAdapter(Context context) {
         super(context);
         this.context = context;
     }
@@ -43,13 +43,13 @@ public class MallDetailImgAdapter extends BaseRecyclerAdapter<ImgListBean, MallD
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        ImgListBean data = getItemData(i);
+        final ImgListBean data = getItemData(i);
         if (data == null) return;
-        Glide.with(context).load(data.imgUrl).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.img);
+        Glide.with(context).load(data.imgUrl).placeholder(R.drawable.shape_rectangle_2_corners_white_stroke_gray).error(R.drawable.shape_rectangle_2_corners_white_stroke_gray).into(myViewHolder.img);
         myViewHolder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ZoomImgActivity.open(context);
+                ZoomImgActivity.open(context, data.imgUrl);
             }
         });
     }

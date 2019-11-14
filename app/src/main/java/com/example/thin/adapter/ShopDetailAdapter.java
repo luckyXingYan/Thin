@@ -5,18 +5,18 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.thin.base.adapter.MyViewHolder;
 import com.example.thin.bean.ShopBean;
-import com.example.thin.view.BaseLayout;
 import com.example.thin.view.ShopDetailNameLayout;
 import com.example.thin.view.ShopDetailInfoLayout;
-import com.example.thin.view.GoodsItemLayout;
+import com.example.thin.view.GoodsLayout;
 
 /**
  * @Author: xingyan
  * @Date: 2019/10/17
  * @Desc:
  */
-public class ShopDetailAdapter extends RecyclerView.Adapter {
+public class ShopDetailAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private enum ShopDetailPageType {
         NAME(0),
         INFO(1),
@@ -49,7 +49,7 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         ShopDetailPageType type = ShopDetailPageType.values()[i];
         MyViewHolder myViewHolder = null;
         switch (type) {
@@ -60,23 +60,24 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
                 myViewHolder = new MyViewHolder(new ShopDetailInfoLayout(context));
                 break;
             case IMG:
-                myViewHolder = new MyViewHolder(new GoodsItemLayout(context));
+                myViewHolder = new MyViewHolder(new GoodsLayout(context));
                 break;
         }
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         if (data == null) return;
         if (i == ShopDetailPageType.NAME.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data);
+            myViewHolder.setData(data);
         } else if (i == ShopDetailPageType.INFO.getValue()) {
-            ((MyViewHolder) viewHolder).setData(null);
+            myViewHolder.setData(null);
         } else if (i == ShopDetailPageType.IMG.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data.list);
+            myViewHolder.setData(data.list);
         }
     }
+
 
     @Override
     public int getItemCount() {
@@ -86,18 +87,5 @@ public class ShopDetailAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         return position;
-    }
-
-    protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseLayout itemView;
-
-        public MyViewHolder(@NonNull BaseLayout itemView) {
-            super(itemView);
-            this.itemView = itemView;
-        }
-
-        public void setData(T data) {
-            itemView.setData(data);
-        }
     }
 }

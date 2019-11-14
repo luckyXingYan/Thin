@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.thin.base.adapter.MyViewHolder;
 import com.example.thin.view.BaseLayout;
 import com.example.thin.view.SearchLayout;
 import com.example.thin.view.SearchItemLayout;
@@ -17,7 +18,7 @@ import java.util.List;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
+public class SearchAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
 
     private enum SearchPageType {
@@ -74,7 +75,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         if (data == null) return;
         if (getItemViewType(i) == SearchPageType.RECENT_SEARCH.getValue()) {
             myViewHolder.setData(data.get(i));
@@ -95,18 +96,5 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public int getItemViewType(int position) {
         return position;
-    }
-
-    protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseLayout itemView;
-
-        public MyViewHolder(@NonNull BaseLayout itemView) {
-            super(itemView);
-            this.itemView = itemView;
-        }
-
-        public void setData(T data) {
-            itemView.setData(data);
-        }
     }
 }

@@ -5,8 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.thin.base.adapter.MyViewHolder;
 import com.example.thin.bean.GoodsBean;
-import com.example.thin.view.BaseLayout;
 import com.example.thin.view.GoodsDetailImgItemLayout;
 import com.example.thin.view.GoodsDetailInfoLayout;
 import com.example.thin.view.GoodsDetailNameLayout;
@@ -16,7 +16,7 @@ import com.example.thin.view.GoodsDetailNameLayout;
  * @Date: 2019/10/17
  * @Desc:
  */
-public class GoodsDetailAdapter extends RecyclerView.Adapter {
+public class GoodsDetailAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private enum GoodsDetailPageType {
 
         NAME(0),
@@ -52,7 +52,7 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         GoodsDetailPageType type = GoodsDetailPageType.values()[i];
         MyViewHolder myViewHolder = null;
         switch (type) {
@@ -70,14 +70,14 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         if (data == null) return;
         if (i == GoodsDetailPageType.NAME.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data);
+            myViewHolder.setData(data);
         } else if (i == GoodsDetailPageType.INFO.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data);
+            myViewHolder.setData(data);
         } else if (i == GoodsDetailPageType.IMG.getValue()) {
-            ((MyViewHolder) viewHolder).setData(data.rotationCharts);
+            myViewHolder.setData(data.rotationCharts);
         }
     }
 
@@ -89,18 +89,5 @@ public class GoodsDetailAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         return position;
-    }
-
-    protected class MyViewHolder<T> extends RecyclerView.ViewHolder {
-        private BaseLayout itemView;
-
-        public MyViewHolder(@NonNull BaseLayout itemView) {
-            super(itemView);
-            this.itemView = itemView;
-        }
-
-        public void setData(T data) {
-            itemView.setData(data);
-        }
     }
 }

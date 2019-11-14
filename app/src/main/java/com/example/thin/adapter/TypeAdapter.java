@@ -45,7 +45,7 @@ public class TypeAdapter extends BaseRecyclerAdapter<TypeBean, TypeAdapter.MyVie
         TypeBean bean = getItemData(i);
         if (bean == null) return;
         myViewHolder.type.setText(bean.name);
-        Glide.with(context).load(R.mipmap.liposuction).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivType);
+        Glide.with(context).load(R.mipmap.liposuction).placeholder(R.drawable.shape_rectangle_2_corners_white_stroke_gray).error(R.drawable.shape_rectangle_2_corners_white_stroke_gray).into(myViewHolder.ivType);
     }
 
     protected class MyViewHolder extends BaseViewHolder {

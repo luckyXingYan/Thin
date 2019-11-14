@@ -43,6 +43,7 @@ public class Constants {
     public final static String PRO_ID = "proId";
     public final static String COUNT = "count";
     public final static String ADDRESS_ID = "addressId";
+    public final static String IMG_URL = "imgUrl";
 
 
 

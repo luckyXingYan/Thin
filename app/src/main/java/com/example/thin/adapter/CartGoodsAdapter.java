@@ -16,7 +16,6 @@ import com.example.thin.activity.GoodsDetailActivity;
 import com.example.thin.base.adapter.BaseRecyclerAdapter;
 import com.example.thin.base.adapter.BaseViewHolder;
 import com.example.thin.bean.GoodsBean;
-import com.example.thin.bean.GoodsBean;
 import com.example.thin.eventbus.TotalPriceEvent;
 import com.example.thin.util.Constants;
 
@@ -29,11 +28,11 @@ import java.util.List;
  * @Date: 2019/10/30
  * @Desc:
  */
-public class GoodsAdapter extends BaseRecyclerAdapter<GoodsBean, GoodsAdapter.MyViewHolder> {
+public class CartGoodsAdapter extends BaseRecyclerAdapter<GoodsBean, CartGoodsAdapter.MyViewHolder> {
     private Context context;
 
 
-    public GoodsAdapter(Context context) {
+    public CartGoodsAdapter(Context context) {
         super(context);
         this.context = context;
     }
@@ -70,7 +69,7 @@ public class GoodsAdapter extends BaseRecyclerAdapter<GoodsBean, GoodsAdapter.My
         final GoodsBean data = getItemData(i);
         if (data == null) return;
         myViewHolder.checkBox.setChecked(data.isSelect);
-        Glide.with(context).load(data.imgUrl).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(myViewHolder.ivIcon);
+        Glide.with(context).load(data.imgUrl).placeholder(R.drawable.shape_rectangle_2_corners_white_stroke_gray).error(R.drawable.shape_rectangle_2_corners_white_stroke_gray).into(myViewHolder.ivIcon);
         myViewHolder.name.setText(data.productName);
         myViewHolder.price.setText(data.unitPrice);
         myViewHolder.tvNum.setText(data.count);

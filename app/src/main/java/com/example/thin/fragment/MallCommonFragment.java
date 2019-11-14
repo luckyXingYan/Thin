@@ -80,12 +80,6 @@ public class MallCommonFragment extends BaseFragment<BasePresenter> implements I
                 }
             }
         });
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<GoodsBean>() {
-            @Override
-            public void onItemClick(ViewGroup parent, View view, GoodsBean bean, int position) {
-                GoodsDetailActivity.open(getActivity(),"");
-            }
-        });
 
     }
 
